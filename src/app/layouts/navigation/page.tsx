@@ -58,7 +58,7 @@ function Page({
     >
       <div className="nav">
         <Image id="logo" src={MyeLogo} alt="Mye-Logo" />
-        <ul className="mt-2">
+        <ul>
           {data &&
             data
               .map((link) => link)

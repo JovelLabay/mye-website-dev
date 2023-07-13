@@ -17,10 +17,14 @@ async function getBlocks() {
   return blocks.data;
 }
 
-export default async function Home({ params }: { params: { slug: string } }) {
+export default async function Home() {
   const block = await getBlocks();
 
-  const { carousel, awards, productsServices } = block?.nodeByUri;
+  const {
+    carousel: { carouselItem },
+    awards,
+    productsServices,
+  } = block?.nodeByUri;
 
   return (
     <div>
@@ -28,7 +32,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
         <title>MYE | Home</title>
       </head>
 
-      <Carousel carouselItem={carousel.carouselItem} />
+      <Carousel carouselItem={carouselItem} />
       <Awards awards={awards} />
       <ProductsServices productsServices={productsServices} />
     </div>

@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import Image from "next/image";
 
+import { BsHexagon, BsFillHexagonFill } from "react-icons/bs";
+
 function ProductsServicesBlock({
   productsServices,
 }: {
@@ -57,13 +59,13 @@ function ProductsServicesBlock({
           </h1>
 
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-3">
-            <div className="flex flex-col justify-center lg:items-start items-center gap-4 border-b-2 lg:border-b-0  lg:border-r-2 pb-10 mb-7 lg:pb-0 lg:mb-0 mr-0 lg:mr-7">
+            <div className="flex flex-col justify-center lg:items-start items-start gap-4 border-b-2 lg:border-b-0  lg:border-r-2 pb-10 mb-7 lg:pb-0 lg:mb-0 mr-0 lg:mr-7 px-0 sm:px-10 md:mx-15 lg:px-0">
               {productsServices.productsAndServices.map(
                 (productService, index) => (
                   <button
                     key={index}
                     className={classNames(
-                      "",
+                      "flex justify-center items-center text-left gap-2 ml-0 md:ml-5",
                       activeProduct.productItem === index ? "font-bold" : "",
                     )}
                     onClick={() => {
@@ -73,6 +75,11 @@ function ProductsServicesBlock({
                       });
                     }}
                   >
+                    {activeProduct.productItem === index ? (
+                      <BsFillHexagonFill size={25} color="#9D3CFF" />
+                    ) : (
+                      <BsHexagon size={25} />
+                    )}
                     {productService.title}
                   </button>
                 ),
