@@ -18,37 +18,39 @@ const GetHomePage = gql`
   query GetHomePage {
     nodeByUri(uri: "/") {
       ... on Page {
-        carousel {
-          fieldGroupName
-          carouselItem {
-            description
-            fieldGroupName
-            label
-            image {
-              sourceUrl
-            }
-            backgroundColor
-          }
-        }
         awards {
           subHeader
-          items {
-            description
-            fieldGroupName
-            title
-          }
-          header
+          headerAwards
           fieldGroupName
-          description
+          descriptionAwards
           awardItem {
             sourceUrl
           }
+          items {
+            description
+            title
+          }
         }
-        productsServices {
+        carousel {
+          fieldGroupName
+          carouselItem {
+            backgroundColor
+            description
+            label
+            learnMore {
+              title
+              url
+            }
+            image {
+              sourceUrl
+            }
+          }
+        }
+        products {
+          backgroundColor
           fieldGroupName
           title
           productsAndServices {
-            fieldGroupName
             title
             productServiceItem {
               description
@@ -59,7 +61,61 @@ const GetHomePage = gql`
               }
             }
           }
-          backgroundColor
+        }
+        services {
+          description
+          fieldGroupName
+          header
+          item {
+            description
+            learnMore {
+              url
+            }
+            title
+          }
+        }
+        myeWorking {
+          fieldGroupName
+          headerWorks
+          workingItem {
+            title
+            description
+          }
+          imageWorking {
+            sourceUrl
+          }
+        }
+        industrySolutions {
+          headerIndustrySolutons
+          solutionItem {
+            titleItems
+            items {
+              descriptionItem
+            }
+            backgroundImage {
+              sourceUrl
+            }
+          }
+        }
+        about {
+          descriptionOne
+          descriptionTwo
+          headerAbout
+          bigImage {
+            sourceUrl
+          }
+        }
+        blogsNews {
+          headerBlogsNews
+          blogsNewsItem {
+            itemDescription
+            itemHeader
+            subItemHeader
+            itemImage {
+              sourceUrl
+            }
+            isFeature
+          }
         }
       }
     }

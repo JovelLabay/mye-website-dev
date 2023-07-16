@@ -181,6 +181,76 @@
     padding-right: 10px;
 }
 
+/* SERVICES */
+#services-box {
+    box-shadow: 0px 0px 20px 0px rgba(172, 49, 154, 0.5);
+    transition: 100ms ease-in-out;
+}
+
+#services-box:hover {
+    box-shadow: 0px 0px 20px 0px rgba(172, 49, 154, 0.7);
+    cursor: pointer;
+}
+
+/* INDUSTRY SOLUTIONS */
+#industry-boxes {
+    height: 100%;
+    background: linear-gradient(180deg, rgba(73, 159, 254, 0) 0%, #003065 57.29%, #000000 100%);
+    transition: 100ms ease-in-out;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: end;
+    align-items: start
+}
+
+#industry-boxes:hover {
+    background: rgba(241, 30, 203, 0.5);
+    cursor: pointer;
+}
+
+#about-container {
+    background-color: #fff;
+    min-height: 350px;
+    clip-path: polygon(100% 0, 100% 69%, 50% 100%, 0 71%, 0 0);
+    z-index: -1;
+}
+
+.image-container {
+    margin-top: -200px;
+    height: 900px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-container .about-img {
+    height: 900px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    transition: 500ms ease-in-out;
+}
+
+.image-container:hover .about-img {
+    transform: scale(1.2);
+}
+
+/* BLOGS AND NEWS IMAGE */
+#blogs-news-image {
+    transition: 500ms ease-in-out;
+}
+
+#blogs-news-image:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 /* ====== LAPTOP VIEW ====== */
 @media only screen and (max-width: 1024px) {
 
@@ -202,6 +272,15 @@
         margin-top: 30px;
     }
 
+    /* ABOUT */
+    .image-container {
+        height: 800px;
+    }
+
+    .image-container .about-img {
+        height: 800px;
+    }
+
 }
 
 /* ====== Tablet ====== */
@@ -212,6 +291,16 @@
         gap: 15px;
         margin-top: 20px;
     }
+
+    /* ABOUT */
+    .image-container {
+        height: 700px;
+    }
+
+    .image-container .about-img {
+        height: 700px;
+    }
+
 }
 
 /* ====== Mobile ====== */
@@ -239,5 +328,14 @@
 
     .footer div {
         margin-bottom: 30px;
+    }
+
+    /* ABOUT */
+    .image-container {
+        height: 400px;
+    }
+
+    .image-container .about-img {
+        height: 400px;
     }
 }

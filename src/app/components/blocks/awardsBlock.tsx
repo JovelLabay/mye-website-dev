@@ -7,8 +7,8 @@ function Awards({
   awards,
 }: {
   awards: {
-    header: string;
-    description: string;
+    headerAwards: string;
+    descriptionAwards: string;
     items: {
       title: string;
       description: string;
@@ -23,9 +23,9 @@ function Awards({
     <div className="the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
         <h1 className="animate text-center text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
-          {awards.header}
+          {awards.headerAwards}
         </h1>
-        <p className="animate text-center mt-3">{awards.description}</p>
+        <p className="animate text-center mt-3">{awards.descriptionAwards}</p>
       </div>
 
       <div className="pt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 sm:gap-5 md:gap-8 lg:gap-10 content-center mx-3 sm:mx-5 md:mx-10 lg:mx-15">

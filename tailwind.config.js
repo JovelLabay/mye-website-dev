@@ -15,6 +15,11 @@ module.exports = {
       colors: {
         customViolet: "#9D3CFF",
         customDark: "#2D2D2D",
+        customSemiWhite: "#f1f6fa",
+
+        customBlue: "#21d1ff",
+        customDarkViolet: "#588cfe",
+        customPink: "#9e3cff",
       },
     },
   },

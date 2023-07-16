@@ -54,7 +54,7 @@ function Page({
   return (
     <nav
       id="navigation"
-      className={classNames("", shouldShowShadow ? "shadow-lg" : "shadow-none")}
+      className={classNames("", shouldShowShadow ? "shadow-lg" : "")}
     >
       <div className="nav">
         <Image id="logo" src={MyeLogo} alt="Mye-Logo" />

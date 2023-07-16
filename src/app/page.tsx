@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import { Button } from "react-bootstrap";
+import React from "react";
+
+// QUERY
 import client from "@/lib/apollo/client";
 import { GetHomePage } from "@/lib/graphql/query";
+
+// BLOCKS
 import Carousel from "@/blockscarouselBlock";
 import Awards from "@/blocksawardsBlock";
-import ProductsServices from "@/blocksproductsServicesBlock";
+import Products from "@/app/components/blocks/productsBlock";
+import Services from "./components/blocks/servicesBlock";
+import Works from "./components/blocks/worksBlock";
+import Industry from "./components/blocks/industryBlock";
+import About from "./components/blocks/aboutBlock";
+import BlogsNews from "./components/blocks/blogsNewsBlock";
 
 async function getBlocks() {
   const blocks = await client.query({
@@ -23,18 +30,24 @@ export default async function Home() {
   const {
     carousel: { carouselItem },
     awards,
-    productsServices,
+    products,
+    services,
+    myeWorking,
+    industrySolutions,
+    about,
+    blogsNews,
   } = block?.nodeByUri;
 
   return (
     <div>
-      <head>
-        <title>MYE | Home</title>
-      </head>
-
       <Carousel carouselItem={carouselItem} />
       <Awards awards={awards} />
-      <ProductsServices productsServices={productsServices} />
+      <Products products={products} />
+      <Services services={services} />
+      <Works myeWorking={myeWorking} />
+      <Industry industrySolutions={industrySolutions} />
+      <About about={about} />
+      <BlogsNews blogsNews={blogsNews} />
     </div>
   );
 }
