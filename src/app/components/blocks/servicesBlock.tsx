@@ -31,12 +31,12 @@ function ServicesBlock({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5 mx-3 sm:mx-5 md:mx-10 lg:mx-15 ">
           {services.item.map((service, index) => (
             <div
               id="services-box"
               key={index}
-              className="rounded-lg min-h-[100px] sm:min-h-[150px] md:min-h-[200px] lg:min-h-[350px] p-3 flex flex-col justify-between items-center bg-white text-center gap-4"
+              className="rounded-lg min-h-[100px] sm:min-h-[150px] md:min-h-[200px] lg:min-h-[350px] p-4 flex flex-col justify-between items-center bg-white text-center gap-4"
             >
               <div className="flex justify-center items-center min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px]">
                 <h5 className="font-semibold leading-7 text-customViolet">
@@ -46,7 +46,10 @@ function ServicesBlock({
               <div className="flex justify-start items-start min-h-[100px] sm:min-h-[90px] md:min-h-[120px] lg:min-h-[250px]">
                 <p className="">{service.description}</p>
               </div>
-              <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold">
+              <button
+                className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
+                hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
+              >
                 Learn More
               </button>
             </div>

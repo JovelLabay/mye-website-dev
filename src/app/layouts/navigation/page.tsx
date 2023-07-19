@@ -68,7 +68,7 @@ function Page({
               )
               .map((link) => (
                 <li key={link.id} className="link-nav">
-                  <a href="/">{link.title}</a>
+                  <a href={link.uri}>{link.title}</a>
                 </li>
               ))}
           <li>
@@ -127,7 +127,10 @@ function Page({
                     )
                     .map((link) => (
                       <li key={link.id} className="text-lg font-bold ml-10">
-                        <a href="/" className="no-underline text-customDark">
+                        <a
+                          href={link.uri}
+                          className="no-underline text-customDark"
+                        >
                           {link.title}
                         </a>
                       </li>

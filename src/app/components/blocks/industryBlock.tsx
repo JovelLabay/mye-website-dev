@@ -19,7 +19,7 @@ function IndustryBlock({
     }[];
   };
 }) {
-  const [active, setActive] = useState(-0);
+  const [active, setActive] = useState<null | number>(null);
 
   return (
     <div className="my-8 sm:my-10 md:my-15 lg:my-20">
@@ -40,7 +40,14 @@ function IndustryBlock({
               setActive(index);
             }}
             key={index}
-            className={classNames("h-[25vh] lg:h-[70vh] col-span-2")}
+            className={classNames(
+              "h-[25vh] lg:h-[70vh]",
+              active === null
+                ? "lg:col-span-2"
+                : active === index
+                ? "h-[40vh] lg:col-span-5"
+                : "lg:col-span-1",
+            )}
             style={{
               backgroundImage: `url(${solution.backgroundImage.sourceUrl})`,
               backgroundSize: "cover",
@@ -50,9 +57,35 @@ function IndustryBlock({
             }}
           >
             <div id="industry-boxes">
-              <h5 className={classNames("font-semibold leading-7 text-white")}>
+              <h5
+                className={classNames(
+                  "font-semibold leading-7 text-white w-full text-center",
+                  active === null
+                    ? ""
+                    : active === index
+                    ? ""
+                    : "lg:mb-20 lg:rotate-[-90deg]",
+                )}
+              >
                 {solution.titleItems}
               </h5>
+              {active === index && (
+                <ul className="text-white p-0">
+                  {solution.items?.map((theItem, index) => (
+                    <li key={index}>{theItem?.descriptionItem}</li>
+                  ))}
+                </ul>
+              )}
+
+              {active === null && (
+                <ul className="text-white p-0 mt-3">
+                  {solution.items?.map((theItem, index) => (
+                    <li key={index} className="hidden" id="hover-items">
+                      {theItem?.descriptionItem}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         ))}

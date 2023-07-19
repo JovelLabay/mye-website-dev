@@ -44,7 +44,7 @@ function CarouselBlock({
                     {item.label}
                   </h1>
                   <p className="py-3">{item.description}</p>
-                  <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-white text-black font-medium md:font-semibold">
+                  <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-white text-customViolet font-medium md:font-semibold">
                     Learn more
                   </button>
                 </div>

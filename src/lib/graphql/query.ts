@@ -75,14 +75,15 @@ const GetHomePage = gql`
           }
         }
         myeWorking {
-          fieldGroupName
           headerWorks
-          workingItem {
-            title
-            description
-          }
           imageWorking {
             sourceUrl
+          }
+          workingItem {
+            title
+            worksDescription {
+              workingDescription
+            }
           }
         }
         industrySolutions {
@@ -115,6 +116,20 @@ const GetHomePage = gql`
               sourceUrl
             }
             isFeature
+          }
+        }
+        joinOurTeam {
+          headerJoinOurTeam
+          joinOurTeamDescriptionTwo
+          joinOurTeamDescriptionOne
+          joinOurTeamBigImage {
+            sourceUrl
+          }
+        }
+        getInTouch {
+          headerGetInTouch
+          getInTouchBackgroundImage {
+            sourceUrl
           }
         }
       }

@@ -17,5 +17,5 @@ body {
 .footer,
 .nav,
 .the-container {
-    @apply mx-3 md:mx-10 max-w-screen-lg lg:mx-auto;
+    @apply mx-3 md:mx-10 max-w-[1200px] lg:mx-auto;
 }

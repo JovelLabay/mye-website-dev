@@ -16,6 +16,8 @@ module.exports = {
         customViolet: "#9D3CFF",
         customDark: "#2D2D2D",
         customSemiWhite: "#f1f6fa",
+        customMainBlue: "#0973BA",
+        customGreen: "rgba(77, 223, 171, 0.6)",
 
         customBlue: "#21d1ff",
         customDarkViolet: "#588cfe",

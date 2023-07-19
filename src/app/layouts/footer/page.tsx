@@ -8,26 +8,56 @@ import { BiSolidLocationPlus } from "react-icons/bi";
 
 import MyeLogo from "@/logoMYE-Logo.png";
 
-function Page() {
+function Page({
+  data,
+}: {
+  data:
+    | {
+        id: string;
+        slug: string;
+        title: string;
+        uri: string;
+        menuOrder: number;
+      }[]
+    | null;
+}) {
   return (
     <footer>
       <div className="footer">
-        <div className="one">
-          <Image id="logo" src={MyeLogo} title="Logo" alt="Logo" />
-          <p className="company-description ml-5 lg:ml-0">
-            A Cloud built by Filipinos, for Filipinos.
-          </p>
-          <p className="ml-5 lg:ml-0">Copyright 2023 - All Rights Reserved</p>
+        <div>
+          <div className="flex">
+            <div>
+              <Image id="logo" src={MyeLogo} title="Logo" alt="Logo" />
+            </div>
+            <div className="flex flex-col justify-center items-center mt-2 w-[85%]">
+              <p className="w-full text-center">
+                A Cloud built by Filipinos, for Filipinos.
+              </p>
+              <p className="w-full text-center hidden lg:block">
+                Copyright 2023 - All Rights Reserved
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="two">
+        <div className="two -mt-[80px] sm:-mt-0">
           <h6>Quick links</h6>
           <div>
             <ul>
-              <li>Home</li>
-              <li>Products & Services</li>
-              <li>About</li>
-              <li>Contact Us</li>
+              {data &&
+                data
+                  .map((link) => link)
+                  .sort(
+                    (a: { menuOrder: number }, b: { menuOrder: number }) =>
+                      a.menuOrder - b.menuOrder,
+                  )
+                  .map((link) => (
+                    <li key={link.id}>
+                      <a href={link.uri} className="no-underline text-black">
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
             </ul>
 
             <ul>
@@ -55,6 +85,12 @@ function Page() {
             </li>
           </ul>
         </div>
+      </div>
+
+      <div>
+        <p className="ml-5 lg:ml-0 text-center font-light text-gray-500 block lg:hidden">
+          Copyright 2023 - All Rights Reserved
+        </p>
       </div>
     </footer>
   );

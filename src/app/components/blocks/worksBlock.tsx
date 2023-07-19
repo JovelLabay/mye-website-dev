@@ -10,6 +10,12 @@ function WorksBlock({
     imageWorking: {
       sourceUrl: string;
     };
+    workingItem: {
+      title: string;
+      worksDescription: {
+        workingDescription: string;
+      }[];
+    }[];
   };
 }) {
   return (
@@ -34,6 +40,21 @@ function WorksBlock({
             position: "relative",
           }}
         ></div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:hidden gap-3 mt-5 lg:mt-0 text-white">
+          {myeWorking.workingItem.map((workItem, index) => (
+            <div key={index} className="bg-customMainBlue p-4 rounded-lg">
+              <h5 className="font-semibold leading-7">{workItem.title}</h5>
+              <ul>
+                {workItem.worksDescription.map((workDescription, index2) => (
+                  <li key={index2} className="list-disc">
+                    {workDescription.workingDescription}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

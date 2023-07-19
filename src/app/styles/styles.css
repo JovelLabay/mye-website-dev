@@ -83,7 +83,8 @@
     text-align: center;
 }
 
-.login-bg-white:hover {
+.login-bg-white:hover,
+#get-in-touch-send-btn:hover {
     cursor: pointer;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
 }
@@ -134,7 +135,8 @@
     margin-top: 50px;
 }
 
-.footer div {
+.footer .two,
+.footer .three {
     font-size: 14px;
     display: flex;
     flex-direction: column;
@@ -142,7 +144,8 @@
     margin-bottom: 20px;
 }
 
-.footer div h6 {
+.footer .two h6,
+.footer .three h6 {
     color: var(--violet-color);
     font-weight: 700;
 }
@@ -197,8 +200,8 @@
     height: 100%;
     background: linear-gradient(180deg, rgba(73, 159, 254, 0) 0%, #003065 57.29%, #000000 100%);
     transition: 100ms ease-in-out;
-    display: flex;
     padding: 20px;
+    display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: start
@@ -207,15 +210,13 @@
 #industry-boxes:hover {
     background: rgba(241, 30, 203, 0.5);
     cursor: pointer;
+
+    #hover-items {
+        display: block;
+    }
 }
 
-#about-container {
-    background-color: #fff;
-    min-height: 350px;
-    clip-path: polygon(100% 0, 100% 69%, 50% 100%, 0 71%, 0 0);
-    z-index: -1;
-}
-
+/* ABOUT */
 .image-container {
     margin-top: -200px;
     height: 900px;
@@ -241,18 +242,41 @@
     transform: scale(1.2);
 }
 
-/* BLOGS AND NEWS IMAGE */
-#blogs-news-image {
-    transition: 500ms ease-in-out;
+#about-container {
+    background-color: #fff;
+    min-height: 350px;
+    clip-path: polygon(100% 0, 100% 69%, 50% 100%, 0 71%, 0 0);
+    z-index: -1;
 }
 
-#blogs-news-image:hover {
-    transform: scale(1.1);
+/* BLOGS AND NEWS IMAGE */
+.blogs-news-image-container .blogs-news-image {
+    width: 100%;
+    height: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
     cursor: pointer;
 }
 
+.blogs-news-image-container:hover .blogs-news-image {
+    background-size: 150%;
+}
+
+.blogs-news-image-container-2 .blogs-news-image-2 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.blogs-news-image-container-2:hover .blogs-news-image-2 {
+    background-size: 150%;
+}
+
 /* ====== LAPTOP VIEW ====== */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1200px) {
 
     /* NAV */
     .link-nav {
@@ -337,5 +361,9 @@
 
     .image-container .about-img {
         height: 400px;
+    }
+
+    #about-container {
+        min-height: 400px;
     }
 }

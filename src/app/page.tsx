@@ -1,5 +1,8 @@
 import React from "react";
 
+// META DATA
+import type { Metadata } from "next";
+
 // QUERY
 import client from "@/lib/apollo/client";
 import { GetHomePage } from "@/lib/graphql/query";
@@ -13,6 +16,15 @@ import Works from "./components/blocks/worksBlock";
 import Industry from "./components/blocks/industryBlock";
 import About from "./components/blocks/aboutBlock";
 import BlogsNews from "./components/blocks/blogsNewsBlock";
+import JoinOurTeam from "./components/blocks/joinOurTeamBlock";
+
+// FORM
+import GetInTouchForm from "./components/forms/getInTouchForm";
+
+export const metadata: Metadata = {
+  title: "MYE Cloud | Home",
+  description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
+};
 
 async function getBlocks() {
   const blocks = await client.query({
@@ -36,6 +48,8 @@ export default async function Home() {
     industrySolutions,
     about,
     blogsNews,
+    joinOurTeam,
+    getInTouch,
   } = block?.nodeByUri;
 
   return (
@@ -48,6 +62,10 @@ export default async function Home() {
       <Industry industrySolutions={industrySolutions} />
       <About about={about} />
       <BlogsNews blogsNews={blogsNews} />
+      <JoinOurTeam joinOurTeam={joinOurTeam} />
+
+      {/* FORM */}
+      <GetInTouchForm getInTouch={getInTouch} />
     </div>
   );
 }
