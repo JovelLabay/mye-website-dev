@@ -5,7 +5,10 @@ import type { Metadata } from "next";
 
 // LIBRARIES
 import client from "@/lib/apollo/client";
-import { GetHomePage } from "@/lib/graphql/query";
+import GET_PRODUCT_SERVICE from "@/lib/graphql/queryProductsServices";
+
+// BLOCKS
+import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 
 export const metadata: Metadata = {
   title: "MYE Cloud | Products & Services",
@@ -13,8 +16,11 @@ export const metadata: Metadata = {
 };
 
 async function getBlocks() {
+  const id = process.env.PRODUCT_SERVICE_PAGE_ID;
+
   const blocks = await client.query({
-    query: GetHomePage,
+    query: GET_PRODUCT_SERVICE,
+    variables: { id },
   });
 
   await client.cache.reset();
@@ -25,9 +31,11 @@ async function getBlocks() {
 async function Page({ params }: { params: { slug: string } }) {
   const block = await getBlocks();
 
+  const { joinOurTeam } = await block?.productServicesPage;
+
   return (
     <div>
-      <h1>Page</h1>
+      <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 import { motion } from "framer-motion";
 import classNames from "classnames";
@@ -13,6 +14,7 @@ import MyeLogo from "@/logoMYE-Logo.png";
 
 function Page({
   data,
+  slug,
 }: {
   data:
     | {
@@ -23,7 +25,10 @@ function Page({
         menuOrder: number;
       }[]
     | null;
+  slug: string;
 }) {
+  const router = usePathname();
+
   const [states, setStates] = useState({
     isMenu: false,
     scrollY: 0,
@@ -54,7 +59,7 @@ function Page({
   return (
     <nav
       id="navigation"
-      className={classNames("", shouldShowShadow ? "shadow-lg" : "")}
+      className={classNames("bg-white", shouldShowShadow ? "shadow-lg" : "")}
     >
       <div className="nav">
         <Image id="logo" src={MyeLogo} alt="Mye-Logo" />

@@ -29,7 +29,7 @@ function Page({
             <div>
               <Image id="logo" src={MyeLogo} title="Logo" alt="Logo" />
             </div>
-            <div className="flex flex-col justify-center items-center mt-2 w-[85%]">
+            <div className="flex flex-col justify-center items-center mt-2 w-[85%] gap-2">
               <p className="w-full text-center">
                 A Cloud built by Filipinos, for Filipinos.
               </p>
