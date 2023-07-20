@@ -40,7 +40,7 @@ async function Page({ params }: { params: { slug: string } }) {
     <div>
       <div className="the-container mt-8 sm:mt-10 lg:mt-15">
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
-          <div className="flex gap-2">
+          <div className="flex gap-2 mb-4">
             <Link href="/" className="no-underline text-black">
               MYE Cloud
             </Link>
@@ -50,7 +50,7 @@ async function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
-      <ProductsBlock2 products={products} />
+      {/* <ProductsBlock2 products={products} /> */}
     </div>
   );
 }
