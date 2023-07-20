@@ -119,11 +119,23 @@ const GetHomePage = gql`
           }
         }
         joinOurTeam {
-          headerJoinOurTeam
+          hasMarginTop
+          headerJoinOurTeam {
+            headerColor
+            headerLabel
+            isGradient
+          }
           joinOurTeamDescriptionTwo
           joinOurTeamDescriptionOne
           joinOurTeamBigImage {
             sourceUrl
+          }
+          joinOurTeamMoreLink {
+            buttonLabel
+            buttonLink {
+              title
+              url
+            }
           }
         }
         getInTouch {
