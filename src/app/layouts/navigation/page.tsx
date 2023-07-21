@@ -78,7 +78,9 @@ function Page({
       ) : null}
 
       <div className="nav">
-        <Image id="logo" src={MyeLogo} alt="Mye-Logo" />
+        <a href="/" title="Home">
+          <Image id="logo" src={MyeLogo} alt="Mye-Logo" />
+        </a>
         <ul>
           {data &&
             data
