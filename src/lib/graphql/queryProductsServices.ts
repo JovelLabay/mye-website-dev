@@ -5,8 +5,16 @@ const GET_PRODUCT_SERVICE = gql`
     productServicesPage(id: $id) {
       title
       joinOurTeam {
-        hasMarginTop
+        headerJoinOurTeam {
+          headerLabel
+          headerColor
+          isGradient
+        }
         joinOurTeamDescriptionOne
+        joinOurTeamDescriptionTwo
+        joinOurTeamBigImage {
+          sourceUrl
+        }
         joinOurTeamMoreLink {
           buttonLabel
           buttonLink {
@@ -14,14 +22,7 @@ const GET_PRODUCT_SERVICE = gql`
             url
           }
         }
-        joinOurTeamBigImage {
-          sourceUrl
-        }
-        headerJoinOurTeam {
-          headerColor
-          headerLabel
-          isGradient
-        }
+        hasMarginTop
       }
       products {
         productsAndServices {

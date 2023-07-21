@@ -31,7 +31,7 @@ async function getBlocks() {
   return blocks.data;
 }
 
-async function Page({ params }: { params: { slug: string } }) {
+async function Page() {
   const block = await getBlocks();
 
   const { joinOurTeam, products } = await block?.productServicesPage;
@@ -50,7 +50,7 @@ async function Page({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
-      {/* <ProductsBlock2 products={products} /> */}
+      <ProductsBlock2 products={products} />
     </div>
   );
 }

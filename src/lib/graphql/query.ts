@@ -119,14 +119,13 @@ const GetHomePage = gql`
           }
         }
         joinOurTeam {
-          hasMarginTop
           headerJoinOurTeam {
-            headerColor
             headerLabel
+            headerColor
             isGradient
           }
-          joinOurTeamDescriptionTwo
           joinOurTeamDescriptionOne
+          joinOurTeamDescriptionTwo
           joinOurTeamBigImage {
             sourceUrl
           }
@@ -137,6 +136,7 @@ const GetHomePage = gql`
               url
             }
           }
+          hasMarginTop
         }
         getInTouch {
           headerGetInTouch

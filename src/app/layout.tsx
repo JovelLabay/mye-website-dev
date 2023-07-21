@@ -22,19 +22,15 @@ async function getAllPages() {
 
 export default async function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: {
-    slug: string;
-  };
 }) {
   const data = await getAllPages();
 
   return (
     <html lang="en">
       <body>
-        <Navigation data={data} slug={params.slug} />
+        <Navigation data={data} />
         <main className="main-contents">{children}</main>
         <Footer data={data} />
       </body>

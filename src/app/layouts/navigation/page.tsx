@@ -11,10 +11,10 @@ import classNames from "classnames";
 import { AiOutlineMenu, AiFillCloseCircle } from "react-icons/ai";
 
 import MyeLogo from "@/logoMYE-Logo.png";
+import NavBg from "@/imgdesign-nav.png";
 
 function Page({
   data,
-  slug,
 }: {
   data:
     | {
@@ -25,7 +25,6 @@ function Page({
         menuOrder: number;
       }[]
     | null;
-  slug: string;
 }) {
   const router = usePathname();
 
@@ -59,8 +58,25 @@ function Page({
   return (
     <nav
       id="navigation"
-      className={classNames("bg-white", shouldShowShadow ? "shadow-lg" : "")}
+      className={classNames("", shouldShowShadow ? "shadow-lg" : "")}
+      {...(router === "/" && {
+        style: {
+          background: "white",
+        },
+      })}
     >
+      {router !== "/" ? (
+        <div className="absolute w-full h-full left-0 -z-10 top-0">
+          <Image
+            src={NavBg}
+            alt="NavBg"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="top"
+          />
+        </div>
+      ) : null}
+
       <div className="nav">
         <Image id="logo" src={MyeLogo} alt="Mye-Logo" />
         <ul>
@@ -73,7 +89,14 @@ function Page({
               )
               .map((link) => (
                 <li key={link.id} className="link-nav">
-                  <a href={link.uri}>{link.title}</a>
+                  <a
+                    href={link.uri}
+                    className={classNames(
+                      router === "/" ? "text-[#2D2D2D]" : "text-white",
+                    )}
+                  >
+                    {link.title}
+                  </a>
                 </li>
               ))}
           <li>

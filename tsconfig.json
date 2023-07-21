@@ -27,6 +27,7 @@
       "@/blocks*": ["./src/app/components/blocks/*"],
 
       "@/logo*": ["./public/logo/*"],
+      "@/img*": ["./public/img/*"],
 
       "@/clients*": ["./src/app/lib/apollo/*"],
       "@/contexts*": ["./src/app/lib/context/*"],
