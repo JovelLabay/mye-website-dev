@@ -69,6 +69,14 @@
     color: #fff !important
 }
 
+.login-bg-white-none-home {
+    padding: 10px 20px;
+    border-radius: 9999px;
+    border: none;
+    background-color: #fff;
+    color: var(--violet-color) !important
+}
+
 .login-bg-white2 {
     padding: 10px 20px;
     margin: 0 auto;

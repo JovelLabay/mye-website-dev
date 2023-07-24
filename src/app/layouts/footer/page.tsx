@@ -2,7 +2,13 @@ import React from "react";
 
 import Image from "next/image";
 
-import { AiFillPhone } from "react-icons/ai";
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillLinkedin,
+  AiFillPhone,
+  AiFillYoutube,
+} from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { BiSolidLocationPlus } from "react-icons/bi";
 
@@ -84,6 +90,23 @@ function Page({
               Marajo Tower, 4th Avenue Taguig, Metro Manila, Philippines
             </li>
           </ul>
+
+          <div>
+            <ul className="flex gap-3">
+              <li>
+                <AiFillLinkedin size={25} />
+              </li>
+              <li>
+                <AiFillFacebook size={25} />
+              </li>
+              <li>
+                <AiFillYoutube size={25} />
+              </li>
+              <li>
+                <AiFillInstagram size={25} />
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 

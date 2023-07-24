@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import { useRouter } from "next/navigation";
+
 function ServicesBlock({
   services,
 }: {
@@ -15,6 +17,8 @@ function ServicesBlock({
     }[];
   };
 }) {
+  const router = useRouter();
+
   return (
     <div className="bg-customSemiWhite">
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
@@ -47,6 +51,9 @@ function ServicesBlock({
                 <p className="">{service.description}</p>
               </div>
               <button
+                onClick={() => {
+                  router.push("/products-services");
+                }}
                 className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
               >

@@ -63,6 +63,9 @@ function ProductsBlock2({
                             src={productItem.iconImage?.sourceUrl}
                             width={65}
                             height={65}
+                            style={{
+                              filter: "invert(1)",
+                            }}
                           />
                           <h5 className="my-4 font-semibold leading-7 ">
                             {productItem.label}

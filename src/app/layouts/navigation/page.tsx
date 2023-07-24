@@ -102,7 +102,12 @@ function Page({
                 </li>
               ))}
           <li>
-            <a className="login-bg-white" href="/">
+            <a
+              className={
+                router === "/" ? "login-bg-white" : "login-bg-white-none-home"
+              }
+              href="/"
+            >
               Cloud Portal Login
             </a>
           </li>
@@ -116,7 +121,10 @@ function Page({
                 });
               }}
             >
-              <AiOutlineMenu size={30} />
+              <AiOutlineMenu
+                size={30}
+                color={router === "/" ? "#2D2D2D" : "white"}
+              />
             </button>
           </li>
         </ul>

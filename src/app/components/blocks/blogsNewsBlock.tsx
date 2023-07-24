@@ -59,7 +59,7 @@ function BlogsNewsBlock({
                 ))}
             </div>
 
-            <div className="col-span-3 flex flex-col gap-4">
+            <div className="col-span-3 flex flex-col gap-9 sm:gap-5 lg:gap-3">
               {blogsNews.blogsNewsItem
                 .filter((item) => !item.isFeature)
                 .map((blogItem, index) => (
