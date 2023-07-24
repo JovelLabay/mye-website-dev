@@ -337,7 +337,8 @@
 @media only screen and (max-width: 640px) {
 
     /* NAV */
-    .login-bg-white {
+    .login-bg-white,
+    .login-bg-white-none-home {
         display: none;
     }
 
