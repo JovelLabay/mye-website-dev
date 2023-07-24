@@ -34,7 +34,7 @@ function Awards({
             key={index}
             className="flex justify-start items-center flex-col text-center"
           >
-            <h3 className="animate my-3 text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] font-bold text-customViolet">
+            <h3 className="animate my-3 text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px] font-bold text-customViolet">
               {award.title}
             </h3>
             <p className="animate">{award.description}</p>

@@ -22,7 +22,7 @@ function CarouselBlock({
         {carouselItem.map((item, index) => (
           <Carousel.Item key={index}>
             <div
-              className="h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[90vh]"
+              className="h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[90vh]"
               style={{
                 backgroundImage: `url(${item.image.sourceUrl})`,
                 backgroundSize: "cover",

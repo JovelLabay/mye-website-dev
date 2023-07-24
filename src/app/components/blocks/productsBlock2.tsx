@@ -60,7 +60,7 @@ function ProductsBlock2({
                         <div key={index2}>
                           <Image
                             alt="Logo"
-                            src={productItem.iconImage.sourceUrl}
+                            src={productItem.iconImage?.sourceUrl}
                             width={65}
                             height={65}
                           />

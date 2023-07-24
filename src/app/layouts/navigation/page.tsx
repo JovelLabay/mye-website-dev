@@ -11,7 +11,7 @@ import classNames from "classnames";
 import { AiOutlineMenu, AiFillCloseCircle } from "react-icons/ai";
 
 import MyeLogo from "@/logoMYE-Logo.png";
-import NavBg from "@/imgdesign-nav.png";
+import NavBg from "@/imgdesign-nav2.jpeg";
 
 function Page({
   data,
@@ -146,7 +146,7 @@ function Page({
               </button>
             </div>
 
-            <div className="my-10">
+            <div className="py-10 overflow-auto h-full">
               <ul className="flex justify-start items-start gap-5 flex-col pl-0">
                 {data &&
                   data

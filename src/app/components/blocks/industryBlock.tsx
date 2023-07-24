@@ -41,11 +41,11 @@ function IndustryBlock({
             }}
             key={index}
             className={classNames(
-              "h-[25vh] lg:h-[70vh]",
+              "h-[35vh] lg:h-[70vh]",
               active === null
                 ? "lg:col-span-2"
                 : active === index
-                ? "h-[40vh] lg:col-span-5"
+                ? "h-[60vh] lg:col-span-5"
                 : "lg:col-span-1",
             )}
             style={{

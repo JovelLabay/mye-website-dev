@@ -19,7 +19,7 @@ function WorksBlock({
   };
 }) {
   return (
-    <div className="the-container my-8 sm:my-10 md:my-15 lg:my-20">
+    <div className="the-container my-8 sm:my-10 md:my-15 lg:my-20 hidden lg:block">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
         <div className="text-center mb-3">
           <h1
