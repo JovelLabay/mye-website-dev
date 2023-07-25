@@ -71,21 +71,20 @@ function JoinOurTeamBlock({
             </button>
           </div>
           <div
-            style={{
-              backgroundImage: `url(${joinOurTeam.joinOurTeamBigImage.sourceUrl})`,
-              backgroundPosition: "center",
-              backgroundSize: "fill",
-              backgroundRepeat: "no-repeat",
-              minHeight: "400px",
-            }}
+          // style={{
+          //   backgroundImage: `url(${joinOurTeam.joinOurTeamBigImage.sourceUrl})`,
+          //   backgroundPosition: "center",
+          //   backgroundSize: "fill",
+          //   backgroundRepeat: "no-repeat",
+          // }}
           >
-            {/* <Image
+            <Image
               className="mx-auto w-full h-full object-fill object-center"
               alt="Join Our Team"
               src={joinOurTeam.joinOurTeamBigImage.sourceUrl}
               width={100}
               height={100}
-            /> */}
+            />
           </div>
         </div>
       </div>
