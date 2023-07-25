@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 function NotFound() {
   return (
-    <div>
+    <div className="h-full flex justify-center items-center">
       <h1>Not Found</h1>
     </div>
   );
