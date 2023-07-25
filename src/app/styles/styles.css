@@ -99,12 +99,10 @@
   padding: 10px 20px;
   border-radius: 9999px;
   border: none;
-  background: linear-gradient(
-    90.37deg,
-    #22d2ff -1.83%,
-    #5f84fe 48.99%,
-    #9f39ff 99.8%
-  );
+  background: linear-gradient(90.37deg,
+      #22d2ff -1.83%,
+      #5f84fe 48.99%,
+      #9f39ff 99.8%);
   color: #fff;
 }
 
@@ -209,12 +207,10 @@
 /* INDUSTRY SOLUTIONS */
 #industry-boxes {
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(73, 159, 254, 0) 0%,
-    #003065 57.29%,
-    #000000 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(73, 159, 254, 0) 0%,
+      #003065 57.29%,
+      #000000 100%);
   transition: 100ms ease-in-out;
   padding: 20px;
   display: flex;
@@ -293,15 +289,14 @@
 
 /* SERVICES CATALOG */
 .custom-sticky {
-  @apply sm:sticky;
   top: 15%;
   z-index: 1;
   height: min-content;
-  padding: 10px;
 }
 
 /* ====== LAPTOP VIEW ====== */
 @media only screen and (max-width: 1200px) {
+
   /* NAV */
   .link-nav {
     display: none;
@@ -332,6 +327,7 @@
 
 /* ====== Tablet ====== */
 @media only screen and (max-width: 768px) {
+
   /* FOOTER */
   .footer {
     gap: 15px;
@@ -350,6 +346,7 @@
 
 /* ====== Mobile ====== */
 @media only screen and (max-width: 640px) {
+
   /* NAV */
   .login-bg-white,
   .login-bg-white-none-home {
