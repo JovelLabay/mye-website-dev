@@ -607,8 +607,20 @@
   }
 }
 
+/* SERVICES CATALOG */
+.custom-sticky {
+  top: 15%;
+  z-index: 1;
+  height: min-content;
+}
+
 /* ====== LAPTOP VIEW ====== */
 @media only screen and (max-width: 1200px) {
+  /* NAV */
+  .link-nav {
+    display: none;
+  }
+
   /* NAV */
   .link-nav {
     display: none;
@@ -645,6 +657,12 @@
     margin-top: 20px;
   }
 
+  /* FOOTER */
+  .footer {
+    gap: 15px;
+    margin-top: 20px;
+  }
+
   /* ABOUT */
   .image-container {
     height: 700px;
@@ -657,6 +675,12 @@
 
 /* ====== Mobile ====== */
 @media only screen and (max-width: 640px) {
+  /* NAV */
+  .login-bg-white,
+  .login-bg-white-none-home {
+    display: none;
+  }
+
   /* NAV */
   .login-bg-white,
   .login-bg-white-none-home {

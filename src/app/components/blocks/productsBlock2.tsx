@@ -26,9 +26,9 @@ function ProductsBlock2({
     <div className="text-white mt-8 sm:mt-10 md:mt-15 lg:mt-20 bg-[#F1F6FA]">
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 md:gap-3">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 md:gap-3 relative">
             {/* BUTTONS */}
-            <div className="flex flex-col items-start gap-4 text-[#2D2D2D] mb-4">
+            <div className="custom-sticky flex flex-col items-start gap-4 text-[#2D2D2D] md:sticky mb-4 bg-[#F1F6FA]">
               {products.productsAndServices.map((item, index) => (
                 <button
                   key={index}

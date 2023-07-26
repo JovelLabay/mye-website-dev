@@ -70,7 +70,14 @@ function JoinOurTeamBlock({
               {joinOurTeam.joinOurTeamMoreLink.buttonLabel}
             </button>
           </div>
-          <div>
+          <div
+          // style={{
+          //   backgroundImage: `url(${joinOurTeam.joinOurTeamBigImage.sourceUrl})`,
+          //   backgroundPosition: "center",
+          //   backgroundSize: "fill",
+          //   backgroundRepeat: "no-repeat",
+          // }}
+          >
             <Image
               className="mx-auto w-full h-full object-fill object-center"
               alt="Join Our Team"
