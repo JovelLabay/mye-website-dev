@@ -3,11 +3,14 @@
 import React from "react";
 
 import { useRouter } from "next/navigation";
+import classNames from "classnames";
 
 function ServicesBlock({
   services,
 }: {
   services: {
+    servicesBackgroundColor: string;
+    hasMarginTop: boolean;
     header: string;
     description: string;
     item: {
@@ -20,19 +23,32 @@ function ServicesBlock({
   const router = useRouter();
 
   return (
-    <div className="bg-customSemiWhite">
-      <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
+    <div
+      style={{
+        backgroundColor: `#${services.servicesBackgroundColor}`,
+      }}
+    >
+      <div
+        className={classNames(
+          "the-container pb-8 sm:pb-10 md:pb-15 lg:pb-20",
+          services.hasMarginTop && "pt-8 sm:pt-10 md:pt-15 lg:pt-20",
+        )}
+      >
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15 text-center">
-          <h1
-            className="animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold
+          {services.header && (
+            <h1
+              className="animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold
           bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink inline-block text-transparent bg-clip-text
           "
-          >
-            {services.header}
-          </h1>
-          <p className="animate mt-3 w-[100%] sm:w-[90%] md:w-[80%] lg:w-[50%] mx-auto text-customViolet">
-            {services.description}
-          </p>
+            >
+              {services.header}
+            </h1>
+          )}
+          {services.description && (
+            <p className="animate mt-3 w-[100%] sm:w-[90%] md:w-[80%] lg:w-[50%] mx-auto text-customViolet">
+              {services.description}
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5 mx-3 sm:mx-5 md:mx-10 lg:mx-15 ">

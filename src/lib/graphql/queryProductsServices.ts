@@ -36,6 +36,20 @@ const GET_PRODUCT_SERVICE = gql`
           }
         }
       }
+      services {
+        hasMarginTop
+        header
+        description
+        servicesBackgroundColor
+        item {
+          title
+          description
+          learnMore {
+            title
+            url
+          }
+        }
+      }
     }
   }
 `;
