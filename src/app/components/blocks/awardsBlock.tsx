@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import React from "react";
+import AWSBadge from "./awsBlock";
 
 function Awards({
   awards,
@@ -17,8 +18,16 @@ function Awards({
     awardItem: {
       sourceUrl: string;
     };
+    awardItems: {
+      awardField: string;
+      awardPosition: string;
+      awardTitle: string;
+      borderColor: string;
+      hasColor: boolean;
+    }[];
   };
 }) {
+  console.log(awards);
   return (
     <div className="the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
@@ -55,7 +64,7 @@ function Awards({
         />
       </div>
 
-      <div className="hexagon"></div>
+      <AWSBadge badge={awards.awardItems[0]} />
     </div>
   );
 }
