@@ -346,9 +346,9 @@
   width: auto;
   color: white;
   text-align: start;
-  padding: 40px 30px;
+  padding: 30px 30px;
   height: auto;
-  z-index: 9;
+  z-index: 20;
   display: none;
   border-radius: 20px;
   box-shadow: 0px 8px 24px rgba(9, 115, 186, 0.2);
@@ -405,9 +405,9 @@
   width: 300px;
   color: white;
   text-align: start;
-  padding: 40px 30px;
+  padding: 30px 30px;
   height: auto;
-  z-index: 9;
+  z-index: 20;
   display: none;
   border-radius: 20px;
   box-shadow: 0px 8px 24px rgba(9, 115, 186, 0.2);
@@ -416,6 +416,182 @@
 .dot-2-container:hover .dot-2-round,
 .dot-2-container:hover .popup-content2,
 .dot-2-container:hover .dot-2-line {
+  display: block;
+}
+/* DOT 3 */
+.dot-3 {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 9999px;
+  box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
+  animation: blink 1s ease-in-out infinite;
+  position: absolute;
+  margin-top: 12%;
+  margin-left: 31%;
+  z-index: 9;
+}
+
+.dot-3-round {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 9999px;
+  position: absolute;
+  z-index: 20;
+  margin-top: 12%;
+  margin-left: 31%;
+  display: none;
+}
+
+.dot-3-line {
+  background-color: var(--main-color);
+  position: absolute;
+  margin-top: 12.5%;
+  margin-left: 32%;
+  width: 140px;
+  height: 5px;
+  z-index: 9;
+  display: none;
+}
+
+.popup-content3 {
+  background-color: var(--main-color);
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 38%;
+  width: 400px;
+  color: white;
+  text-align: start;
+  padding: 30px 30px;
+  height: auto;
+  z-index: 20;
+  display: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 24px rgba(9, 115, 186, 0.2);
+}
+
+.dot-3-container:hover .dot-3-round,
+.dot-3-container:hover .popup-content3,
+.dot-3-container:hover .dot-3-line {
+  display: block;
+}
+
+/* DOT 4 */
+.dot-4 {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 9999px;
+  box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
+  animation: blink 1s ease-in-out infinite;
+  position: absolute;
+  margin-top: 16%;
+  margin-left: 31%;
+  z-index: 9;
+}
+
+.dot-4-round {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 9999px;
+  position: absolute;
+  z-index: 20;
+  margin-top: 16%;
+  margin-left: 31%;
+  display: none;
+}
+
+.dot-4-line {
+  background-color: var(--main-color);
+  position: absolute;
+  margin-top: 16.5%;
+  margin-left: 32%;
+  width: 120px;
+  height: 5px;
+  z-index: 9;
+  display: none;
+}
+
+.popup-content4 {
+  background-color: var(--main-color);
+  position: absolute;
+  margin-top: 15%;
+  margin-left: 36%;
+  width: 400px;
+  color: white;
+  text-align: start;
+  padding: 30px 30px;
+  height: auto;
+  z-index: 20;
+  display: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 24px rgba(9, 115, 186, 0.2);
+}
+
+.dot-4-container:hover .dot-4-round,
+.dot-4-container:hover .popup-content4,
+.dot-4-container:hover .dot-4-line {
+  display: block;
+}
+
+/* DOT 5 */
+.dot-5 {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 9999px;
+  box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
+  animation: blink 1s ease-in-out infinite;
+  position: absolute;
+  margin-top: 12%;
+  margin-left: 38.7%;
+  z-index: 9;
+}
+
+.dot-5-round {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--main-color);
+  border-radius: 9999px;
+  position: absolute;
+  z-index: 20;
+  margin-top: 12%;
+  margin-left: 38.7%;
+  display: none;
+}
+
+.dot-5-line {
+  background-color: var(--main-color);
+  position: absolute;
+  margin-top: 12.5%;
+  margin-left: 38.7%;
+  width: 120px;
+  height: 5px;
+  z-index: 9;
+  display: none;
+}
+
+.popup-content5 {
+  background-color: var(--main-color);
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 44%;
+  width: 400px;
+  color: white;
+  text-align: start;
+  padding: 30px 30px;
+  height: auto;
+  z-index: 20;
+  display: none;
+  border-radius: 20px;
+  box-shadow: 0px 8px 24px rgba(9, 115, 186, 0.2);
+}
+
+.dot-5-container:hover .dot-5-round,
+.dot-5-container:hover .popup-content5,
+.dot-5-container:hover .dot-5-line {
   display: block;
 }
 

@@ -60,6 +60,52 @@ function WorksBlock({
               </ul>
             </div>
           </div>
+          {/* DOT 3 */}
+          <div className="dot-3-container">
+            <div className="dot-3"></div>
+            <div className="dot-3-round"></div>
+            <div className="dot-3-line"></div>
+
+            <div className="popup-content3">
+              <h2>Network</h2>
+              <ul>
+                <li>Secured Multi-tenant networking capabilities</li>
+                <li>Customer Datacenter Connectivity (VPN)</li>
+                <li>Advanced Load Balancing</li>
+              </ul>
+            </div>
+          </div>
+          {/* DOT 4 */}
+          <div className="dot-4-container">
+            <div className="dot-4"></div>
+            <div className="dot-4-round"></div>
+            <div className="dot-4-line"></div>
+
+            <div className="popup-content4">
+              <h2>Hosted In-Country</h2>
+              <ul>
+                <li>Datacenter in the Philippines</li>
+                <li>Customer Datacenter Connectivity (VPN)</li>
+                <li>Certified Tier III Datacenter</li>
+              </ul>
+            </div>
+          </div>
+          {/* DOT 5 */}
+          <div className="dot-5-container">
+            <div className="dot-5"></div>
+            <div className="dot-5-round"></div>
+            <div className="dot-5-line"></div>
+
+            <div className="popup-content5">
+              <h2>Platform Capabilities</h2>
+              <ul>
+                <li>Platform Capabilities</li>
+                <li>Database-as-a-Service</li>
+                <li>Data Warehouse</li>
+                <li>Secure Storage</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div
           className="h-[30vh] sm:h-[35vh] md:h-[40vh] lg:h-[50vh]"
