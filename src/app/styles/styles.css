@@ -99,12 +99,10 @@
   padding: 10px 20px;
   border-radius: 9999px;
   border: none;
-  background: linear-gradient(
-    90.37deg,
-    #22d2ff -1.83%,
-    #5f84fe 48.99%,
-    #9f39ff 99.8%
-  );
+  background: linear-gradient(90.37deg,
+      #22d2ff -1.83%,
+      #5f84fe 48.99%,
+      #9f39ff 99.8%);
   color: #fff;
 }
 
@@ -209,12 +207,10 @@
 /* INDUSTRY SOLUTIONS */
 #industry-boxes {
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(73, 159, 254, 0) 0%,
-    #003065 57.29%,
-    #000000 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(73, 159, 254, 0) 0%,
+      #003065 57.29%,
+      #000000 100%);
   transition: 100ms ease-in-out;
   padding: 20px;
   display: flex;
@@ -358,6 +354,7 @@
 .dot-1-container:hover .popup-content1,
 .dot-1-container:hover .dot-1-line {
   display: block;
+  cursor: pointer;
 }
 
 /* DOT 2 */
@@ -417,7 +414,9 @@
 .dot-2-container:hover .popup-content2,
 .dot-2-container:hover .dot-2-line {
   display: block;
+  cursor: pointer;
 }
+
 /* DOT 3 */
 .dot-3 {
   height: 1.5rem;
@@ -475,6 +474,7 @@
 .dot-3-container:hover .popup-content3,
 .dot-3-container:hover .dot-3-line {
   display: block;
+  cursor: pointer;
 }
 
 /* DOT 4 */
@@ -534,6 +534,7 @@
 .dot-4-container:hover .popup-content4,
 .dot-4-container:hover .dot-4-line {
   display: block;
+  cursor: pointer;
 }
 
 /* DOT 5 */
@@ -593,15 +594,18 @@
 .dot-5-container:hover .popup-content5,
 .dot-5-container:hover .dot-5-line {
   display: block;
+  cursor: pointer;
 }
 
 @keyframes blink {
   0% {
     opacity: 0.4;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.4;
   }
@@ -616,6 +620,7 @@
 
 /* ====== LAPTOP VIEW ====== */
 @media only screen and (max-width: 1200px) {
+
   /* NAV */
   .link-nav {
     display: none;
@@ -651,6 +656,7 @@
 
 /* ====== Tablet ====== */
 @media only screen and (max-width: 768px) {
+
   /* FOOTER */
   .footer {
     gap: 15px;
@@ -675,6 +681,7 @@
 
 /* ====== Mobile ====== */
 @media only screen and (max-width: 640px) {
+
   /* NAV */
   .login-bg-white,
   .login-bg-white-none-home {
