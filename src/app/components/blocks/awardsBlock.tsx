@@ -54,6 +54,8 @@ function Awards({
           alt="award"
         />
       </div>
+
+      <div className="hexagon"></div>
     </div>
   );
 }
