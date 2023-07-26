@@ -310,8 +310,8 @@
   box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
   animation: blink 1s ease-in-out infinite;
   position: absolute;
-  margin-top: 4.5%;
-  margin-left: 31%;
+  margin-top: 6.5%;
+  margin-left: 49.5%;
   z-index: 9;
 }
 
@@ -322,17 +322,17 @@
   border-radius: 9999px;
   position: absolute;
   z-index: 20;
-  margin-top: 4.5%;
-  margin-left: 31%;
+  margin-top: 6.5%;
+  margin-left: 49.5%;
   display: none;
 }
 
 .dot-1-line {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 5%;
-  margin-left: 32%;
-  width: 120px;
+  margin-top: 7.2%;
+  margin-left: 50%;
+  width: 140px;
   height: 5px;
   z-index: 9;
   display: none;
@@ -341,8 +341,8 @@
 .popup-content1 {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 3%;
-  margin-left: 37%;
+  margin-top: 5%;
+  margin-left: 62%;
   width: auto;
   color: white;
   text-align: start;
@@ -369,8 +369,8 @@
   box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
   animation: blink 1s ease-in-out infinite;
   position: absolute;
-  margin-top: 9%;
-  margin-left: 24%;
+  margin-top: 14%;
+  margin-left: 38%;
   z-index: 9;
 }
 
@@ -381,16 +381,16 @@
   border-radius: 9999px;
   position: absolute;
   z-index: 20;
-  margin-top: 9%;
-  margin-left: 24%;
+  margin-top: 14%;
+  margin-left: 38%;
   display: none;
 }
 
 .dot-2-line {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 9.5%;
-  margin-left: 18%;
+  margin-top: 14.6%;
+  margin-left: 28%;
   width: 120px;
   height: 5px;
   z-index: 9;
@@ -400,7 +400,7 @@
 .popup-content2 {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 6%;
+  margin-top: 12%;
   margin-left: 5%;
   width: 300px;
   color: white;
@@ -427,8 +427,8 @@
   box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
   animation: blink 1s ease-in-out infinite;
   position: absolute;
-  margin-top: 12%;
-  margin-left: 31%;
+  margin-top: 20%;
+  margin-left: 49.7%;
   z-index: 9;
 }
 
@@ -439,16 +439,16 @@
   border-radius: 9999px;
   position: absolute;
   z-index: 20;
-  margin-top: 12%;
-  margin-left: 31%;
+  margin-top: 20%;
+  margin-left: 49.7%;
   display: none;
 }
 
 .dot-3-line {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 12.5%;
-  margin-left: 32%;
+  margin-top: 20.6%;
+  margin-left: 50%;
   width: 140px;
   height: 5px;
   z-index: 9;
@@ -458,8 +458,8 @@
 .popup-content3 {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 10%;
-  margin-left: 38%;
+  margin-top: 18%;
+  margin-left: 59%;
   width: 400px;
   color: white;
   text-align: start;
@@ -486,8 +486,8 @@
   box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
   animation: blink 1s ease-in-out infinite;
   position: absolute;
-  margin-top: 16%;
-  margin-left: 31%;
+  margin-top: 28%;
+  margin-left: 49.4%;
   z-index: 9;
 }
 
@@ -498,16 +498,16 @@
   border-radius: 9999px;
   position: absolute;
   z-index: 20;
-  margin-top: 16%;
-  margin-left: 31%;
+  margin-top: 28%;
+  margin-left: 49.4%;
   display: none;
 }
 
 .dot-4-line {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 16.5%;
-  margin-left: 32%;
+  margin-top: 28.6%;
+  margin-left: 49.7%;
   width: 120px;
   height: 5px;
   z-index: 9;
@@ -517,8 +517,8 @@
 .popup-content4 {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 15%;
-  margin-left: 36%;
+  margin-top: 26.5%;
+  margin-left: 56%;
   width: 400px;
   color: white;
   text-align: start;
@@ -545,8 +545,8 @@
   box-shadow: 0px 0px 6px 6px rgba(77, 223, 171, 0.6);
   animation: blink 1s ease-in-out infinite;
   position: absolute;
-  margin-top: 12%;
-  margin-left: 38.7%;
+  margin-top: 19%;
+  margin-left: 63%;
   z-index: 9;
 }
 
@@ -557,16 +557,16 @@
   border-radius: 9999px;
   position: absolute;
   z-index: 20;
-  margin-top: 12%;
-  margin-left: 38.7%;
+  margin-top: 19%;
+  margin-left: 63%;
   display: none;
 }
 
 .dot-5-line {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 12.5%;
-  margin-left: 38.7%;
+  margin-top: 19.6%;
+  margin-left: 64%;
   width: 120px;
   height: 5px;
   z-index: 9;
@@ -576,8 +576,8 @@
 .popup-content5 {
   background-color: var(--main-color);
   position: absolute;
-  margin-top: 10%;
-  margin-left: 44%;
+  margin-top: 17%;
+  margin-left: 70%;
   width: 400px;
   color: white;
   text-align: start;
