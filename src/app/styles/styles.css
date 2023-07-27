@@ -523,7 +523,7 @@
   position: absolute;
   margin-top: 26.5%;
   margin-left: 56%;
-  width: 400px;
+  width: 450px;
   color: white;
   text-align: start;
   padding: 30px 30px;
@@ -583,7 +583,7 @@
   position: absolute;
   margin-top: 17%;
   margin-left: 70%;
-  width: 400px;
+  width: 480px;
   color: white;
   text-align: start;
   padding: 30px 30px;
@@ -613,6 +613,14 @@
   100% {
     opacity: 0.4;
   }
+}
+
+#title {
+  font-size: 40px !important;
+}
+
+.hover-content {
+  margin-left: 40px !important;
 }
 
 /* SERVICES CATALOG */
