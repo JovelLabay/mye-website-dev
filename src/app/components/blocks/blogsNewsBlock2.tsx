@@ -46,6 +46,9 @@ function BlogsNewsBlock2({
                   style={{
                     minHeight: "300px",
                     backgroundImage: `url(${blogItem.itemImage.sourceUrl})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "fill",
+                    backgroundPosition: "center",
                     borderRadius: "15px",
                   }}
                 />
