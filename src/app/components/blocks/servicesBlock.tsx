@@ -17,9 +17,6 @@ function ServicesBlock({
       description: string;
       learnMore: string;
       title: string;
-      detailedDescription: {
-        description: string[];
-      };
     }[];
   };
 }) {
