@@ -85,11 +85,6 @@ function ServicesBlock({
         </div>
 
         {/* Detailed Descriptions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5 mx-3 sm:mx-5 md:mx-10 lg:mx-15 ">
-          {services.item.map((service, index) => (
-            <div key={index}></div>
-          ))}
-        </div>
       </div>
     </div>
   );
