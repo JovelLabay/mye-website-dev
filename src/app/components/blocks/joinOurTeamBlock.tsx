@@ -82,8 +82,8 @@ function JoinOurTeamBlock({
               className="mx-auto w-full h-full object-fill object-center"
               alt="Join Our Team"
               src={joinOurTeam.joinOurTeamBigImage.sourceUrl}
-              width={100}
-              height={100}
+              width={1000}
+              height={1000}
             />
           </div>
         </div>
