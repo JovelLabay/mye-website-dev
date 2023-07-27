@@ -14,6 +14,8 @@ const GET_BLOGS_AND_NEWS = gql`
       blogsNews {
         blogsNewsItem {
           isFeature
+          datePublished
+          blogTags
           itemDescription
           itemHeader
           subItemHeader

@@ -118,6 +118,8 @@ const GetHomePage = gql`
               sourceUrl
             }
             isFeature
+            datePublished
+            blogTags
           }
         }
         joinOurTeam {

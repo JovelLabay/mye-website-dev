@@ -27,7 +27,6 @@ function HeaderBlogsNewsBlock({
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        minHeight: "500px",
       }}
     >
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
