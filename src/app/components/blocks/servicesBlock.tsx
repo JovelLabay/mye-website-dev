@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 
 import { useRouter } from "next/navigation";
 import classNames from "classnames";
@@ -17,10 +17,15 @@ function ServicesBlock({
       description: string;
       learnMore: string;
       title: string;
+      detailedDescription: {
+        description: string[];
+      };
     }[];
   };
 }) {
   const router = useRouter();
+
+  console.log(services.item);
 
   return (
     <div
@@ -76,6 +81,13 @@ function ServicesBlock({
                 Learn more
               </button>
             </div>
+          ))}
+        </div>
+
+        {/* Detailed Descriptions */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5 mx-3 sm:mx-5 md:mx-10 lg:mx-15 ">
+          {services.item.map((service, index) => (
+            <div key={index}></div>
           ))}
         </div>
       </div>
