@@ -71,6 +71,8 @@ const GetHomePage = gql`
           }
         }
         services {
+          servicesBackgroundColor
+          hasMarginTop
           description
           fieldGroupName
           header

@@ -12,6 +12,7 @@ import GET_PRODUCT_SERVICE from "@/lib/graphql/queryProductsServices";
 // BLOCKS
 import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 import ProductsBlock2 from "../components/blocks/productsBlock2";
+import ServicesBlock from "../components/blocks/servicesBlock";
 
 export const metadata: Metadata = {
   title: "MYE Cloud | Products & Services",
@@ -34,10 +35,10 @@ async function getBlocks() {
 async function Page() {
   const block = await getBlocks();
 
-  const { joinOurTeam, products } = await block?.productServicesPage;
+  const { joinOurTeam, products, services } = await block?.productServicesPage;
 
   return (
-    <div>
+    <>
       <div className="the-container mt-8 sm:mt-10 lg:mt-15">
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
           <div className="flex gap-2 mb-4">
@@ -49,9 +50,12 @@ async function Page() {
           </div>
         </div>
       </div>
+
+      {/* BLOCKS */}
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
       <ProductsBlock2 products={products} />
-    </div>
+      <ServicesBlock services={services} />
+    </>
   );
 }
 
