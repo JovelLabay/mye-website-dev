@@ -50,6 +50,12 @@ const GET_PRODUCT_SERVICE = gql`
           }
         }
       }
+      getInTouch {
+        headerGetInTouch
+        getInTouchBackgroundImage {
+          sourceUrl
+        }
+      }
     }
   }
 `;
