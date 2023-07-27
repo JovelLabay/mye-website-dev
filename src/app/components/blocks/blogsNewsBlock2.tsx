@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
 
 function BlogsNewsBlock2({
   blogsNews,
@@ -19,10 +20,10 @@ function BlogsNewsBlock2({
     }[];
   };
 }) {
-  console.log(blogsNews);
+  const route = useRouter();
 
   return (
-    <div className="the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
+    <div className="the-container pt-8 sm:pt-10 md:pt-15 lg:pt-20">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
         {/* IS FEATURE */}
         <div>
@@ -34,8 +35,11 @@ function BlogsNewsBlock2({
             .filter((item) => item.isFeature)
             .map((blogItem, index) => (
               <div
-                className="grid grid-cols-1 md:grid-cols-3 md:gap-5"
+                className="grid grid-cols-1 md:grid-cols-3 md:gap-5 hover:cursor-pointer"
                 key={index}
+                onClick={() =>
+                  route.push(`/blogs-news/${blogItem.itemHeader} + id=${index}`)
+                }
               >
                 <div
                   className="col-span-1 mb-3 md:mb-0"
@@ -58,7 +62,7 @@ function BlogsNewsBlock2({
                     <p>{blogItem.itemDescription}</p>
                   )}
                   <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
-                    Read more blogs
+                    Read more
                   </button>
                 </div>
               </div>
@@ -66,7 +70,7 @@ function BlogsNewsBlock2({
         </div>
 
         {/* REGUALR LIST */}
-        <div className="mt-8 sm:mt-10 md:mt-15 lg:mt-20">
+        <div className="pb-8 sm:pb-10 md:pb-15 lg:pb-20 mt-5">
           <h3 className="animate text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] font-bold mb-4">
             Latest Blogs
           </h3>
@@ -75,7 +79,15 @@ function BlogsNewsBlock2({
             {blogsNews.blogsNewsItem
               .filter((item) => !item.isFeature)
               .map((blogItem, index) => (
-                <div className="flex flex-col" key={index}>
+                <div
+                  className="flex flex-col hover:cursor-pointer"
+                  key={index}
+                  onClick={() =>
+                    route.push(
+                      `/blogs-news/${blogItem.itemHeader} + id=${index}`,
+                    )
+                  }
+                >
                   <div
                     className="col-span-1 mb-3 md:mb-0"
                     style={{
@@ -100,7 +112,7 @@ function BlogsNewsBlock2({
                       <p>{blogItem.itemDescription}</p>
                     )}
                     <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
-                      Read more blogs
+                      Read more
                     </button>
                   </div>
                 </div>

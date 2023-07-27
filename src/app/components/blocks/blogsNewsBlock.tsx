@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/navigation";
 
 function BlogsNewsBlock({
   blogsNews,
@@ -19,6 +19,8 @@ function BlogsNewsBlock({
     }[];
   };
 }) {
+  const route = useRouter();
+
   return (
     <div className="bg-customSemiWhite">
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
@@ -90,7 +92,12 @@ function BlogsNewsBlock({
           </div>
 
           <div className="flex justify-center mt-4">
-            <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
+            <button
+              className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
+              onClick={() => {
+                route.push("/blogs-news");
+              }}
+            >
               Read more blogs
             </button>
           </div>

@@ -13,16 +13,22 @@ export async function generateStaticParams() {
   await client.cache.reset();
 
   return blocks.data?.blogAndNewsPage.blogsNews.blogsNewsItem.map(
-    (blogItem: any, index: number) => ({
-      blogNewsId: "lala" + index,
+    (
+      blogItem: {
+        itemHeader: string;
+      },
+      index: number,
+    ) => ({
+      blogNewsId: `${blogItem.itemHeader} + id=${index}`,
     }),
   );
 }
 
 async function Page({ params }: { params: { blogNewsId: string } }) {
+  console.log(params);
   return (
     <div>
-      <h1>{params.blogNewsId}</h1>
+      <p>{params.blogNewsId}</p>
     </div>
   );
 }
