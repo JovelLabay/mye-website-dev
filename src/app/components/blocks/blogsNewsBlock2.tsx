@@ -45,12 +45,18 @@ function BlogsNewsBlock2({
                     borderRadius: "15px",
                   }}
                 />
-                <div className="col-span-2">
-                  <p className="font-bold">{blogItem.itemHeader}</p>
-                  <h5 className="font-semibold leading-7 text-customViolet">
-                    {blogItem.subItemHeader}
-                  </h5>
-                  <p>{blogItem.itemDescription}</p>
+                <div className="col-span-2 flex flex-col gap-3 items-start">
+                  {blogItem.itemHeader && (
+                    <p className="font-bold">{blogItem.itemHeader}</p>
+                  )}
+                  {blogItem.subItemHeader && (
+                    <h5 className="font-semibold leading-7 text-customViolet">
+                      {blogItem.subItemHeader}
+                    </h5>
+                  )}
+                  {blogItem.itemDescription && (
+                    <p>{blogItem.itemDescription}</p>
+                  )}
                   <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
                     Read more blogs
                   </button>
@@ -81,12 +87,18 @@ function BlogsNewsBlock2({
                       borderRadius: "15px",
                     }}
                   />
-                  <div className="col-span-2">
-                    <p className="font-bold">{blogItem.itemHeader}</p>
-                    <h5 className="font-semibold leading-7 text-customViolet">
-                      {blogItem.subItemHeader}
-                    </h5>
-                    <p>{blogItem.itemDescription}</p>
+                  <div className="col-span-2 flex flex-col gap-3 items-start">
+                    {blogItem.itemHeader && (
+                      <p className="font-bold">{blogItem.itemHeader}</p>
+                    )}
+                    {blogItem.subItemHeader && (
+                      <h5 className="font-semibold leading-7 text-customViolet">
+                        {blogItem.subItemHeader}
+                      </h5>
+                    )}
+                    {blogItem.itemDescription && (
+                      <p>{blogItem.itemDescription}</p>
+                    )}
                     <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
                       Read more blogs
                     </button>
