@@ -29,7 +29,6 @@ function Awards({
     }[];
   };
 }) {
-  console.log(awards.awardItems);
   return (
     <div className="the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">

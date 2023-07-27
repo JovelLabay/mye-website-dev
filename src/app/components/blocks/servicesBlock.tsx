@@ -11,6 +11,7 @@ function ServicesBlock({
   services: {
     servicesBackgroundColor: string;
     hasMarginTop: boolean;
+    hasMarginBottom: boolean;
     header: string;
     description: string;
     item: {
@@ -22,8 +23,6 @@ function ServicesBlock({
 }) {
   const router = useRouter();
 
-  console.log(services.item);
-
   return (
     <div
       style={{
@@ -32,8 +31,9 @@ function ServicesBlock({
     >
       <div
         className={classNames(
-          "the-container pb-8 sm:pb-10 md:pb-15 lg:pb-20",
+          "the-container",
           services.hasMarginTop && "pt-8 sm:pt-10 md:pt-15 lg:pt-20",
+          services.hasMarginBottom && "pb-8 sm:pb-10 md:pb-15 lg:pb-20",
         )}
       >
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15 text-center">

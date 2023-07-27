@@ -74,6 +74,7 @@ const GetHomePage = gql`
         services {
           servicesBackgroundColor
           hasMarginTop
+          hasMarginBottom
           description
           fieldGroupName
           header
@@ -149,7 +150,7 @@ const GetHomePage = gql`
               url
             }
           }
-          hasMarginTop
+          joinOurTeamHasMarginTop
         }
         getInTouch {
           headerGetInTouch

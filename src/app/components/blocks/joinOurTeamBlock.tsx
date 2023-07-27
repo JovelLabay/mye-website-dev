@@ -25,14 +25,15 @@ function JoinOurTeamBlock({
         url: string;
       };
     };
-    hasMarginTop: boolean;
+    joinOurTeamHasMarginTop: boolean;
   };
 }) {
   return (
     <div
       className={classNames(
         "the-container",
-        joinOurTeam.hasMarginTop && "mt-8 sm:mt-10 md:mt-15 lg:mt-20",
+        joinOurTeam.joinOurTeamHasMarginTop &&
+          "mt-8 sm:mt-10 md:mt-15 lg:mt-20",
       )}
     >
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">

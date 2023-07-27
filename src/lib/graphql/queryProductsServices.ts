@@ -22,7 +22,7 @@ const GET_PRODUCT_SERVICE = gql`
             url
           }
         }
-        hasMarginTop
+        joinOurTeamHasMarginTop
       }
       products {
         productsAndServices {
@@ -38,6 +38,7 @@ const GET_PRODUCT_SERVICE = gql`
       }
       services {
         hasMarginTop
+        hasMarginBottom
         header
         description
         servicesBackgroundColor
