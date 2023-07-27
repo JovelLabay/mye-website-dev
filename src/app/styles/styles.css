@@ -624,13 +624,14 @@
 
 /* AWARDS BADGES*/
 .hexagon {
+  --border-color: blue;
   position: relative;
   width: 150px; /* Adjust the width to make it smaller */
-  height: 80px; /* Adjust the height to maintain the proportions */
+  height: 90px; /* Adjust the height to maintain the proportions */
   background-color: white;
   margin: 40px 0; /* Adjust the margins to center the hexagon */
-  border-left: solid 8px blue; /* Adjust the border thickness accordingly */
-  border-right: solid 8px blue; /* Adjust the border thickness accordingly */
+  border-left: solid 8px var(--border-color); /* Adjust the border thickness accordingly */
+  border-right: solid 8px var(--border-color); /* Adjust the border thickness accordingly */
 }
 
 .hexagon:before,
@@ -649,14 +650,14 @@
 
 .hexagon:before {
   top: -52.91245px; /* Adjust the position accordingly */
-  border-top: solid 11.3137px blue; /* Adjust the border thickness accordingly */
-  border-right: solid 11.3137px blue; /* Adjust the border thickness accordingly */
+  border-top: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
+  border-right: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
 }
 
 .hexagon:after {
   bottom: -52.91245px; /* Adjust the position accordingly */
-  border-bottom: solid 11.3137px blue; /* Adjust the border thickness accordingly */
-  border-left: solid 11.3137px blue; /* Adjust the border thickness accordingly */
+  border-bottom: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
+  border-left: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
 }
 
 /* ====== LAPTOP VIEW ====== */

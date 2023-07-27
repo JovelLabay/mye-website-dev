@@ -36,6 +36,7 @@ const GetHomePage = gql`
             awardTitle
             borderColor
             fieldGroupName
+            isCertified
             hasColor
           }
         }
