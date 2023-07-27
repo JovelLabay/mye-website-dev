@@ -57,16 +57,9 @@ function Awards({
         <h3 className="animate text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] font-bold text-customViolet">
           {awards.subHeader}
         </h3>
-        {/* <Image
-          width={900}
-          height={900}
-          className="mx-auto mt-10"
-          src={awards.awardItem.sourceUrl}
-          alt="award"
-        /> */}
       </div>
 
-      <div className="flex flex-wrap justify-center items-center">
+      <div className="flex flex-wrap justify-center items-center mx-3 sm:mx-5 md:mx-10 lg:mx-15">
         {awards.awardItems.map((badge, idx) => (
           <div
             key={idx}
