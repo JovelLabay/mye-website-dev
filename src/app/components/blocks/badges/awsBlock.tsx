@@ -16,7 +16,6 @@ function AWSBadge({
     hasColor: boolean;
   };
 }) {
-  console.log(badge.isCertified);
   return (
     <div className="relative mx-3">
       <div
