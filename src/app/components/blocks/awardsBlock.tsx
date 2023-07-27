@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
-import AWSBadge from "./badges/awsBlock";
-import AlibabaBadge from "./badges/alibabaBlock";
+import AWSBadge from "../badges/awsBlock";
+import AlibabaBadge from "../badges/alibabaBlock";
 
 function Awards({
   awards,
@@ -65,7 +65,6 @@ function Awards({
             key={idx}
             className="w-1/2 lg:w-1/5 p-1 mt-10 flex justify-center items-center"
           >
-            {" "}
             {badge.awardTitle === "aws" && <AWSBadge badge={badge} />}
             {badge.awardTitle === "Alibaba Cloud" && (
               <AlibabaBadge badge={badge} />
