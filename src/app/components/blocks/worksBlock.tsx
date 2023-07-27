@@ -49,14 +49,16 @@ function WorksBlock({
             <div className="dot-1-line"></div>
 
             <div className="popup-content1">
-              <h2>{myeWorking.workingItem[0].title}</h2>
-              <ul>
-                {myeWorking.workingItem[0].worksDescription.map(
-                  (description, idx) => (
-                    <li key={idx}>{description.workingDescription}</li>
-                  ),
-                )}
-              </ul>
+              <h2 id="title">{myeWorking.workingItem[0].title}</h2>
+              <div>
+                <ul className="hover-content">
+                  {myeWorking.workingItem[0].worksDescription.map(
+                    (description, idx) => (
+                      <li key={idx}>{description.workingDescription}</li>
+                    ),
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
           {/* DOT 2 */}
@@ -66,8 +68,8 @@ function WorksBlock({
             <div className="dot-2-line"></div>
 
             <div className="popup-content2">
-              <h2>{myeWorking.workingItem[1].title}</h2>
-              <ul>
+              <h2 id="title">{myeWorking.workingItem[1].title}</h2>
+              <ul className="hover-content">
                 {myeWorking.workingItem[1].worksDescription.map(
                   (description, idx) => (
                     <li key={idx}>{description.workingDescription}</li>
@@ -83,8 +85,8 @@ function WorksBlock({
             <div className="dot-3-line"></div>
 
             <div className="popup-content3">
-              <h2>{myeWorking.workingItem[2].title}</h2>
-              <ul>
+              <h2 id="title">{myeWorking.workingItem[2].title}</h2>
+              <ul className="hover-content">
                 {myeWorking.workingItem[2].worksDescription.map(
                   (description, idx) => (
                     <li key={idx}>{description.workingDescription}</li>
@@ -100,8 +102,8 @@ function WorksBlock({
             <div className="dot-4-line"></div>
 
             <div className="popup-content4">
-              <h2>{myeWorking.workingItem[3].title}</h2>
-              <ul>
+              <h2 id="title">{myeWorking.workingItem[3].title}</h2>
+              <ul className="hover-content">
                 {myeWorking.workingItem[3].worksDescription.map(
                   (description, idx) => (
                     <li key={idx}>{description.workingDescription}</li>
@@ -116,8 +118,8 @@ function WorksBlock({
             <div className="dot-5-round"></div>
             <div className="dot-5-line"></div>
             <div className="popup-content5">
-              <h2>{myeWorking.workingItem[4].title}</h2>
-              <ul>
+              <h2 id="title">{myeWorking.workingItem[4].title}</h2>
+              <ul className="hover-content">
                 {myeWorking.workingItem[4].worksDescription.map(
                   (description, idx) => (
                     <li key={idx}>{description.workingDescription}</li>
