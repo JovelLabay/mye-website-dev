@@ -30,6 +30,15 @@ const GetHomePage = gql`
             description
             title
           }
+          awardItems {
+            awardField
+            awardPosition
+            awardTitle
+            borderColor
+            fieldGroupName
+            isCertified
+            hasColor
+          }
         }
         carousel {
           fieldGroupName
