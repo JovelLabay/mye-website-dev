@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import React from "react";
-import AWSBadge from "./awsBlock";
+import AWSBadge from "./badges/awsBlock";
+import AlibabaBadge from "./badges/alibabaBlock";
 
 function Awards({
   awards,
@@ -56,18 +57,24 @@ function Awards({
         <h3 className="animate text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] font-bold text-customViolet">
           {awards.subHeader}
         </h3>
-        <Image
+        {/* <Image
           width={900}
           height={900}
           className="mx-auto mt-10"
           src={awards.awardItem.sourceUrl}
           alt="award"
-        />
+        /> */}
       </div>
 
-      <div className="flex p-5">
+      <div className="flex flex-wrap justify-center items-center">
         {awards.awardItems.map((badge, idx) => (
-          <AWSBadge key={idx} badge={badge} />
+          <div key={idx} className="w-1/5 p-1 mt-10">
+            {" "}
+            {badge.awardTitle === "aws" && <AWSBadge badge={badge} />}
+            {badge.awardTitle === "Alibaba Cloud" && (
+              <AlibabaBadge badge={badge} />
+            )}
+          </div>
         ))}
       </div>
     </div>

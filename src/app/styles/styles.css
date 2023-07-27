@@ -625,10 +625,11 @@
 /* AWARDS BADGES*/
 .hexagon {
   --border-color: blue;
+  --field-color: white;
   position: relative;
   width: 150px; /* Adjust the width to make it smaller */
   height: 90px; /* Adjust the height to maintain the proportions */
-  background-color: white;
+  background-color: transparent;
   margin: 40px 0; /* Adjust the margins to center the hexagon */
   border-left: solid 8px var(--border-color); /* Adjust the border thickness accordingly */
   border-right: solid 8px var(--border-color); /* Adjust the border thickness accordingly */
@@ -655,6 +656,7 @@
 }
 
 .hexagon:after {
+  background-color: var(--field-color);
   bottom: -52.91245px; /* Adjust the position accordingly */
   border-bottom: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
   border-left: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
