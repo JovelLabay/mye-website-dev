@@ -68,7 +68,10 @@ function Awards({
 
       <div className="flex flex-wrap justify-center items-center">
         {awards.awardItems.map((badge, idx) => (
-          <div key={idx} className="w-1/5 p-1 mt-10">
+          <div
+            key={idx}
+            className="w-1/2 lg:w-1/5 p-1 mt-10 flex justify-center items-center"
+          >
             {" "}
             {badge.awardTitle === "aws" && <AWSBadge badge={badge} />}
             {badge.awardTitle === "Alibaba Cloud" && (

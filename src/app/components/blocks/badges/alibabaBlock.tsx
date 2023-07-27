@@ -72,9 +72,15 @@ function AlibabaBadge({
           <div className="flex justify-center text-center text-[13px] px-1 -mb-2 mt-1">
             <b>{badge.awardTitle || ""}</b> &nbsp;
           </div>
-          <div className="text-center text-gray-400 text-[11px] mt-2 font-bold">
-            CERTIFIED
-          </div>
+
+          {badge.isCertified === true ? (
+            <div className="text-center text-gray-400 text-[11px] mt-2 font-bold">
+              CERTIFIED
+            </div>
+          ) : (
+            <div className="text-center text-gray-400 text-[11px] mt-2 font-bold h-[15px]"></div>
+          )}
+
           <div className="text-center mt-2 text-[13px] text-white font-bold bg-[#333b3e] py-1 w-full">
             {badge.awardField.toUpperCase() || ""}
           </div>
@@ -88,7 +94,7 @@ function AlibabaBadge({
         </div>
       </div>
       <div
-        className="absolute h-[24px] w-[150px] mt-[-35%]"
+        className="absolute h-[25px] w-[150px] mt-[-45%]"
         style={{ zIndex: "-20", backgroundColor: colorField }}
       ></div>
     </div>
