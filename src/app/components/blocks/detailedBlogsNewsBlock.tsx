@@ -25,7 +25,10 @@ function DetailedBlogsNewsBlock({
 
   return (
     <>
-      <Wysiwyg content={id.mainBlogNewsContent} className="" />
+      <Wysiwyg
+        content={id.mainBlogNewsContent}
+        className="flex flex-col gap-3"
+      />
       <div className="flex flex-wrap my-4">
         {id.blogTags &&
           id.blogTags.map((tag, index) => {
