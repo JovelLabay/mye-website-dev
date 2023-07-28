@@ -128,7 +128,7 @@ function ServicesBlock({
                               className="rounded-lg h-auto p-4 flex justify-center items-center bg-white text-center gap-4 w-[300px]"
                             >
                               <div className="flex justify-center items-center min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full ">
-                                <h5 className="font-semibold leading-7 text-customViolet">
+                                <h5 className="font-semibold leading-7">
                                   {desc.description}
                                 </h5>
                               </div>
