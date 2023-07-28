@@ -29,9 +29,8 @@ function ServicesBlock({
 
   const scrollToDetailedDescription = (index: number) => {
     if (contentRefs.current[index]) {
-      const offset = -100; // You can adjust this value as needed
+      const offset = -100;
 
-      // Calculate the offset from the top of the detailed description area
       const targetOffset = contentRefs.current[index].offsetTop + offset;
 
       window.scrollTo({
@@ -116,23 +115,25 @@ function ServicesBlock({
               <div className="flex justify-start items-start mx-10">
                 <p className="">{service.description}</p>
               </div>
-              <div className="ml-10 flex justify-center items-center">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 w-full">
-                  {service.detailedDescription.map((desc, index) => {
-                    return (
-                      <div
-                        id="services-box"
-                        key={index}
-                        className="rounded-lg h-auto p-4 flex justify-center items-center bg-white text-center gap-4 w-[300px]"
-                      >
-                        <div className="flex justify-center items-center min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] min-w-0 sm:min-w-[20px] md:min-w-[50px] lg:min-w-[100px] ">
-                          <h5 className="font-semibold leading-7 text-customViolet">
-                            {desc.description}
-                          </h5>
+              <div className="flex justify-center items-center">
+                <div className=" flex justify-center items-center w-[90%]">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 lg:w-full">
+                    {service.detailedDescription.map((desc, index) => {
+                      return (
+                        <div
+                          id="services-box"
+                          key={index}
+                          className="rounded-lg h-auto p-4 flex justify-center items-center bg-white text-center gap-4 w-[300px]"
+                        >
+                          <div className="flex justify-center items-center min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full ">
+                            <h5 className="font-semibold leading-7 text-customViolet">
+                              {desc.description}
+                            </h5>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>
