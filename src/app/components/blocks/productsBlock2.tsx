@@ -22,6 +22,19 @@ function ProductsBlock2({
 }) {
   const contentRefs = useRef<any>([]);
 
+  const scrollToDetailedDescription = (index: number) => {
+    if (contentRefs.current[index]) {
+      const offset = 600;
+
+      const targetOffset = contentRefs.current[index].offsetTop + offset;
+
+      window.scrollTo({
+        top: targetOffset,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="text-white mt-8 sm:mt-10 md:mt-15 lg:mt-20 bg-[#F1F6FA]">
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
@@ -33,12 +46,7 @@ function ProductsBlock2({
                 <button
                   key={index}
                   className="font-bold text-left"
-                  onClick={() => {
-                    contentRefs.current[index] &&
-                      contentRefs.current[index].scrollIntoView({
-                        behavior: "smooth",
-                      });
-                  }}
+                  onClick={() => scrollToDetailedDescription(index)}
                 >
                   {item.title}
                 </button>
