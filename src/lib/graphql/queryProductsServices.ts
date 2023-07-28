@@ -49,6 +49,9 @@ const GET_PRODUCT_SERVICE = gql`
             title
             url
           }
+          detailedDescription {
+            description
+          }
         }
       }
       getInTouch {
