@@ -13,6 +13,7 @@ const GET_BLOGS_AND_NEWS = gql`
       }
       blogsNews {
         blogsNewsItem {
+          mainBlogNewsContent
           isFeature
           datePublished
           blogTags

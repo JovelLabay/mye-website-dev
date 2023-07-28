@@ -37,9 +37,7 @@ function BlogsNewsBlock2({
               <div
                 className="grid grid-cols-1 md:grid-cols-3 md:gap-5 hover:cursor-pointer"
                 key={index}
-                onClick={() =>
-                  route.push(`/blogs-news/${blogItem.itemHeader} + id=${index}`)
-                }
+                onClick={() => route.push(`/blogs-news/${index.toString()}`)}
               >
                 <div
                   className="col-span-1 mb-3 md:mb-0"
@@ -85,11 +83,7 @@ function BlogsNewsBlock2({
                 <div
                   className="flex flex-col hover:cursor-pointer"
                   key={index}
-                  onClick={() =>
-                    route.push(
-                      `/blogs-news/${blogItem.itemHeader} + id=${index}`,
-                    )
-                  }
+                  onClick={() => route.push(`/blogs-news/${index.toString()}`)}
                 >
                   <div
                     className="col-span-1 mb-3 md:mb-0"

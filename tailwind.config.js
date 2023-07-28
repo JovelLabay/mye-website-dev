@@ -23,6 +23,7 @@ module.exports = {
         customBlue: "#21d1ff",
         customDarkViolet: "#588cfe",
         customPink: "#9e3cff",
+        customPinkOpacity: "#CAA6FF",
       },
     },
   },
