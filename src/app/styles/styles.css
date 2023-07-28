@@ -99,12 +99,10 @@
   padding: 10px 20px;
   border-radius: 9999px;
   border: none;
-  background: linear-gradient(
-    90.37deg,
-    #22d2ff -1.83%,
-    #5f84fe 48.99%,
-    #9f39ff 99.8%
-  );
+  background: linear-gradient(90.37deg,
+      #22d2ff -1.83%,
+      #5f84fe 48.99%,
+      #9f39ff 99.8%);
   color: #fff;
 }
 
@@ -186,6 +184,7 @@
   gap: 10px;
 }
 
+.share-link:hover,
 .footer .three ul li:hover {
   color: var(--violet-color);
   cursor: pointer;
@@ -194,6 +193,9 @@
 .footer .three ul li i {
   padding-right: 10px;
 }
+
+/* DYNAMIC BLOGS */
+
 
 /* SERVICES */
 #services-box {
@@ -209,12 +211,10 @@
 /* INDUSTRY SOLUTIONS */
 #industry-boxes {
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(73, 159, 254, 0) 0%,
-    #003065 57.29%,
-    #000000 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(73, 159, 254, 0) 0%,
+      #003065 57.29%,
+      #000000 100%);
   transition: 100ms ease-in-out;
   padding: 20px;
   display: flex;
@@ -635,12 +635,17 @@
   --border-color: blue;
   --field-color: white;
   position: relative;
-  width: 150px; /* Adjust the width to make it smaller */
-  height: 90px; /* Adjust the height to maintain the proportions */
+  width: 150px;
+  /* Adjust the width to make it smaller */
+  height: 90px;
+  /* Adjust the height to maintain the proportions */
   background-color: transparent;
-  margin: 40px 0; /* Adjust the margins to center the hexagon */
-  border-left: solid 8px var(--border-color); /* Adjust the border thickness accordingly */
-  border-right: solid 8px var(--border-color); /* Adjust the border thickness accordingly */
+  margin: 40px 0;
+  /* Adjust the margins to center the hexagon */
+  border-left: solid 8px var(--border-color);
+  /* Adjust the border thickness accordingly */
+  border-right: solid 8px var(--border-color);
+  /* Adjust the border thickness accordingly */
 }
 
 .hexagon:before,
@@ -648,30 +653,40 @@
   content: "";
   position: absolute;
   z-index: 1;
-  width: 105.67px; /* Adjust the width to maintain proportions */
-  height: 105.67px; /* Adjust the height to maintain proportions */
+  width: 105.67px;
+  /* Adjust the width to maintain proportions */
+  height: 105.67px;
+  /* Adjust the height to maintain proportions */
   -webkit-transform: scaleY(0.5774) rotate(-45deg);
   -ms-transform: scaleY(0.5774) rotate(-45deg);
   transform: scaleY(0.5774) rotate(-45deg);
   background-color: inherit;
-  left: 13.91245px; /* Adjust the position accordingly */
+  left: 13.91245px;
+  /* Adjust the position accordingly */
 }
 
 .hexagon:before {
-  top: -52.91245px; /* Adjust the position accordingly */
-  border-top: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
-  border-right: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
+  top: -52.91245px;
+  /* Adjust the position accordingly */
+  border-top: solid 11.3137px var(--border-color);
+  /* Adjust the border thickness accordingly */
+  border-right: solid 11.3137px var(--border-color);
+  /* Adjust the border thickness accordingly */
 }
 
 .hexagon:after {
   background-color: var(--field-color);
-  bottom: -52.91245px; /* Adjust the position accordingly */
-  border-bottom: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
-  border-left: solid 11.3137px var(--border-color); /* Adjust the border thickness accordingly */
+  bottom: -52.91245px;
+  /* Adjust the position accordingly */
+  border-bottom: solid 11.3137px var(--border-color);
+  /* Adjust the border thickness accordingly */
+  border-left: solid 11.3137px var(--border-color);
+  /* Adjust the border thickness accordingly */
 }
 
 /* ====== LAPTOP VIEW ====== */
 @media only screen and (max-width: 1200px) {
+
   /* NAV */
   .link-nav {
     display: none;
@@ -707,6 +722,7 @@
 
 /* ====== Tablet ====== */
 @media only screen and (max-width: 768px) {
+
   /* FOOTER */
   .footer {
     gap: 15px;
@@ -731,6 +747,7 @@
 
 /* ====== Mobile ====== */
 @media only screen and (max-width: 640px) {
+
   /* NAV */
   .login-bg-white,
   .login-bg-white-none-home {

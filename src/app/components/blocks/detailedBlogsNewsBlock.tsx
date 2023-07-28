@@ -3,6 +3,11 @@
 import React from "react";
 import Wysiwyg from "../shared/wysiwyg";
 import { RWebShare } from "react-web-share";
+import {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillLinkedin,
+} from "react-icons/ai";
 
 function DetailedBlogsNewsBlock({
   params,
@@ -42,17 +47,52 @@ function DetailedBlogsNewsBlock({
             );
           })}
       </div>
-      <div className="flex justify-end items-center mb-4">
-        <RWebShare
-          data={{
-            text: "Share this link",
-            url: `${websiteDomain}/blogs-news/${params.blogNewsId}`,
-            title: "Share this link",
-          }}
-          onClick={() => console.log("shared successfully!")}
+      <div className="flex justify-end items-center mb-4 gap-1 text-red-500">
+        <a
+          className="share-link text-customDark"
+          href={`https://www.facebook.com/sharer/sharer.php?u=${websiteDomain}/blogs-news/${params.blogNewsId}`}
+          target="_blank"
+          rel="noreferrer"
         >
-          <button className="text-blue-500">Share this link</button>
-        </RWebShare>
+          <AiFillFacebook size={30} />
+        </a>
+
+        <a
+          className="share-link text-customDark"
+          href={`https://instagram.com/intent/tweet?url=${websiteDomain}/blogs-news/${params.blogNewsId}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillInstagram size={30} />
+        </a>
+
+        <a
+          className="share-link text-customDark"
+          href={`https://www.linkedin.com/shareArticle?url=${websiteDomain}/blogs-news/${params.blogNewsId}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <AiFillLinkedin size={30} />
+        </a>
+      </div>
+
+      <div>
+        <form className="mt-4 w-full mx-auto">
+          <label htmlFor="Message" className="mb-2 font-bold">
+            Comment
+          </label>
+          <textarea
+            placeholder="Compose your comment here..."
+            className="w-full rounded-lg min-h-[200px] p-2 placeholder:text-[#A4A4A4] text-black outline-none bg-gray-100"
+          />
+          <button
+            type="submit"
+            id="get-in-touch-send-btn"
+            className="mt-3 py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-customViolet text-white font-medium md:font-semibold"
+          >
+            Submit
+          </button>
+        </form>
       </div>
     </>
   );
