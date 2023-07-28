@@ -24,7 +24,7 @@ function ProductsBlock2({
 
   const scrollToDetailedDescription = (index: number) => {
     if (contentRefs.current[index]) {
-      const offset = 650;
+      const offset = 600;
 
       const targetOffset = contentRefs.current[index].offsetTop + offset;
 
