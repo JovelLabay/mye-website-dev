@@ -151,6 +151,7 @@ const GetHomePage = gql`
             }
           }
           joinOurTeamHasMarginTop
+          joinOurTeamHasMarginBottom
         }
         getInTouch {
           headerGetInTouch

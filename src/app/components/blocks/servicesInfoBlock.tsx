@@ -101,9 +101,10 @@ function ServicesInfoBlock({
           </div>
         </div>
       </div>
+
       {/* Detailed Descriptions */}
       <div className="bg-[#F1F6FA]">
-        <div className="flex flex-col px-2 py-10 the-container">
+        {/* <div className="flex flex-col px-2 py-10 the-container">
           {services &&
             services.item.map((service, index) => (
               <div
@@ -143,7 +144,7 @@ function ServicesInfoBlock({
                 </div>
               </div>
             ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

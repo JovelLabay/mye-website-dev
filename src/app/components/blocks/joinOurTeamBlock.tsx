@@ -26,6 +26,7 @@ function JoinOurTeamBlock({
       };
     };
     joinOurTeamHasMarginTop: boolean;
+    joinOurTeamHasMarginBottom: boolean;
   };
 }) {
   return (
@@ -34,6 +35,8 @@ function JoinOurTeamBlock({
         "the-container",
         joinOurTeam.joinOurTeamHasMarginTop &&
           "mt-8 sm:mt-10 md:mt-15 lg:mt-20",
+        joinOurTeam.joinOurTeamHasMarginBottom &&
+          "mb-8 sm:mb-10 md:mb-15 lg:mb-20",
       )}
     >
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">

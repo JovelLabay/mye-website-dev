@@ -27,7 +27,7 @@ function GetInTouchForm({
 
   return (
     <div
-      className="text-white mt-8 sm:mt-10 md:mt-15 lg:mt-20"
+      className="text-white"
       style={{
         backgroundImage: `url(${getInTouch.getInTouchBackgroundImage.sourceUrl})`,
         backgroundSize: "cover",
