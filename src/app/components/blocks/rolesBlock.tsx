@@ -8,15 +8,17 @@ function RolesBlock({
   roles,
 }: {
   roles: {
-    title: string;
-    roleDescription: string;
-    requirements: {
-      requirement: string;
+    roles: {
+      title: string;
+      roleDescription: string;
+      requirements: {
+        requirement: string;
+      }[];
+      responsibilities: {
+        responsibility: string;
+      }[];
     }[];
-    responsibilities: {
-      responsibility: string;
-    }[];
-  }[];
+  };
 }) {
   const contentRefs = useRef<any>([]);
 
@@ -53,32 +55,48 @@ function RolesBlock({
 
             {/* CONTENTS */}
             <div className="md:col-span-2 text-[#2D2D2D] flex flex-col gap-3">
-              {roles.roles.map((item: any, index: any) => (
+              {roles.roles?.map((item: any, index: any) => (
                 <div
                   key={index}
                   ref={(element) => (contentRefs.current[index] = element)}
                 >
                   <h5 className="font-bold">{item.title}</h5>
-                  <p>{item.roleDescription}</p>
-                  <div className="border-1 border-white px-3 py-4 gap-4 grid grid-cols-1 md:grid-cols-2">
-                    {/* {item.productServiceItem &&
-                      item.productServiceItem.map((productItem, index2) => (
-                        <div key={index2}>
-                          <Image
-                            alt="Logo"
-                            src={productItem.iconImage?.sourceUrl}
-                            width={65}
-                            height={65}
-                            style={{
-                              filter: "invert(1)",
-                            }}
-                          />
-                          <h5 className="my-4 font-semibold leading-7 ">
-                            {productItem.label}
-                          </h5>
-                          <p>{productItem.description}</p>
-                        </div>
-                      ))} */}
+                  <p className="text-[15px] mb-3">{item.roleDescription}</p>
+                  <div className="border-1 border-white px-3 py-4 gap-4 grid grid-cols-1 md:grid-cols-2 text-[15px]">
+                    <div>
+                      <h5 className="font-bold mb-3">Responsibilities</h5>
+                      <ul>
+                        {item &&
+                          item.responsibilities.map(
+                            (responsibility: any, index2: any) => (
+                              <li key={index2} style={{ listStyle: "disc" }}>
+                                {responsibility.responsibility}
+                              </li>
+                            ),
+                          )}
+                      </ul>
+                    </div>
+                    <div>
+                      <h5 className="font-bold mb-3">Requirements</h5>
+                      <ul>
+                        {item &&
+                          item.requirements.map(
+                            (requirement: any, index2: any) => (
+                              <li key={index2} style={{ listStyle: "disc" }}>
+                                {requirement.requirement}
+                              </li>
+                            ),
+                          )}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <button
+                      className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
+                hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
+                    >
+                      Apply
+                    </button>
                   </div>
                 </div>
               ))}
