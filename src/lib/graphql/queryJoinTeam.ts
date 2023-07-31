@@ -24,6 +24,19 @@ const GET_JOIN_TEAM = gql`
         }
         joinOurTeamHasMarginTop
       }
+      roles {
+        backgroundColor
+        roles {
+          requirements {
+            requirement
+          }
+          responsibilities {
+            responsibility
+          }
+          roleDescription
+          title
+        }
+      }
     }
   }
 `;

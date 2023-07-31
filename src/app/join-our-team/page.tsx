@@ -11,9 +11,8 @@ import GET_JOIN_TEAM from "@/lib/graphql/queryJoinTeam";
 
 // BLOCKS
 import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
-import ProductsBlock2 from "../components/blocks/productsBlock2";
 import GetInTouchForm from "../components/forms/getInTouchForm";
-import ServicesInfoBlock from "../components/blocks/servicesInfoBlock";
+import RolesBlock from "../components/blocks/rolesBlock";
 
 export const metadata: Metadata = {
   title: "MYE Cloud | Join Our Team",
@@ -30,17 +29,15 @@ async function getBlocks() {
 
   await client.cache.reset();
 
-  console.log("TEAM:", blocks);
-
   return blocks.data;
 }
 
 async function Page() {
   const block = await getBlocks();
 
-  console.log(block);
+  const { joinOurTeam, roles, getInTouch } = await block?.joinOurTeamPage;
 
-  const joinOurTeam = await block?.joinOurTeamPage.joinOurTeam;
+  console.log(roles);
 
   return (
     <>
@@ -58,9 +55,8 @@ async function Page() {
 
       {/* BLOCKS */}
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
-      {/* <ProductsBlock2 products={products} />
-      <ServicesInfoBlock services={services} />
-      <GetInTouchForm getInTouch={getInTouch} /> */}
+      <RolesBlock roles={roles} />
+      {/* <GetInTouchForm getInTouch={getInTouch} /> */}
     </>
   );
 }
