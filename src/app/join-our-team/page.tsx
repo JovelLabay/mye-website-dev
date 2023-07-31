@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 // LIBRARIES
 import client from "@/lib/apollo/client";
-import GET_PRODUCT_SERVICE from "@/lib/graphql/queryProductsServices";
+import GET_JOIN_TEAM from "@/lib/graphql/queryJoinTeam";
 
 // BLOCKS
 import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
@@ -24,11 +24,13 @@ async function getBlocks() {
   const id = process.env.JOIN_OUR_TEAM_PAGE_ID;
 
   const blocks = await client.query({
-    query: GET_PRODUCT_SERVICE,
+    query: GET_JOIN_TEAM,
     variables: { id },
   });
 
   await client.cache.reset();
+
+  console.log("TEAM:", blocks);
 
   return blocks.data;
 }
@@ -36,8 +38,9 @@ async function getBlocks() {
 async function Page() {
   const block = await getBlocks();
 
-  const { joinOurTeam, products, services, getInTouch } =
-    await block?.productServicesPage;
+  console.log(block);
+
+  const joinOurTeam = await block?.joinOurTeamPage.joinOurTeam;
 
   return (
     <>
@@ -55,9 +58,9 @@ async function Page() {
 
       {/* BLOCKS */}
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
-      <ProductsBlock2 products={products} />
+      {/* <ProductsBlock2 products={products} />
       <ServicesInfoBlock services={services} />
-      <GetInTouchForm getInTouch={getInTouch} />
+      <GetInTouchForm getInTouch={getInTouch} /> */}
     </>
   );
 }
