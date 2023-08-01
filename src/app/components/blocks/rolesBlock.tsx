@@ -91,7 +91,7 @@ function RolesBlock({
                       </ul>
                     </div>
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-center mt-4">
                     <button
                       className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[33px] md:px-[40px] lg:px-[60px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
