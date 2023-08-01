@@ -59,6 +59,7 @@ function RolesBlock({
                 <div
                   key={index}
                   ref={(element) => (contentRefs.current[index] = element)}
+                  className="mb-5"
                 >
                   <h5 className="font-bold">{item.title}</h5>
                   <p className="text-[15px] mb-3">{item.roleDescription}</p>
@@ -92,7 +93,7 @@ function RolesBlock({
                   </div>
                   <div className="flex justify-center">
                     <button
-                      className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
+                      className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[33px] md:px-[40px] lg:px-[60px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
                     >
                       Apply

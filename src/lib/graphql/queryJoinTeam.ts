@@ -37,6 +37,12 @@ const GET_JOIN_TEAM = gql`
           title
         }
       }
+      getInTouch {
+        headerGetInTouch
+        getInTouchBackgroundImage {
+          sourceUrl
+        }
+      }
     }
   }
 `;
