@@ -88,9 +88,7 @@ function ServicesInfoBlock({
                   <p className="">{service.description}</p>
                 </div>
                 <button
-                  onClick={() => {
-                    router.push("/products-services");
-                  }}
+                  onClick={() => scrollToDetailedDescription(index)}
                   className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
                 >
