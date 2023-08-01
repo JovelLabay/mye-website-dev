@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
 
+import React from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 import {
@@ -27,6 +29,23 @@ function Page({
       }[]
     | null;
 }) {
+  const router = usePathname();
+
+  const handleClick = (e: any, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - 100;
+
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <footer>
       <div className="footer">
@@ -59,9 +78,38 @@ function Page({
                   )
                   .map((link) => (
                     <li key={link.id}>
-                      <a href={link.uri} className="no-underline text-black">
-                        {link.title}
-                      </a>
+                      {link.title === "About Us" ? (
+                        <a
+                          href="/#about"
+                          onClick={
+                            router !== "/"
+                              ? undefined
+                              : (e) => handleClick(e, "about")
+                          }
+                          className="no-underline text-customDark"
+                        >
+                          {link.title}
+                        </a>
+                      ) : link.title === "Contact Us" ? (
+                        <a
+                          href="/#getintouch"
+                          onClick={
+                            router !== "/"
+                              ? undefined
+                              : (e) => handleClick(e, "getintouch")
+                          }
+                          className="no-underline text-customDark"
+                        >
+                          {link.title}
+                        </a>
+                      ) : (
+                        <a
+                          href={link.uri}
+                          className="no-underline text-customDark"
+                        >
+                          {link.title}
+                        </a>
+                      )}
                     </li>
                   ))}
             </ul>
