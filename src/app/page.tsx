@@ -20,24 +20,16 @@ import JoinOurTeam from "./components/blocks/joinOurTeamBlock";
 
 // FORM
 import GetInTouchForm from "./components/forms/getInTouchForm";
+import { getBlocks, getBlogsNews } from "@/lib/query/query";
 
 export const metadata: Metadata = {
   title: "MYE Cloud | Home",
   description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
 };
 
-async function getBlocks() {
-  const blocks = await client.query({
-    query: GetHomePage,
-  });
-
-  await client.cache.reset();
-
-  return blocks.data;
-}
-
 export default async function Home() {
   const block = await getBlocks();
+  const blogsNewsData = await getBlogsNews();
 
   const {
     carousel: { carouselItem },
@@ -47,10 +39,11 @@ export default async function Home() {
     myeWorking,
     industrySolutions,
     about,
-    blogsNews,
     joinOurTeam,
     getInTouch,
   } = block?.nodeByUri;
+
+  const blogsNewsData2 = blogsNewsData?.posts?.edges;
 
   return (
     <div>
@@ -61,7 +54,7 @@ export default async function Home() {
       <Works myeWorking={myeWorking} />
       <Industry industrySolutions={industrySolutions} />
       <About about={about} />
-      <BlogsNews blogsNews={blogsNews} />
+      <BlogsNews blogsNewsData2={blogsNewsData2} />
       <JoinOurTeam joinOurTeam={joinOurTeam} />
 
       {/* FORM */}

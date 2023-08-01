@@ -8,6 +8,7 @@ import {
   AiFillInstagram,
   AiFillLinkedin,
 } from "react-icons/ai";
+import { BiShare } from "react-icons/bi";
 
 function DetailedBlogsNewsBlock({
   params,
@@ -17,66 +18,52 @@ function DetailedBlogsNewsBlock({
     blogNewsId: string;
   };
   blogsNews: {
-    blogsNewsItem: {
-      blogTags: string[];
-      isFeature: boolean;
-      mainBlogNewsContent: string;
-    }[];
+    data: {
+      post: {
+        blogsAndNewsPost: {
+          postBodyContent: string;
+          postTags: string[];
+        };
+      };
+    };
   };
 }) {
   const websiteDomain = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN;
 
-  let id = blogsNews.blogsNewsItem[parseInt(params.blogNewsId)];
-
   return (
     <>
       <Wysiwyg
-        content={id.mainBlogNewsContent}
+        content={blogsNews.data.post.blogsAndNewsPost.postBodyContent}
         className="flex flex-col gap-3"
       />
       <div className="flex flex-wrap my-4">
-        {id.blogTags &&
-          id.blogTags.map((tag, index) => {
-            return (
-              <span
-                key={index}
-                className="mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg"
-              >
-                {tag}
-              </span>
-            );
-          })}
+        {blogsNews.data.post.blogsAndNewsPost.postTags.map((tag, index) => {
+          return (
+            <span
+              key={index}
+              className="mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg"
+            >
+              {tag}
+            </span>
+          );
+        })}
       </div>
-      <div className="flex justify-end items-center mb-4 gap-1 text-red-500">
-        <a
-          className="share-link text-customDark"
-          href={`https://www.facebook.com/sharer/sharer.php?u=${websiteDomain}/blogs-news/${params.blogNewsId}`}
-          target="_blank"
-          rel="noreferrer"
+      <div className="flex justify-end items-center mb-4">
+        <RWebShare
+          data={{
+            text: "Share this link",
+            url: `${websiteDomain}/blogs-news/${params.blogNewsId}`,
+            title: "Share this link",
+          }}
         >
-          <AiFillFacebook size={30} />
-        </a>
-
-        <a
-          className="share-link text-customDark"
-          href={`https://instagram.com/intent/tweet?url=${websiteDomain}/blogs-news/${params.blogNewsId}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <AiFillInstagram size={30} />
-        </a>
-
-        <a
-          className="share-link text-customDark"
-          href={`https://www.linkedin.com/shareArticle?url=${websiteDomain}/blogs-news/${params.blogNewsId}`}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <AiFillLinkedin size={30} />
-        </a>
+          <button className="text-white gap-2 flex justify-center items-center py-2 px-3 rounded-full bg-customDark hover:drop-shadow-xl drop-shadow-lg">
+            <BiShare />
+            Share
+          </button>
+        </RWebShare>
       </div>
 
-      <div>
+      <div className="mb-4 lg:mb-0">
         <form className="mt-4 w-full mx-auto">
           <label htmlFor="Message" className="mb-2 font-bold">
             Comment

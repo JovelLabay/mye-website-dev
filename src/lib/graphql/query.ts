@@ -118,20 +118,6 @@ const GetHomePage = gql`
             sourceUrl
           }
         }
-        blogsNews {
-          headerBlogsNews
-          blogsNewsItem {
-            itemDescription
-            itemHeader
-            subItemHeader
-            itemImage {
-              sourceUrl
-            }
-            isFeature
-            datePublished
-            blogTags
-          }
-        }
         joinOurTeam {
           headerJoinOurTeam {
             headerLabel
@@ -164,4 +150,29 @@ const GetHomePage = gql`
   }
 `;
 
-export { GetAllPages, GetHomePage };
+const GetAllBlogsAndNews = gql`
+  query GetAllBlogsAndNews {
+    posts {
+      edges {
+        node {
+          id
+          title
+          uri
+          blogsAndNewsPost {
+            isPostFeatured
+            postBodyContent
+            postCategory
+            postPublished
+            postShortDescription
+            postTitle
+            postShortImage {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export { GetAllPages, GetHomePage, GetAllBlogsAndNews };

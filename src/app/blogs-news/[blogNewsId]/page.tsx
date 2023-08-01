@@ -2,51 +2,45 @@ import DetailedBlogsNewsBlock from "@/app/components/blocks/detailedBlogsNewsBlo
 import MoreBlogNewsTopicsBlock from "@/app/components/blocks/moreBlogNewsTopicsBlock";
 import MoreBlogsNewsBlock from "@/app/components/blocks/moreBlogsNewsBlock";
 import client from "@/lib/apollo/client";
+import { GetAllBlogsAndNews } from "@/lib/graphql/query";
 import GET_BLOGS_AND_NEWS from "@/lib/graphql/queryBlogsNews";
+import GET_BLOG_NEWS_BY_ID from "@/lib/graphql/queryGetBlogNewsById";
+import { getBlogsNews } from "@/lib/query/query";
 import Link from "next/link";
 import React from "react";
 
 export async function generateStaticParams() {
-  const id = process.env.BLOGS_AND_NEWS_PAGE_ID;
-
-  const blocks = await client.query({
-    query: GET_BLOGS_AND_NEWS,
-    variables: { id },
+  const getAllBlogsNews = await client.query({
+    query: GetAllBlogsAndNews,
   });
 
   await client.cache.reset();
 
-  return blocks.data?.blogAndNewsPage.blogsNews.blogsNewsItem.map(
-    (
-      blogItem: {
-        itemHeader: string;
-        subItemHeader: string;
-      },
-      index: number,
-    ) => ({
-      blogNewsId: `${index.toString()}`,
+  return getAllBlogsNews.data.posts.edges.map(
+    (blogNews: {
+      node: {
+        id: string;
+      };
+    }) => ({
+      blogNewsId: blogNews.node.id.replace(/=/g, ""),
     }),
   );
 }
 
-async function getBlocks() {
-  const id = process.env.BLOGS_AND_NEWS_PAGE_ID;
-
-  const blocks = await client.query({
-    query: GET_BLOGS_AND_NEWS,
+async function getBlocks(id: string) {
+  const actualData = await client.query({
+    query: GET_BLOG_NEWS_BY_ID,
     variables: { id },
   });
 
   await client.cache.reset();
 
-  return blocks.data;
+  return actualData;
 }
 
 async function Page({ params }: { params: { blogNewsId: string } }) {
-  const block = await getBlocks();
-
-  const { headerBlogsAndNews, blogsNews, services } =
-    await block?.blogAndNewsPage;
+  const blogsNewsData = await getBlogsNews();
+  const actualBlogData = await getBlocks(`${params.blogNewsId}=`);
 
   return (
     <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
@@ -54,20 +48,32 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 relative">
           {/* BLOGS DETAILS */}
           <div className="col-span-2">
-            <div className="flex gap-2 mb-4">
-              <Link href="/blogs-news" className="no-underline text-black">
+            <div className="flex gap-2 mb-4 font-thin text-xs  md:text-sm">
+              <Link href="/" className="no-underline text-black">
                 MYE Cloud
               </Link>
-              <p>{">"}</p>
-              <p>Blogs and News</p>
+              <p className="text-customViolet">{">"}</p>
+              <Link href="/blogs-news" className="no-underline text-black">
+                Blogs and News
+              </Link>
+              <p className="text-customViolet">{">"}</p>
+              <p>{actualBlogData.data.post.blogsAndNewsPost.postTitle}</p>
             </div>
-            <DetailedBlogsNewsBlock params={params} blogsNews={blogsNews} />
+            <DetailedBlogsNewsBlock
+              params={params}
+              blogsNews={actualBlogData}
+            />
           </div>
 
           {/* MORE BLOGS */}
           <div className="custom-sticky col-span-1 min-h-[82vh] md:sticky mb-4 rounded-md bg-[#F1F6FA] p-3">
-            <MoreBlogsNewsBlock blogsNews={blogsNews} />
-            <MoreBlogNewsTopicsBlock blogsNews={blogsNews} />
+            <MoreBlogsNewsBlock
+              blogsNewsData2={blogsNewsData.posts.edges}
+              actualBlogData={actualBlogData.data.post}
+            />
+            <MoreBlogNewsTopicsBlock
+              blogsNewsData2={blogsNewsData.posts.edges}
+            />
           </div>
         </div>
       </div>

@@ -4,20 +4,26 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 function BlogsNewsBlock({
-  blogsNews,
+  blogsNewsData2,
 }: {
-  blogsNews: {
-    headerBlogsNews: string;
-    blogsNewsItem: {
-      itemHeader: string;
-      subItemHeader: string;
-      itemDescription: string;
-      isFeature: boolean;
-      itemImage: {
-        sourceUrl: string;
+  blogsNewsData2: {
+    node: {
+      blogsAndNewsPost: {
+        isPostFeatured: boolean | null;
+        postBodyContent: string | null;
+        postCategory: string[];
+        postPublished: string | null;
+        postShortDescription: string | null;
+        postShortImage: {
+          sourceUrl: string | null;
+        };
+        postTitle: string | null;
       };
-    }[];
-  };
+      id: string;
+      title: string;
+      uri: string;
+    };
+  }[];
 }) {
   const route = useRouter();
 
@@ -30,15 +36,15 @@ function BlogsNewsBlock({
           bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink inline-block text-transparent bg-clip-text
           "
           >
-            {blogsNews.headerBlogsNews}
+            {"Blogs & News"}
           </h1>
         </div>
 
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
-          <div className="grid grid-cols-1 lg:grid-cols-7 mt-5 gap-4">
-            <div className="hidden lg:block lg:col-span-4">
-              {blogsNews.blogsNewsItem
-                .filter((item) => item.isFeature)
+          <div className="grid grid-cols-1 lg:grid-cols-7 mt-5 lg:gap-5">
+            <div className="col-span7 lg:col-span-4">
+              {blogsNewsData2
+                .filter((item) => item.node.blogsAndNewsPost.isPostFeatured)
                 .map((blogItem, index) => (
                   <div
                     key={index}
@@ -47,23 +53,27 @@ function BlogsNewsBlock({
                     <div
                       className="blogs-news-image"
                       style={{
-                        backgroundImage: `url(${blogItem.itemImage.sourceUrl})`,
+                        backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
                       }}
                     />
-                    <div>
-                      <p className="font-bold">{blogItem.itemHeader}</p>
+                    <div className="mb-4">
+                      <p className="font-bold hidden lg:block">
+                        {blogItem.node.blogsAndNewsPost.postCategory}
+                      </p>
                       <h5 className="font-semibold leading-7 text-customViolet">
-                        {blogItem.subItemHeader}
+                        {blogItem.node.blogsAndNewsPost.postTitle}
                       </h5>
-                      <p>{blogItem.itemDescription}</p>
+                      <p className="hidden lg:block">
+                        {blogItem.node.blogsAndNewsPost.postShortDescription}
+                      </p>
                     </div>
                   </div>
                 ))}
             </div>
 
             <div className="col-span-3 flex flex-col gap-9 sm:gap-5 lg:gap-3">
-              {blogsNews.blogsNewsItem
-                .filter((item) => !item.isFeature)
+              {blogsNewsData2
+                .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
                 .map((blogItem, index) => (
                   <div
                     key={index}
@@ -72,18 +82,18 @@ function BlogsNewsBlock({
                     <div
                       className="blogs-news-image-2 col-span-3 lg:col-span-1 h-[200px] sm:h-[250px] md:h-[300px] w-full lg:h-[150px]"
                       style={{
-                        backgroundImage: `url(${blogItem.itemImage.sourceUrl})`,
+                        backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
                       }}
                     />
                     <div className="col-span-3 lg:col-span-2">
                       <p className="font-bold hidden lg:block">
-                        {blogItem.itemHeader}
+                        {blogItem.node.blogsAndNewsPost.postCategory}
                       </p>
                       <h5 className="font-semibold leading-7 text-customViolet">
-                        {blogItem.subItemHeader}
+                        {blogItem.node.blogsAndNewsPost.postTitle}
                       </h5>
                       <p className="hidden lg:block">
-                        {blogItem.itemDescription}
+                        {blogItem.node.blogsAndNewsPost.postShortDescription}
                       </p>
                     </div>
                   </div>

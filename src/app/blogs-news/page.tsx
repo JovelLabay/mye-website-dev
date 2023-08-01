@@ -5,31 +5,22 @@ import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 import GET_BLOGS_AND_NEWS from "@/lib/graphql/queryBlogsNews";
 import HeaderBlogsNewsBlock from "../components/blocks/headerBlogsNewsBlock";
 import BlogsNewsBlock2 from "../components/blocks/blogsNewsBlock2";
-
-async function getBlocks() {
-  const id = process.env.BLOGS_AND_NEWS_PAGE_ID;
-
-  const blocks = await client.query({
-    query: GET_BLOGS_AND_NEWS,
-    variables: { id },
-  });
-
-  await client.cache.reset();
-
-  return blocks.data;
-}
+import { getBlocksBlogNews, getBlogsNews } from "@/lib/query/query";
 
 async function Page() {
-  const block = await getBlocks();
+  const block = await getBlocksBlogNews();
+  const blogsNewsData = await getBlogsNews();
 
   const { headerBlogsAndNews, blogsNews, services } =
     await block?.blogAndNewsPage;
+
+  const blogsNewsData2 = blogsNewsData?.posts?.edges;
 
   return (
     <>
       {/* BLOCKS */}
       <HeaderBlogsNewsBlock headerBlogsAndNews={headerBlogsAndNews} />
-      <BlogsNewsBlock2 blogsNews={blogsNews} />
+      <BlogsNewsBlock2 blogsNewsData2={blogsNewsData2} />
     </>
   );
 }

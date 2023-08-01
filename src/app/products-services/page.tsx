@@ -14,27 +14,15 @@ import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 import ProductsBlock2 from "../components/blocks/productsBlock2";
 import GetInTouchForm from "../components/forms/getInTouchForm";
 import ServicesInfoBlock from "../components/blocks/servicesInfoBlock";
+import { getBlocksProductsServices } from "@/lib/query/query";
 
 export const metadata: Metadata = {
   title: "MYE Cloud | Products & Services",
   description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
 };
 
-async function getBlocks() {
-  const id = process.env.PRODUCT_SERVICE_PAGE_ID;
-
-  const blocks = await client.query({
-    query: GET_PRODUCT_SERVICE,
-    variables: { id },
-  });
-
-  await client.cache.reset();
-
-  return blocks.data;
-}
-
 async function Page() {
-  const block = await getBlocks();
+  const block = await getBlocksProductsServices();
 
   const { joinOurTeam, products, services, getInTouch } =
     await block?.productServicesPage;

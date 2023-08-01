@@ -4,37 +4,40 @@ import Link from "next/link";
 import React from "react";
 
 function MoreBlogNewsTopicsBlock({
-  blogsNews,
+  blogsNewsData2,
 }: {
-  blogsNews: {
-    blogsNewsItem: {
-      mainBlogNewsContent: any;
-      isFeature: boolean;
-      itemDescription: string;
-      itemHeader: string;
-      subItemHeader: string;
-      datePublished: string;
-      blogTags: string[];
-      itemImage: {
-        sourceUrl: string;
+  blogsNewsData2: {
+    node: {
+      blogsAndNewsPost: {
+        isPostFeatured: boolean | null;
+        postBodyContent: string | null;
+        postCategory: string[];
+        postPublished: string | null;
+        postShortDescription: string | null;
+        postShortImage: {
+          sourceUrl: string | null;
+        };
+        postTitle: string | null;
       };
-    }[];
-  };
+      id: string;
+      title: string;
+      uri: string;
+    };
+  }[];
 }) {
   return (
     <div className="pt-3">
       <h5 className="font-bold text-customViolet">Browse by Topic</h5>
 
       <div className="my-4 flex flex-col items-start justify-start gap-3">
-        {blogsNews.blogsNewsItem
-          .filter((item) => !item.isFeature)
-          .map((blogItem, index) => (
+        {blogsNewsData2 &&
+          blogsNewsData2.map((blogItem, index) => (
             <Link
-              className=" text-black no-underline font-thin"
-              href={`/blogs-news/${index.toString()}`}
+              className=" text-black no-underline font-thin text-sm"
+              href={`/blogs-news/${blogItem.node.id.replace(/=/g, "")}`}
               key={index}
             >
-              {blogItem.itemHeader}
+              {blogItem.node.blogsAndNewsPost.postCategory}
             </Link>
           ))}
       </div>

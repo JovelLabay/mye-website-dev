@@ -4,21 +4,26 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 function BlogsNewsBlock2({
-  blogsNews,
+  blogsNewsData2,
 }: {
-  blogsNews: {
-    blogsNewsItem: {
-      isFeature: boolean;
-      itemDescription: string;
-      itemHeader: string;
-      subItemHeader: string;
-      datePublished: string;
-      blogTags: string[];
-      itemImage: {
-        sourceUrl: string;
+  blogsNewsData2: {
+    node: {
+      blogsAndNewsPost: {
+        isPostFeatured: boolean | null;
+        postBodyContent: string | null;
+        postCategory: string[];
+        postPublished: string | null;
+        postShortDescription: string | null;
+        postShortImage: {
+          sourceUrl: string | null;
+        };
+        postTitle: string | null;
       };
-    }[];
-  };
+      id: string;
+      title: string;
+      uri: string;
+    };
+  }[];
 }) {
   const route = useRouter();
 
@@ -31,19 +36,23 @@ function BlogsNewsBlock2({
             Editor’s Pick
           </h3>
 
-          {blogsNews.blogsNewsItem
-            .filter((item) => item.isFeature)
+          {blogsNewsData2
+            .filter((item) => item.node.blogsAndNewsPost.isPostFeatured)
             .map((blogItem, index) => (
               <div
                 className="grid grid-cols-1 md:grid-cols-3 md:gap-5 hover:cursor-pointer"
                 key={index}
-                onClick={() => route.push(`/blogs-news/${index.toString()}`)}
+                onClick={() =>
+                  route.push(
+                    `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
+                  )
+                }
               >
                 <div
                   className="col-span-1 mb-3 md:mb-0"
                   style={{
                     minHeight: "300px",
-                    backgroundImage: `url(${blogItem.itemImage.sourceUrl})`,
+                    backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "fill",
                     backgroundPosition: "center",
@@ -51,16 +60,18 @@ function BlogsNewsBlock2({
                   }}
                 />
                 <div className="col-span-2 flex flex-col gap-3 items-start">
-                  {blogItem.itemHeader && (
-                    <p className="font-bold">{blogItem.itemHeader}</p>
+                  {blogItem.node.blogsAndNewsPost.postCategory && (
+                    <p className="font-bold">
+                      {blogItem.node.blogsAndNewsPost.postCategory}
+                    </p>
                   )}
-                  {blogItem.subItemHeader && (
+                  {blogItem.node.blogsAndNewsPost.postTitle && (
                     <h5 className="font-semibold leading-7 text-customViolet">
-                      {blogItem.subItemHeader}
+                      {blogItem.node.blogsAndNewsPost.postTitle}
                     </h5>
                   )}
-                  {blogItem.itemDescription && (
-                    <p>{blogItem.itemDescription}</p>
+                  {blogItem.node.blogsAndNewsPost.postShortDescription && (
+                    <p>{blogItem.node.blogsAndNewsPost.postShortDescription}</p>
                   )}
                   <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
                     Read more
@@ -77,19 +88,23 @@ function BlogsNewsBlock2({
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {blogsNews.blogsNewsItem
-              .filter((item) => !item.isFeature)
+            {blogsNewsData2
+              .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
               .map((blogItem, index) => (
                 <div
                   className="flex flex-col hover:cursor-pointer"
                   key={index}
-                  onClick={() => route.push(`/blogs-news/${index.toString()}`)}
+                  onClick={() =>
+                    route.push(
+                      `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
+                    )
+                  }
                 >
                   <div
                     className="col-span-1 mb-3 md:mb-0"
                     style={{
                       minHeight: "300px",
-                      backgroundImage: `url(${blogItem.itemImage.sourceUrl})`,
+                      backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
                       backgroundRepeat: "no-repeat",
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -97,16 +112,20 @@ function BlogsNewsBlock2({
                     }}
                   />
                   <div className="col-span-2 flex flex-col gap-3 items-start">
-                    {blogItem.itemHeader && (
-                      <p className="font-bold">{blogItem.itemHeader}</p>
+                    {blogItem.node.blogsAndNewsPost.postCategory && (
+                      <p className="font-bold">
+                        {blogItem.node.blogsAndNewsPost.postCategory}
+                      </p>
                     )}
-                    {blogItem.subItemHeader && (
+                    {blogItem.node.blogsAndNewsPost.postTitle && (
                       <h5 className="font-semibold leading-7 text-customViolet">
-                        {blogItem.subItemHeader}
+                        {blogItem.node.blogsAndNewsPost.postTitle}
                       </h5>
                     )}
-                    {blogItem.itemDescription && (
-                      <p>{blogItem.itemDescription}</p>
+                    {blogItem.node.blogsAndNewsPost.postShortDescription && (
+                      <p>
+                        {blogItem.node.blogsAndNewsPost.postShortDescription}
+                      </p>
                     )}
                     <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
                       Read more
