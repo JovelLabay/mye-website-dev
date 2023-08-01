@@ -60,11 +60,15 @@ export default async function Home() {
       <Services services={services} />
       <Works myeWorking={myeWorking} />
       <Industry industrySolutions={industrySolutions} />
+      <div>
+        <a id="about" tabIndex={-1} />
+      </div>
       <About about={about} />
       <BlogsNews blogsNews={blogsNews} />
-      <JoinOurTeam joinOurTeam={joinOurTeam} />
 
+      <JoinOurTeam joinOurTeam={joinOurTeam} />
       {/* FORM */}
+      <a id="getintouch" tabIndex={-1} />
       <GetInTouchForm getInTouch={getInTouch} />
     </div>
   );

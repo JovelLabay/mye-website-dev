@@ -55,6 +55,25 @@ function Page({
 
   const shouldShowShadow = typeof window !== "undefined" && scrollY > 0;
 
+  const handleClick = (e: any, id: string) => {
+    setStates({
+      ...states,
+      isMenu: false,
+    });
+    e.preventDefault();
+    const element = document.getElementById(id);
+
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - 100;
+
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <nav
       id="navigation"
@@ -91,14 +110,44 @@ function Page({
               )
               .map((link) => (
                 <li key={link.id} className="link-nav">
-                  <a
-                    href={link.uri}
-                    className={classNames(
-                      router === "/" ? "text-[#2D2D2D]" : "text-white",
-                    )}
-                  >
-                    {link.title}
-                  </a>
+                  {link.title === "About Us" ? (
+                    <a
+                      href="/#about"
+                      onClick={
+                        router !== "/"
+                          ? undefined
+                          : (e) => handleClick(e, "about")
+                      }
+                      className={classNames(
+                        router === "/" ? "text-[#2D2D2D]" : "text-white",
+                      )}
+                    >
+                      {link.title}
+                    </a>
+                  ) : link.title === "Contact Us" ? (
+                    <a
+                      href="/#getintouch"
+                      onClick={
+                        router !== "/"
+                          ? undefined
+                          : (e) => handleClick(e, "getintouch")
+                      }
+                      className={classNames(
+                        router === "/" ? "text-[#2D2D2D]" : "text-white",
+                      )}
+                    >
+                      {link.title}
+                    </a>
+                  ) : (
+                    <a
+                      href={link.uri}
+                      className={classNames(
+                        router === "/" ? "text-[#2D2D2D]" : "text-white",
+                      )}
+                    >
+                      {link.title}
+                    </a>
+                  )}
                 </li>
               ))}
           <li>
@@ -165,12 +214,38 @@ function Page({
                     )
                     .map((link) => (
                       <li key={link.id} className="text-lg font-bold ml-10">
-                        <a
-                          href={link.uri}
-                          className="no-underline text-customDark"
-                        >
-                          {link.title}
-                        </a>
+                        {link.title === "About Us" ? (
+                          <a
+                            href="/#about"
+                            onClick={
+                              router !== "/"
+                                ? undefined
+                                : (e) => handleClick(e, "about")
+                            }
+                            className="no-underline text-customDark"
+                          >
+                            {link.title}
+                          </a>
+                        ) : link.title === "Contact Us" ? (
+                          <a
+                            href="/#getintouch"
+                            onClick={
+                              router !== "/"
+                                ? undefined
+                                : (e) => handleClick(e, "getintouch")
+                            }
+                            className="no-underline text-customDark"
+                          >
+                            {link.title}
+                          </a>
+                        ) : (
+                          <a
+                            href={link.uri}
+                            className="no-underline text-customDark"
+                          >
+                            {link.title}
+                          </a>
+                        )}
                       </li>
                     ))}
 
