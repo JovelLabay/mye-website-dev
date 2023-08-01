@@ -114,11 +114,11 @@ function Page({
                   ))}
             </ul>
 
-            <ul>
+            {/* <ul>
               <li>FAQ</li>
               <li>Terms of Service</li>
               <li>Privacy Policy</li>
-            </ul>
+            </ul> */}
           </div>
         </div>
 
