@@ -56,7 +56,7 @@ async function Page() {
       {/* BLOCKS */}
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
       <RolesBlock roles={roles} />
-      {/* <GetInTouchForm getInTouch={getInTouch} /> */}
+      <GetInTouchForm getInTouch={getInTouch} />
     </>
   );
 }
