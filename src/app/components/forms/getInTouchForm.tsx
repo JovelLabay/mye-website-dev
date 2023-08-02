@@ -191,7 +191,7 @@ function GetInTouchForm({
           alert("Something went wrong. Please try again.");
           setStatus((prev) => ({ ...prev, buttonStatus: false }));
 
-          console.error(err);
+          console.log(err);
         });
     })();
   }
