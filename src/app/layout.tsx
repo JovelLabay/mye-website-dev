@@ -13,6 +13,11 @@ import { GetAllPages } from "@/lib/graphql/query";
 async function getAllPages() {
   const pages = await client.query({
     query: GetAllPages,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
   });
 
   await client.cache.reset();

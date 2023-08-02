@@ -19,6 +19,11 @@ async function getBlocks() {
 
   const blocks = await client.query({
     query: GET_JOIN_TEAM,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
     variables: { id },
   });
 
