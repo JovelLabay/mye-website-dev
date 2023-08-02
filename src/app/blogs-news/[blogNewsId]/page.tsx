@@ -6,6 +6,7 @@ import { GetAllBlogsAndNews } from "@/lib/graphql/query";
 import GET_BLOGS_AND_NEWS from "@/lib/graphql/queryBlogsNews";
 import GET_BLOG_NEWS_BY_ID from "@/lib/graphql/queryGetBlogNewsById";
 import { getBlogsNews } from "@/lib/query/query";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
@@ -38,6 +39,11 @@ async function getBlocks(id: string) {
   return actualData;
 }
 
+export const metadata: Metadata = {
+  title: "MYE Cloud",
+  description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
+};
+
 async function Page({ params }: { params: { blogNewsId: string } }) {
   const blogsNewsData = await getBlogsNews();
   const actualBlogData = await getBlocks(`${params.blogNewsId}=`);
@@ -57,7 +63,9 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
                 Blogs and News
               </Link>
               <p className="text-customViolet">{">"}</p>
-              <p>{actualBlogData.data.post.blogsAndNewsPost.postTitle}</p>
+              <p className="opacity-50">
+                {actualBlogData.data.post.blogsAndNewsPost.postTitle}
+              </p>
             </div>
 
             <div className="mb-5">

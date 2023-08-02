@@ -14,11 +14,6 @@ import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 import GetInTouchForm from "../components/forms/getInTouchForm";
 import RolesBlock from "../components/blocks/rolesBlock";
 
-export const metadata: Metadata = {
-  title: "MYE Cloud | Join Our Team",
-  description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
-};
-
 async function getBlocks() {
   const id = process.env.JOIN_OUR_TEAM_PAGE_ID;
 
@@ -32,12 +27,15 @@ async function getBlocks() {
   return blocks.data;
 }
 
+export const metadata: Metadata = {
+  title: "MYE Cloud | Join Our Team",
+  description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
+};
+
 async function Page() {
   const block = await getBlocks();
 
   const { joinOurTeam, roles, getInTouch } = await block?.joinOurTeamPage;
-
-  console.log(roles);
 
   return (
     <>

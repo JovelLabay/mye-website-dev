@@ -6,6 +6,12 @@ import GET_BLOGS_AND_NEWS from "@/lib/graphql/queryBlogsNews";
 import HeaderBlogsNewsBlock from "../components/blocks/headerBlogsNewsBlock";
 import BlogsNewsBlock2 from "../components/blocks/blogsNewsBlock2";
 import { getBlocksBlogNews, getBlogsNews } from "@/lib/query/query";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MYE Cloud | Blogs and News",
+  description: "MYE Cloud is a cloud built by Filipinos, for Filipinos.",
+};
 
 async function Page() {
   const block = await getBlocksBlogNews();
