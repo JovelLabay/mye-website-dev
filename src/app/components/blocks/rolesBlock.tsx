@@ -61,8 +61,10 @@ function RolesBlock({
                   ref={(element) => (contentRefs.current[index] = element)}
                   className="mb-5"
                 >
-                  <h5 className="font-bold">{item.title}</h5>
-                  <p className="text-[15px] mb-3">{item.roleDescription}</p>
+                  <h5 className="font-bold pb-4">{item.title}</h5>
+                  <p className="text-[15px] mb-3 pl-5">
+                    {item.roleDescription}
+                  </p>
                   <div className="border-1 border-white px-3 py-4 gap-4 grid grid-cols-1 md:grid-cols-2 text-[15px]">
                     <div>
                       <h5 className="font-bold mb-3">Responsibilities</h5>
