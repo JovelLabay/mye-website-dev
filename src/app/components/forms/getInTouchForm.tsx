@@ -168,28 +168,23 @@ function GetInTouchForm({
           },
         })
         .then((res) => {
-          if (res.status === 200 && res.statusText === "OK") {
-            setStatus((prev) => ({
-              ...prev,
-              modal: true,
-              status: true,
-              buttonStatus: false,
-            }));
-          }
+          setStatus((prev) => ({
+            ...prev,
+            modal: true,
+            status: true,
+            buttonStatus: false,
+          }));
 
           console.log(res);
           reset();
         })
         .catch((err) => {
-          // alert("Something went wrong. Please try again.");
-
           setStatus((prev) => ({
             ...prev,
             modal: true,
             status: false,
             buttonStatus: false,
           }));
-          setStatus((prev) => ({ ...prev, buttonStatus: false }));
 
           console.log(err);
         });
