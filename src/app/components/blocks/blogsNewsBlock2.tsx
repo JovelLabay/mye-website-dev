@@ -71,7 +71,9 @@ function BlogsNewsBlock2({
                     </h5>
                   )}
                   {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                    <p>{blogItem.node.blogsAndNewsPost.postShortDescription}</p>
+                    <p className="text-ellipsis overflow-hidden h-[100px]">
+                      {blogItem.node.blogsAndNewsPost.postShortDescription}
+                    </p>
                   )}
                   <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
                     Read more
@@ -123,7 +125,7 @@ function BlogsNewsBlock2({
                       </h5>
                     )}
                     {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                      <p>
+                      <p className="text-ellipsis overflow-hidden h-[100px]">
                         {blogItem.node.blogsAndNewsPost.postShortDescription}
                       </p>
                     )}
