@@ -71,7 +71,7 @@ function BlogsNewsBlock({
                 ))}
             </div>
 
-            <div className="col-span-3 flex flex-col gap-9 sm:gap-5 lg:gap-3">
+            <div className="col-span-3 flex flex-col gap-9 sm:gap-5 lg:gap-3 ">
               {blogsNewsData2
                 .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
                 .map((blogItem, index) => (
@@ -92,7 +92,7 @@ function BlogsNewsBlock({
                       <h5 className="font-semibold leading-7 text-customViolet">
                         {blogItem.node.blogsAndNewsPost.postTitle}
                       </h5>
-                      <p className="hidden lg:block">
+                      <p className="hidden lg:block text-ellipsis overflow-hidden h-[100px]">
                         {blogItem.node.blogsAndNewsPost.postShortDescription}
                       </p>
                     </div>
