@@ -151,9 +151,10 @@ function GetInTouchForm({
 
   function submitForm({ e }: { e: React.FormEvent<HTMLFormElement> }) {
     e.preventDefault();
-    setStatus((prev) => ({ ...prev, buttonStatus: true }));
 
     handleSubmit((data) => {
+      setStatus((prev) => ({ ...prev, buttonStatus: true }));
+
       axios
         .request({
           method: "POST",
