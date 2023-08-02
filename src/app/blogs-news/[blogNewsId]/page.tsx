@@ -30,6 +30,11 @@ export async function generateStaticParams() {
 async function getBlocks(id: string) {
   const actualData = await client.query({
     query: GET_BLOG_NEWS_BY_ID,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
     variables: { id },
   });
 

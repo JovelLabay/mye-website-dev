@@ -6,6 +6,11 @@ import GET_PRODUCT_SERVICE from "../graphql/queryProductsServices";
 async function getBlogsNews() {
   const blocks = await client.query({
     query: GetAllBlogsAndNews,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
   });
 
   await client.cache.reset();
@@ -16,6 +21,11 @@ async function getBlogsNews() {
 async function getBlocks() {
   const blocks = await client.query({
     query: GetHomePage,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
   });
 
   await client.cache.reset();
@@ -28,6 +38,11 @@ async function getBlocksBlogNews() {
 
   const blocks = await client.query({
     query: GET_BLOGS_AND_NEWS,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
     variables: { id },
   });
 
@@ -41,6 +56,11 @@ async function getBlocksProductsServices() {
 
   const blocks = await client.query({
     query: GET_PRODUCT_SERVICE,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    } as any,
     variables: { id },
   });
 
