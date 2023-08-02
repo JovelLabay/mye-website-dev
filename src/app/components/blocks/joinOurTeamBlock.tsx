@@ -44,7 +44,7 @@ function JoinOurTeamBlock({
           <div className="flex flex-col justify-center items-start gap-2">
             <h1
               className={classNames(
-                "animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold inline-block text-transparent bg-clip-text",
+                "animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold inline-block text-transparent bg-clip-text pb-[70px]",
               )}
               {...(joinOurTeam.headerJoinOurTeam.isGradient
                 ? {
