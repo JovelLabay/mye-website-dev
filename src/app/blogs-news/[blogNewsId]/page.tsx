@@ -59,6 +59,13 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
               <p className="text-customViolet">{">"}</p>
               <p>{actualBlogData.data.post.blogsAndNewsPost.postTitle}</p>
             </div>
+
+            <div className="mb-5">
+              <h1 className="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
+                {actualBlogData.data.post.blogsAndNewsPost.postTitle}
+              </h1>
+              <p>{actualBlogData.data.post.blogsAndNewsPost.postPublished}</p>
+            </div>
             <DetailedBlogsNewsBlock
               params={params}
               blogsNews={actualBlogData}
