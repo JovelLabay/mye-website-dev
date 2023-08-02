@@ -37,8 +37,6 @@ async function Page() {
 
   const { joinOurTeam, roles, getInTouch } = await block?.joinOurTeamPage;
 
-  console.log(roles);
-
   return (
     <>
       <div className="the-container mt-8 sm:mt-10 lg:mt-15">
