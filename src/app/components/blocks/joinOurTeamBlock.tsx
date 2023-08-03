@@ -70,7 +70,11 @@ function JoinOurTeamBlock({
                 {joinOurTeam.joinOurTeamDescriptionTwo}
               </p>
             )}
-            <a href={`${window.location.pathname}#jobs`}>
+            <a
+              href={`${
+                typeof window !== "undefined" && window.location.pathname
+              }#jobs`}
+            >
               <button className="mt-3 py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
                 {joinOurTeam.joinOurTeamMoreLink.buttonLabel}
               </button>
