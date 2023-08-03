@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import Link from "next/link";
 import React from "react";
 
@@ -38,17 +39,20 @@ function MoreBlogsNewsBlock({
 
       <div className="my-4 flex flex-col items-start justify-start gap-3">
         {blogsNewsData2 &&
-          blogsNewsData2
-            .filter((item) => item.node.id !== actualBlogData.id)
-            .map((blogItem, index) => (
-              <Link
-                className=" text-black no-underline font-thin text-sm"
-                href={`/blogs-news/${blogItem.node.id.replace(/=/g, "")}`}
-                key={index}
-              >
-                {blogItem.node.blogsAndNewsPost.postTitle}
-              </Link>
-            ))}
+          blogsNewsData2.map((blogItem, index) => (
+            <Link
+              className={classNames(
+                "text-black no-underline text-sm",
+                blogItem.node.id === actualBlogData.id
+                  ? "font-bold"
+                  : "font-thin ",
+              )}
+              href={`/blogs-news/${blogItem.node.id.replace(/=/g, "")}`}
+              key={index}
+            >
+              {blogItem.node.blogsAndNewsPost.postTitle}
+            </Link>
+          ))}
       </div>
     </>
   );
