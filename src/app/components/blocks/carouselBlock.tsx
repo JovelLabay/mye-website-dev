@@ -14,6 +14,10 @@ function CarouselBlock({
       sourceUrl: string;
     };
     backgroundColor: string;
+    learnMore: {
+      url: string;
+      title?: string | null;
+    };
   }[];
 }) {
   return (
@@ -44,9 +48,11 @@ function CarouselBlock({
                     {item.label}
                   </h1>
                   <p className="py-3">{item.description}</p>
-                  <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-white text-customViolet font-medium md:font-semibold">
-                    Learn more
-                  </button>
+                  <a href={item.learnMore.url}>
+                    <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-white text-customViolet font-medium md:font-semibold">
+                      Learn more
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>

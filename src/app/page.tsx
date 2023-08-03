@@ -45,6 +45,8 @@ export default async function Home() {
 
   const blogsNewsData2 = blogsNewsData?.posts?.edges;
 
+  console.log(carouselItem);
+
   return (
     <div>
       <Carousel carouselItem={carouselItem} />
