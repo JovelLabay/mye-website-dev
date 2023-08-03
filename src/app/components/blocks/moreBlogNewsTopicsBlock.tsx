@@ -31,15 +31,26 @@ function MoreBlogNewsTopicsBlock({
 
       <div className="my-4 flex flex-col items-start justify-start gap-3">
         {blogsNewsData2 &&
-          blogsNewsData2.map((blogItem, index) => (
-            <Link
-              className=" text-black no-underline font-thin text-sm"
-              href={`/blogs-news/${blogItem.node.id.replace(/=/g, "")}`}
-              key={index}
-            >
-              {blogItem.node.blogsAndNewsPost.postCategory}
-            </Link>
-          ))}
+          blogsNewsData2
+            .filter(
+              (item, index, self) =>
+                index ===
+                self.findIndex(
+                  (t) =>
+                    t.node.blogsAndNewsPost.postCategory ===
+                    item.node.blogsAndNewsPost.postCategory,
+                ),
+            )
+            .map((blogItem, index) => (
+              <Link
+                className=" text-black no-underline font-thin text-sm"
+                // href={`/blogs-news/${blogItem.node.id.replace(/=/g, "")}`}
+                href={""}
+                key={index}
+              >
+                {blogItem.node.blogsAndNewsPost.postCategory}
+              </Link>
+            ))}
       </div>
     </div>
   );
