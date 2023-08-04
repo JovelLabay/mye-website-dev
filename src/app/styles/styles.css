@@ -91,7 +91,6 @@
 
 .login-bg-white:hover,
 #get-in-touch-send-btn:hover {
-  cursor: pointer;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.3);
 }
 

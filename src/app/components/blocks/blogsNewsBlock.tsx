@@ -27,17 +27,9 @@ function BlogsNewsBlock({
 }) {
   const route = useRouter();
 
-  const latesOnlyForNonFeatured = [...blogsNewsData2.splice(0, 3)]
+  const latesOnlyForNonFeatured = blogsNewsData2
     .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
-    .filter(
-      (item, index, self) =>
-        index ===
-        self.findIndex(
-          (t) =>
-            t.node.blogsAndNewsPost.postCategory ===
-            item.node.blogsAndNewsPost.postCategory,
-        ),
-    );
+    .filter((_, index) => index < 3);
 
   return (
     <div className="bg-customSemiWhite">
@@ -55,33 +47,33 @@ function BlogsNewsBlock({
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
           <div className="grid grid-cols-1 lg:grid-cols-7 mt-5 lg:gap-5">
             <div className="col-span7 lg:col-span-4">
-              {blogsNewsData2 &&
-                blogsNewsData2
-                  .filter((item) => item.node.blogsAndNewsPost.isPostFeatured)
-                  .map((blogItem, index) => (
+              {blogsNewsData2
+                .filter((item) => item.node.blogsAndNewsPost.isPostFeatured)
+                .filter((_, index) => index === 0)
+                .map((blogItem, index) => (
+                  <div
+                    key={index}
+                    className="blogs-news-image-container flex flex-col gap-4 hover:cursor-pointer"
+                  >
                     <div
-                      key={index}
-                      className="blogs-news-image-container flex flex-col gap-4 hover:cursor-pointer"
-                    >
-                      <div
-                        className="blogs-news-image"
-                        style={{
-                          backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
-                        }}
-                      />
-                      <div className="mb-4">
-                        <p className="font-bold hidden lg:block">
-                          {blogItem.node.blogsAndNewsPost.postCategory}
-                        </p>
-                        <h5 className="font-semibold leading-7 text-customViolet">
-                          {blogItem.node.blogsAndNewsPost.postTitle}
-                        </h5>
-                        <p className="hidden lg:block">
-                          {blogItem.node.blogsAndNewsPost.postShortDescription}
-                        </p>
-                      </div>
+                      className="blogs-news-image"
+                      style={{
+                        backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
+                      }}
+                    />
+                    <div className="mb-4">
+                      <p className="font-bold hidden lg:block">
+                        {blogItem.node.blogsAndNewsPost.postCategory}
+                      </p>
+                      <h5 className="font-semibold leading-7 text-customViolet">
+                        {blogItem.node.blogsAndNewsPost.postTitle}
+                      </h5>
+                      <p className="hidden lg:block">
+                        {blogItem.node.blogsAndNewsPost.postShortDescription}
+                      </p>
                     </div>
-                  ))}
+                  </div>
+                ))}
             </div>
 
             <div className="col-span-3 flex flex-col gap-9 sm:gap-5 lg:gap-3 ">

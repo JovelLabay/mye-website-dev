@@ -81,9 +81,12 @@ function BlogsNewsBlock2({
                       {blogItem.node.blogsAndNewsPost.postShortDescription}
                     </p>
                   )}
-                  <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
-                    Read more
-                  </button>
+
+                  <div className="w-full flex justify-center md:justify-start">
+                    <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
+                      Read more
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -98,7 +101,7 @@ function BlogsNewsBlock2({
 
             <Listbox value={selected}>
               <div className="relative mt-1">
-                <Listbox.Button className="relative min-w-[200px] rounded-lg bg-gray-200 py-2 pl-3 pr-10 text-left">
+                <Listbox.Button className="relative min-w-[170px] rounded-lg bg-gray-200 py-2 pl-3 pr-10 text-left">
                   <span className="block truncate">{selected}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <BsChevronDown
@@ -160,7 +163,7 @@ function BlogsNewsBlock2({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {blogsNewsData2 &&
               blogsNewsData2
-                .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
+                // .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
                 .filter((item: any) => {
                   if (selected === "All Category") {
                     return item;
@@ -207,9 +210,12 @@ function BlogsNewsBlock2({
                           {blogItem.node.blogsAndNewsPost.postShortDescription}
                         </p>
                       )}
-                      <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
-                        Read more
-                      </button>
+
+                      <div className="w-full flex justify-center md:justify-start">
+                        <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
+                          Read more
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}

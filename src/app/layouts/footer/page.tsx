@@ -131,7 +131,7 @@ function Page({
             </li>
             <li>
               <MdEmail size={25} />
-              hello@myecloud.com
+              askmye@mye.net
             </li>
             <li>
               <BiSolidLocationPlus size={25} />
