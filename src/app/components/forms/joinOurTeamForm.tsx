@@ -88,6 +88,7 @@ function JoinOurTeamForm({
                       <input
                         type="file"
                         id="file"
+                        accept="application/pdf"
                         className="rounded-lg p-2 bg-gray-100 text-black outline-none w-[220px] md:w-[350px] lg:w-fit"
                       />
                     </div>
