@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 
@@ -13,6 +13,7 @@ import GET_JOIN_TEAM from "@/lib/graphql/queryJoinTeam";
 import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 import GetInTouchForm from "../components/forms/getInTouchForm";
 import RolesBlock from "../components/blocks/rolesBlock";
+import JoinOurTeamForm from "../components/forms/joinOurTeamForm";
 
 async function getBlocks() {
   const id = process.env.JOIN_OUR_TEAM_PAGE_ID;

@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import Image from "next/image";
+import JoinOurTeamForm from "../forms/joinOurTeamForm";
 
 function RolesBlock({
   roles,
@@ -21,6 +22,12 @@ function RolesBlock({
   };
 }) {
   const contentRefs = useRef<any>([]);
+  const [status, setStatus] = useState({
+    modal: false,
+    status: true,
+    buttonStatus: false,
+    feedback: false,
+  });
 
   const scrollToDetailedDescription = (index: number) => {
     if (contentRefs.current[index]) {
@@ -41,7 +48,7 @@ function RolesBlock({
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 md:gap-3 relative">
             {/* BUTTONS */}
-            <div className="custom-sticky flex flex-col items-start gap-4 text-[#2D2D2D] md:sticky mb-4 bg-[#F1F6FA]">
+            <div className="custom-sticky flex flex-col items-start gap-4 text-[#2D2D2D] md:sticky mb-4 bg-transparent">
               {roles?.roles?.map((item: any, index: any) => (
                 <button
                   key={index}
@@ -97,6 +104,9 @@ function RolesBlock({
                     <button
                       className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[33px] md:px-[40px] lg:px-[60px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
+                      onClick={() =>
+                        setStatus((prev) => ({ ...prev, modal: true }))
+                      }
                     >
                       Apply
                     </button>
@@ -107,6 +117,7 @@ function RolesBlock({
           </div>
         </div>
       </div>
+      <JoinOurTeamForm currentStatus={status} setCurrentStatus={setStatus} />
     </div>
   );
 }
