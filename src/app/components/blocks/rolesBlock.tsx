@@ -26,6 +26,7 @@ function RolesBlock({
     modal: false,
     status: true,
     buttonStatus: false,
+    feedback: false,
   });
 
   const scrollToDetailedDescription = (index: number) => {
