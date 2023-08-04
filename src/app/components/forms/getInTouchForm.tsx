@@ -54,8 +54,8 @@ function GetInTouchForm({
           <form className="mt-5" onSubmit={(e) => submitForm({ e })}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-[600px] mx-auto">
               <div className="flex flex-col">
-                <label htmlFor="Name" className="mb-2">
-                  Name
+                <label htmlFor="Name" className="mb-2 flex">
+                  Name <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="text"
@@ -70,8 +70,8 @@ function GetInTouchForm({
                 )}
               </div>
               <div className="flex flex-col">
-                <label htmlFor="Email Address" className="mb-2">
-                  Email Address
+                <label htmlFor="Email Address" className="mb-2 flex">
+                  Email Address <span className="text-red-400">*</span>
                 </label>
                 <input
                   type="email"
@@ -87,8 +87,8 @@ function GetInTouchForm({
               </div>
             </div>
             <div className="mt-4 max-w-[600px] mx-auto">
-              <label htmlFor="Message" className="mb-2">
-                Message
+              <label htmlFor="Message" className="mb-2 flex">
+                Message<span className="text-red-400">*</span>
               </label>
               <textarea
                 placeholder="Message"
