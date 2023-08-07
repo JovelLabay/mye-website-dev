@@ -83,7 +83,7 @@ function JoinOurTeamForm({
                   <form className="mt-2" onSubmit={handleSubmit(onSubmit)}>
                     <div className="mt-4 max-w-[600px] mx-auto mb-10">
                       <label htmlFor="file" className="mb-2">
-                        Upload File <span className="text-red-400">*</span>
+                        Upload File
                       </label>
                       <input
                         type="file"
