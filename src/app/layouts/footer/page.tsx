@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 
 import {
@@ -30,6 +30,7 @@ function Page({
     | null;
 }) {
   const router = usePathname();
+  const redirect = useRouter();
 
   const handleClick = (e: any, id: string) => {
     e.preventDefault();
@@ -141,10 +142,22 @@ function Page({
 
           <div>
             <ul className="flex gap-3">
-              <li>
+              <li
+                onClick={() => {
+                  redirect.push(
+                    "https://www.linkedin.com/company/mye-cloud-technologies-inc",
+                  );
+                }}
+              >
                 <AiFillLinkedin size={25} />
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  redirect.push(
+                    "https://www.facebook.com/people/MYE-Cloud-Technologies-Inc/100095387351924/",
+                  );
+                }}
+              >
                 <AiFillFacebook size={25} />
               </li>
               <li>
