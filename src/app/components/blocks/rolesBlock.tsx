@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 
 import Image from "next/image";
 import JoinOurTeamForm from "../forms/joinOurTeamForm";
+import classNames from "classnames";
 
 function RolesBlock({
   roles,
@@ -22,6 +23,7 @@ function RolesBlock({
   };
 }) {
   const contentRefs = useRef<any>([]);
+  const [indexItem, setIndex] = useState(-0);
   const [status, setStatus] = useState({
     modal: false,
     status: true,
@@ -48,12 +50,20 @@ function RolesBlock({
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 md:gap-3 relative">
             {/* BUTTONS */}
-            <div className="custom-sticky flex flex-col items-start gap-4 text-[#2D2D2D] md:sticky mb-4 bg-transparent">
+            <div className="custom-sticky flex flex-col items-start text-[#2D2D2D] md:sticky mb-4 bg-transparent">
               {roles?.roles?.map((item: any, index: any) => (
                 <button
                   key={index}
-                  className="font-bold text-left"
-                  onClick={() => scrollToDetailedDescription(index)}
+                  className={classNames(
+                    "font-bold text-left py-2 pl-2",
+                    indexItem === index
+                      ? "border-l-4 border-customViolet"
+                      : "border-l-4 ",
+                  )}
+                  onClick={() => {
+                    scrollToDetailedDescription(index);
+                    setIndex(index);
+                  }}
                 >
                   {item.title}
                 </button>

@@ -22,7 +22,7 @@ function CarouselBlock({
 }) {
   return (
     <div>
-      <Carousel interval={2000} controls={false}>
+      <Carousel interval={2000} controls={false} fade={true}>
         {carouselItem.map((item, index) => (
           <Carousel.Item key={index}>
             <div
