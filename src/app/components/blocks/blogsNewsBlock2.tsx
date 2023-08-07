@@ -46,7 +46,7 @@ function BlogsNewsBlock2({
             .filter((item) => item.node.blogsAndNewsPost.isPostFeatured)
             .map((blogItem, index) => (
               <div
-                className="grid grid-cols-1 md:grid-cols-3 md:gap-5 hover:cursor-pointer"
+                className="grid grid-cols-1 md:grid-cols-3 md:gap-5 hover:cursor-pointer mb-3 md:mb-0"
                 key={index}
                 onClick={() =>
                   route.push(

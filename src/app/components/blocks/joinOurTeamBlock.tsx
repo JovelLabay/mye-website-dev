@@ -43,26 +43,28 @@ function JoinOurTeamBlock({
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col justify-center items-start gap-2">
-            <h1
-              className={classNames(
-                "animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold inline-block text-transparent bg-clip-text pb-[70px]",
-              )}
-              {...(joinOurTeam.headerJoinOurTeam.isGradient
-                ? {
-                    style: {
-                      background: `linear-gradient(90deg, ${joinOurTeam.headerJoinOurTeam.headerColor})`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    },
-                  }
-                : {
-                    style: {
-                      color: `#${joinOurTeam.headerJoinOurTeam.headerColor}`,
-                    },
-                  })}
-            >
-              {joinOurTeam.headerJoinOurTeam.headerLabel}
-            </h1>
+            <div className="w-full flex justify-center md:justify-start">
+              <h1
+                className={classNames(
+                  "animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold inline-block text-transparent bg-clip-text pb-[70px]",
+                )}
+                {...(joinOurTeam.headerJoinOurTeam.isGradient
+                  ? {
+                      style: {
+                        background: `linear-gradient(90deg, ${joinOurTeam.headerJoinOurTeam.headerColor})`,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      },
+                    }
+                  : {
+                      style: {
+                        color: `#${joinOurTeam.headerJoinOurTeam.headerColor}`,
+                      },
+                    })}
+              >
+                {joinOurTeam.headerJoinOurTeam.headerLabel}
+              </h1>
+            </div>
             <p className="lg:w-[80%]">
               {joinOurTeam.joinOurTeamDescriptionOne}
             </p>
