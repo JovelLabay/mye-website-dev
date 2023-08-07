@@ -54,6 +54,11 @@ function BlogsNewsBlock({
                   <div
                     key={index}
                     className="blogs-news-image-container flex flex-col gap-4 hover:cursor-pointer"
+                    onClick={() =>
+                      route.push(
+                        `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
+                      )
+                    }
                   >
                     <div
                       className="blogs-news-image"
@@ -81,6 +86,11 @@ function BlogsNewsBlock({
                 <div
                   key={index}
                   className="blogs-news-image-container-2 grid grid-cols-3 gap-3 hover:cursor-pointer"
+                  onClick={() =>
+                    route.push(
+                      `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
+                    )
+                  }
                 >
                   <div
                     className="blogs-news-image-2 col-span-3 lg:col-span-1 h-[200px] sm:h-[250px] md:h-[300px] w-full lg:h-[150px]"

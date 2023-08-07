@@ -101,6 +101,7 @@ function BlogsNewsBlock2({
 
             <Listbox value={selected}>
               <div className="relative mt-1">
+                <p className="text-right font-thin text-sm">Filter by Topics</p>
                 <Listbox.Button className="relative min-w-[170px] rounded-lg bg-gray-200 py-2 pl-3 pr-10 text-left">
                   <span className="block truncate">{selected}</span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
