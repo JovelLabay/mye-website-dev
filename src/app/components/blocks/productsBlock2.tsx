@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import Image from "next/image";
+import classNames from "classnames";
 
 function ProductsBlock2({
   products,
@@ -21,6 +22,7 @@ function ProductsBlock2({
   };
 }) {
   const contentRefs = useRef<any>([]);
+  const [indexItem, setIndex] = useState(-0);
 
   const scrollToDetailedDescription = (index: number) => {
     if (contentRefs.current[index]) {
@@ -41,12 +43,20 @@ function ProductsBlock2({
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 md:gap-3 relative">
             {/* BUTTONS */}
-            <div className="custom-sticky flex flex-col items-start gap-4 text-[#2D2D2D] md:sticky mb-4 bg-[#F1F6FA]">
+            <div className="custom-sticky flex flex-col items-start text-[#2D2D2D] md:sticky mb-4 bg-[#F1F6FA]">
               {products.productsAndServices.map((item, index) => (
                 <button
                   key={index}
-                  className="font-bold text-left"
-                  onClick={() => scrollToDetailedDescription(index)}
+                  className={classNames(
+                    "font-bold text-left py-2 pl-2",
+                    indexItem === index
+                      ? "border-l-4 border-customViolet"
+                      : "border-l-4 ",
+                  )}
+                  onClick={() => {
+                    scrollToDetailedDescription(index);
+                    setIndex(index);
+                  }}
                 >
                   {item.title}
                 </button>
