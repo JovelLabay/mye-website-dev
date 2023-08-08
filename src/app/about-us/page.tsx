@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 async function Page() {
   const block = await getBlocks();
 
-  const { joinOurTeam, aboutUs } = await block?.aboutUsPage;
+  const { joinOurTeam, aboutUs, team } = await block?.aboutUsPage;
 
   return (
     <>
