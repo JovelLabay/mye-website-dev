@@ -37,8 +37,9 @@ function ProductsBlock2({
     }
   };
 
+  // mt-8 sm:mt-10 md:mt-15 lg:mt-20
   return (
-    <div className="text-white mt-8 sm:mt-10 md:mt-15 lg:mt-20 bg-[#F1F6FA]">
+    <div className="text-white bg-[#F1F6FA]">
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
         <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
           <div className="mt-10 grid grid-cols-1 md:grid-cols-3 md:gap-3 relative">
@@ -70,7 +71,7 @@ function ProductsBlock2({
                   key={index}
                   ref={(element) => (contentRefs.current[index] = element)}
                 >
-                  <h5 className="font-bold">{item.title}</h5>
+                  <h5 className="font-bold mb-3">{item.title}</h5>
 
                   <div className="border-1 border-white px-3 py-4 gap-4 grid grid-cols-1 md:grid-cols-2">
                     {item.productServiceItem &&
