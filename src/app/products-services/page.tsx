@@ -15,6 +15,7 @@ import ProductsBlock2 from "../components/blocks/productsBlock2";
 import GetInTouchForm from "../components/forms/getInTouchForm";
 import ServicesInfoBlock from "../components/blocks/servicesInfoBlock";
 import { getBlocksProductsServices } from "@/lib/query/query";
+import Tabs from "../components/shared/tabs";
 
 export const metadata: Metadata = {
   title: "MYE Cloud | Products & Services",
@@ -43,8 +44,18 @@ async function Page() {
 
       {/* BLOCKS */}
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
-      <ProductsBlock2 products={products} />
-      <ServicesInfoBlock services={services} />
+      <Tabs
+        component={[
+          { title: "Products", node: <ProductsBlock2 products={products} /> },
+          { title: "Solutions", node: <h1>sdfsdfsdf</h1> },
+          {
+            title: "Services",
+            node: <ServicesInfoBlock services={services} />,
+          },
+        ]}
+      />
+      {/* <ProductsBlock2 products={products} /> */}
+      {/* <ServicesInfoBlock services={services} /> */}
       <GetInTouchForm getInTouch={getInTouch} />
     </>
   );
