@@ -79,19 +79,7 @@ function Page({
                   )
                   .map((link) => (
                     <li key={link.id}>
-                      {link.title === "About Us" ? (
-                        <a
-                          href="/#about"
-                          onClick={
-                            router !== "/"
-                              ? undefined
-                              : (e) => handleClick(e, "about")
-                          }
-                          className="no-underline text-customDark"
-                        >
-                          {link.title}
-                        </a>
-                      ) : link.title === "Contact Us" ? (
+                      {link.title === "Contact Us" ? (
                         <a
                           href="/#getintouch"
                           onClick={
