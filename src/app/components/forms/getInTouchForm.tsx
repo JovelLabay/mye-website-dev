@@ -158,6 +158,7 @@ function GetInTouchForm({
       axios
         .request({
           method: "POST",
+          maxBodyLength: Infinity,
           url: "/api/email",
           headers: {
             "Content-Type": "application/json",
