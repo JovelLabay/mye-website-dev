@@ -24,7 +24,7 @@ function AboutUsBlock({
   };
 }) {
   return (
-    <div className="mt-8 sm:mt-10 md:mt-15 lg:mt-20 grid grid-cols-1 sm:grid-cols-2">
+    <div className="mt-8 sm:mt-10 md:mt-15 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 the-container">
       {/* MISSION */}
       <div
         className="h-[500px] items-center flex"
