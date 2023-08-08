@@ -12,6 +12,7 @@ import GET_ABOUT_US from "@/lib/graphql/queryAboutUs";
 // BLOCKS
 import JoinOurTeamBlock from "../components/blocks/joinOurTeamBlock";
 import AboutUsBlock from "../components/blocks/aboutUsBlock";
+import MyTeamBlock from "../components/blocks/myTeamBlock";
 
 async function getBlocks() {
   const id = process.env.ABOUT_US_PAGE_ID;
@@ -58,6 +59,7 @@ async function Page() {
       {/* BLOCKS */}
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
       <AboutUsBlock aboutUs={aboutUs} />
+      <MyTeamBlock team={team} />
     </>
   );
 }

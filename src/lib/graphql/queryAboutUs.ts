@@ -40,6 +40,20 @@ const GET_ABOUT_US = gql`
           isGradient
         }
       }
+      team {
+        teamHeader
+        team {
+          teamTitle
+          teamDetails {
+            experience
+            name
+            position
+            image {
+              sourceUrl
+            }
+          }
+        }
+      }
     }
   }
 `;
