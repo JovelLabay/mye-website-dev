@@ -72,8 +72,19 @@ function MyTeamBlock({
                                 <div className="flex justify-start">
                                   {team.position}
                                 </div>
-                                <div className="flex justify-start">
-                                  {team.experience}
+                                <div className="flex flex-col">
+                                  {team.experience
+                                    .split(":")
+                                    .map((part, index, array) => (
+                                      <div
+                                        key={index}
+                                        className="flex justify-start"
+                                      >
+                                        {index < array.length - 1
+                                          ? `${part.trim()}:`
+                                          : part.trim()}
+                                      </div>
+                                    ))}
                                 </div>
                               </div>
                             </div>
