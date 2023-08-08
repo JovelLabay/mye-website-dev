@@ -32,6 +32,7 @@ function Page({
     isMenu: false,
     scrollY: 0,
   });
+  const [showSubMenu, setShowSubMenu] = useState(false);
 
   useEffect(() => {
     if (states.isMenu) {
@@ -74,6 +75,31 @@ function Page({
     }
   };
 
+  let timeoutId: NodeJS.Timeout;
+
+  const handleMouseEnter = () => {
+    setShowSubMenu(true);
+    clearTimeout(timeoutId);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutId = setTimeout(() => {
+      setShowSubMenu(false);
+    }, 2000);
+  };
+
+  function scrollToElement(id: any) {
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition - 100;
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  }
+
   return (
     <nav
       id="navigation"
@@ -110,7 +136,20 @@ function Page({
               )
               .map((link) => (
                 <li key={link.id} className="link-nav">
-                  {link.title === "Contact Us" ? (
+                  {link.title === "About Us" ? (
+                    <div>
+                      <a
+                        href="/about-us/"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        className={classNames(
+                          router === "/" ? "text-[#2D2D2D]" : "text-white",
+                        )}
+                      >
+                        {link.title}
+                      </a>
+                    </div>
+                  ) : link.title === "Contact Us" ? (
                     <a
                       href="/#getintouch"
                       onClick={
@@ -163,6 +202,58 @@ function Page({
             </button>
           </li>
         </ul>
+        {showSubMenu && (
+          <ul className="absolute top-[60px] ml-[475px]">
+            <li>
+              <a
+                href="/about-us/#mission"
+                onClick={(e) => {
+                  if (router === "/about-us/") {
+                    e.preventDefault();
+                  }
+                  scrollToElement("ourteam");
+                }}
+                className={classNames(
+                  router === "/" ? "text-[#2D2D2D]" : "text-white",
+                )}
+              >
+                Mission
+              </a>
+            </li>
+            <li>
+              <a
+                href="/about-us/#vision"
+                onClick={(e) => {
+                  if (router === "/about-us/") {
+                    e.preventDefault();
+                  }
+                  scrollToElement("ourteam");
+                }}
+                className={classNames(
+                  router === "/" ? "text-[#2D2D2D]" : "text-white",
+                )}
+              >
+                Vision
+              </a>
+            </li>
+            <li>
+              <a
+                href="/about-us/#ourteam"
+                onClick={(e) => {
+                  if (router === "/about-us/") {
+                    e.preventDefault();
+                  }
+                  scrollToElement("ourteam");
+                }}
+                className={classNames(
+                  router === "/" ? "text-[#2D2D2D]" : "text-white",
+                )}
+              >
+                Our Team
+              </a>
+            </li>
+          </ul>
+        )}
       </div>
 
       {/* MENU NAVIGATION */}

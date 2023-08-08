@@ -57,8 +57,12 @@ async function Page() {
       </div>
 
       {/* BLOCKS */}
+
       <JoinOurTeamBlock joinOurTeam={joinOurTeam} />
+      <div id="mission"></div>
+      <div id="vision"></div>
       <AboutUsBlock aboutUs={aboutUs} />
+      <div id="ourteam"></div>
       <MyTeamBlock team={team} />
     </>
   );

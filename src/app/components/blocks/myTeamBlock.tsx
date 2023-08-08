@@ -38,11 +38,11 @@ function MyTeamBlock({
           {team &&
             team.team.map((teamDetail, index) => (
               <div key={index} className="my-10">
-                <div className="mb-3 ml-10">
+                {/* <div className="mb-3 ml-10">
                   <h5 className="font-bold leading-7 text-[18px] text-customViolet  md:text-[25px] sm:text-[20px] lg:text-[28px]">
                     {teamDetail.teamTitle}
                   </h5>
-                </div>
+                </div> */}
                 <hr
                   style={{
                     border: "none",
@@ -58,13 +58,13 @@ function MyTeamBlock({
                           return (
                             <div key={index}>
                               <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-2 pb-10">
-                                <Image
+                                {/* <Image
                                   src={team.image.sourceUrl}
                                   alt={team.name}
                                   width={1000}
                                   height={1000}
                                   className="w-full h-full"
-                                />
+                                /> */}
                                 <div className="font-semibold leading-7 flex justify-start pt-4">
                                   {team.name}
                                 </div>
@@ -72,8 +72,19 @@ function MyTeamBlock({
                                 <div className="flex justify-start">
                                   {team.position}
                                 </div>
-                                <div className="flex justify-start">
-                                  {team.experience}
+                                <div className="flex flex-col">
+                                  {team.experience
+                                    .split(":")
+                                    .map((part, index, array) => (
+                                      <div
+                                        key={index}
+                                        className="flex justify-start"
+                                      >
+                                        {index < array.length - 1
+                                          ? `${part.trim()}:`
+                                          : part.trim()}
+                                      </div>
+                                    ))}
                                 </div>
                               </div>
                             </div>
