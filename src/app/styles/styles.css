@@ -293,6 +293,27 @@
   background-size: 150%;
 }
 
+/* DROPDOWN About Us */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 /* DOT POP UPS - HOW MYE WORKS */
 
 .dot-1-container li,
