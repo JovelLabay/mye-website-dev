@@ -74,14 +74,16 @@ function JoinOurTeamBlock({
               </p>
             )}
 
-            <div className="w-full flex justify-center md:justify-start">
-              <Link
-                href="/join-our-team/#jobs"
-                className="mt-3 py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink no-underline"
-              >
-                {joinOurTeam.joinOurTeamMoreLink.buttonLabel}
-              </Link>
-            </div>
+            {joinOurTeam.joinOurTeamMoreLink.buttonLabel && (
+              <div className="w-full flex justify-center md:justify-start">
+                <Link
+                  href="/join-our-team/#jobs"
+                  className="mt-3 py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink no-underline"
+                >
+                  {joinOurTeam.joinOurTeamMoreLink.buttonLabel}
+                </Link>
+              </div>
+            )}
           </div>
           <div>
             <Image
