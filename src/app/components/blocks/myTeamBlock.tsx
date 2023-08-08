@@ -57,7 +57,7 @@ function MyTeamBlock({
                         teamDetail.teamDetails.map((team, index) => {
                           return (
                             <div key={index}>
-                              <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-1">
+                              <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-2 pb-10">
                                 <Image
                                   src={team.image.sourceUrl}
                                   alt={team.name}
@@ -65,9 +65,9 @@ function MyTeamBlock({
                                   height={1000}
                                   className="w-full h-full"
                                 />
-                                <h5 className="font-semibold leading-7 flex justify-start">
+                                <div className="font-semibold leading-7 flex justify-start pt-4">
                                   {team.name}
-                                </h5>
+                                </div>
 
                                 <div className="flex justify-start">
                                   {team.position}
