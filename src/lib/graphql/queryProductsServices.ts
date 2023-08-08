@@ -36,6 +36,18 @@ const GET_PRODUCT_SERVICE = gql`
           }
         }
       }
+      industrySolutions {
+        headerIndustrySolutons
+        solutionItem {
+          titleItems
+          items {
+            descriptionItem
+          }
+          backgroundImage {
+            sourceUrl
+          }
+        }
+      }
       services {
         hasMarginTop
         hasMarginBottom
