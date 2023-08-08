@@ -43,11 +43,11 @@ export async function POST(req: Request, res: Response, next: NextRequest) {
 
   const options = {
     method: "POST",
-    url: "https://rapidprod-sendgrid-v1.p.rapidapi.com/mail/send",
+    url: process.env.SEND_GRID_EMAIL_URL as string,
     headers: {
       "content-type": "application/json",
-      "X-RapidAPI-Key": "c2b0993224msh0961482e3933db6p17f5c2jsnaf06dfbc4de1",
-      "X-RapidAPI-Host": "rapidprod-sendgrid-v1.p.rapidapi.com",
+      "X-RapidAPI-Key": process.env.RAPID_API_KEY as string,
+      "X-RapidAPI-Host": process.env.RAPID_API_HOST as string,
     },
     data: {
       personalizations: [
