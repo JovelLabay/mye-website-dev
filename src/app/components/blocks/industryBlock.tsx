@@ -49,7 +49,9 @@ function IndustryBlock({
                 : "lg:col-span-1",
             )}
             style={{
-              backgroundImage: `url(${solution.backgroundImage.sourceUrl})`,
+              backgroundImage: `url(${
+                solution.backgroundImage?.sourceUrl || ""
+              })`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
