@@ -7,23 +7,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import classNames from "classnames";
 
-function ProductsBlock2({
-  products,
-}: {
-  products: {
-    productsAndServices: {
-      title: string;
-      productServiceItem: {
-        description: string;
-        label: string;
-        iconImage: {
-          sourceUrl: string;
-        };
-        productsMainContent: string;
-      }[];
-    }[];
-  };
-}) {
+function ProductsBlock2({ products }: { products: ProductsList }) {
   const router = useRouter();
   const contentRefs = useRef<any>([]);
   const [indexItem, setIndex] = useState(-0);
@@ -84,7 +68,7 @@ function ProductsBlock2({
                           className="hover:cursor-pointer"
                           onClick={() => {
                             router.push(
-                              "/products-services/" + productItem.label,
+                              `/products-services/${item.title}|${productItem.label}`,
                             );
                           }}
                         >
