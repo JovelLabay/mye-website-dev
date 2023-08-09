@@ -87,8 +87,8 @@ function ProductsBlock({
             <motion.div
               key={activeProduct.productItem}
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             >
               {activeProduct.productList.map((product, index) => (
