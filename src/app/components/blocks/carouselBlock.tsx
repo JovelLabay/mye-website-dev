@@ -47,6 +47,7 @@ function CarouselBlock({
         fade={true}
         activeIndex={activeIndex}
         onSelect={handleSelect}
+        key={activeIndex}
       >
         {carouselItem.map((item, index) => (
           <Carousel.Item key={index}>
