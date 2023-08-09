@@ -31,7 +31,6 @@ function IndustryBlock2({
     }
   };
 
-  // mt-8 sm:mt-10 md:mt-15 lg:mt-20
   return (
     <div className="text-white bg-[#F1F6FA]">
       <div className="the-container py-8 sm:py-10 md:py-15 lg:py-20">
@@ -68,9 +67,10 @@ function IndustryBlock2({
                   <h5 className="font-bold mb-3">{item.titleItems}</h5>
 
                   <div className="border-1 border-white px-3 py-4 gap-4 grid grid-cols-1 md:grid-cols-2">
-                    {item.items.map((item, index3) => (
-                      <p key={index3}>{item.descriptionItem}</p>
-                    ))}
+                    {item.items &&
+                      item.items.map((item, index3) => (
+                        <p key={index3}>{item.descriptionItem}</p>
+                      ))}
                   </div>
                 </div>
               ))}
