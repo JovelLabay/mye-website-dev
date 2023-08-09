@@ -82,11 +82,11 @@ function ProductsBlock2({
                         <div
                           key={index2}
                           className="hover:cursor-pointer"
-                          // onClick={() => {
-                          //   router.push(
-                          //     "/products-services/" + productItem.label,
-                          //   );
-                          // }}
+                          onClick={() => {
+                            router.push(
+                              "/products-services/" + productItem.label,
+                            );
+                          }}
                         >
                           <Image
                             alt="Logo"
