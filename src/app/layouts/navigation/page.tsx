@@ -32,7 +32,6 @@ function Page({
     isMenu: false,
     scrollY: 0,
   });
-  const [showSubMenu, setShowSubMenu] = useState(false);
 
   useEffect(() => {
     if (states.isMenu) {
@@ -73,19 +72,6 @@ function Page({
         behavior: "smooth",
       });
     }
-  };
-
-  let timeoutId: NodeJS.Timeout;
-
-  const handleMouseEnter = () => {
-    setShowSubMenu(true);
-    clearTimeout(timeoutId);
-  };
-
-  const handleMouseLeave = () => {
-    timeoutId = setTimeout(() => {
-      setShowSubMenu(false);
-    }, 2000);
   };
 
   function scrollToElement(id: any) {
@@ -137,17 +123,62 @@ function Page({
               .map((link) => (
                 <li key={link.id} className="link-nav">
                   {link.title === "About Us" ? (
-                    <div>
+                    <div className="dropdown">
                       <a
                         href="/about-us/"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
                         className={classNames(
                           router === "/" ? "text-[#2D2D2D]" : "text-white",
                         )}
                       >
                         {link.title}
                       </a>
+                      {/* DROPDOWN ABOUT US */}
+                      <div className="dropdown-content w-[200px]">
+                        <div className="flex flex-col items-start gap-2">
+                          <div>
+                            <a
+                              href="/about-us/#mission"
+                              onClick={(e) => {
+                                if (router === "/about-us/") {
+                                  e.preventDefault();
+                                }
+                                scrollToElement("ourteam");
+                              }}
+                              className="text-[#2D2D2D]"
+                            >
+                              Mission
+                            </a>
+                          </div>
+                          <div>
+                            <a
+                              href="/about-us/#vision"
+                              onClick={(e) => {
+                                if (router === "/about-us/") {
+                                  e.preventDefault();
+                                }
+                                scrollToElement("ourteam");
+                              }}
+                              className="text-[#2D2D2D]"
+                            >
+                              Vision
+                            </a>
+                          </div>
+                          <div>
+                            <a
+                              href="/about-us/#ourteam"
+                              onClick={(e) => {
+                                if (router === "/about-us/") {
+                                  e.preventDefault();
+                                }
+                                scrollToElement("ourteam");
+                              }}
+                              className="text-[#2D2D2D]"
+                            >
+                              Our Team
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ) : link.title === "Contact Us" ? (
                     <a
@@ -202,58 +233,6 @@ function Page({
             </button>
           </li>
         </ul>
-        {showSubMenu && (
-          <ul className="absolute top-[60px] ml-[475px]">
-            <li>
-              <a
-                href="/about-us/#mission"
-                onClick={(e) => {
-                  if (router === "/about-us/") {
-                    e.preventDefault();
-                  }
-                  scrollToElement("ourteam");
-                }}
-                className={classNames(
-                  router === "/" ? "text-[#2D2D2D]" : "text-white",
-                )}
-              >
-                Mission
-              </a>
-            </li>
-            <li>
-              <a
-                href="/about-us/#vision"
-                onClick={(e) => {
-                  if (router === "/about-us/") {
-                    e.preventDefault();
-                  }
-                  scrollToElement("ourteam");
-                }}
-                className={classNames(
-                  router === "/" ? "text-[#2D2D2D]" : "text-white",
-                )}
-              >
-                Vision
-              </a>
-            </li>
-            <li>
-              <a
-                href="/about-us/#ourteam"
-                onClick={(e) => {
-                  if (router === "/about-us/") {
-                    e.preventDefault();
-                  }
-                  scrollToElement("ourteam");
-                }}
-                className={classNames(
-                  router === "/" ? "text-[#2D2D2D]" : "text-white",
-                )}
-              >
-                Our Team
-              </a>
-            </li>
-          </ul>
-        )}
       </div>
 
       {/* MENU NAVIGATION */}
