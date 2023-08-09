@@ -32,7 +32,7 @@ function CarouselBlock({
       <Carousel
         interval={2000}
         controls={false}
-        // fade={true}
+        fade={true}
         activeIndex={activeIndex}
         onSelect={handleSelect}
       >
