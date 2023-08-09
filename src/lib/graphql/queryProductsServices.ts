@@ -33,6 +33,7 @@ const GET_PRODUCT_SERVICE = gql`
             iconImage {
               sourceUrl
             }
+            productsMainContent
           }
         }
       }

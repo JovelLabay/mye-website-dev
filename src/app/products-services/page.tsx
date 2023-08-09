@@ -38,7 +38,7 @@ async function Page() {
               MYE Cloud
             </Link>
             <p>{">"}</p>
-            <p>Products and Services</p>
+            <p className="opacity-50">Products and Services</p>
           </div>
         </div>
       </div>
