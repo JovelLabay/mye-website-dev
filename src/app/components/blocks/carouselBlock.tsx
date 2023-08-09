@@ -79,6 +79,7 @@ function CarouselBlock({
                     {item.label}
                   </motion.h1>
                   <motion.p
+                    key={index}
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.2 }}
@@ -87,6 +88,7 @@ function CarouselBlock({
                     {item.description}
                   </motion.p>
                   <motion.a
+                    key={index}
                     initial={{ x: 100, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 1.4 }}
