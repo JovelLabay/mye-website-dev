@@ -35,17 +35,6 @@ function AboutBlock({
               {about.descriptionTwo}
             </p>
           </div>
-          <div className="w-full flex justify-center z-20">
-            <button
-              onClick={() => {
-                router.push("/about-us");
-              }}
-              className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
-                hover:bg-gradient-to-r hover:from-customPink hover:to-customPink z-20"
-            >
-              Learn more
-            </button>
-          </div>
         </div>
       </div>
 
@@ -56,6 +45,17 @@ function AboutBlock({
             backgroundImage: `url(${about.bigImage.sourceUrl})`,
           }}
         ></div>
+      </div>
+      <div className="w-full absolute flex justify-center -mt-[800px]">
+        <button
+          onClick={() => {
+            router.push("/about-us");
+          }}
+          className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
+                hover:bg-gradient-to-r hover:from-customPink hover:to-customPink z-20"
+        >
+          Learn more
+        </button>
       </div>
     </div>
   );

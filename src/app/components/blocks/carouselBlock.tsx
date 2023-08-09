@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Carousel from "react-bootstrap/Carousel";
+import { motion, AnimatePresence } from "framer-motion";
 
 function CarouselBlock({
   carouselItem,
@@ -20,9 +21,21 @@ function CarouselBlock({
     };
   }[];
 }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSelect = (selectedIndex: number) => {
+    setActiveIndex(selectedIndex);
+  };
+
   return (
     <div>
-      <Carousel interval={2000} controls={false} fade={true}>
+      <Carousel
+        interval={2000}
+        controls={false}
+        // fade={true}
+        activeIndex={activeIndex}
+        onSelect={handleSelect}
+      >
         {carouselItem.map((item, index) => (
           <Carousel.Item key={index}>
             <div
@@ -43,17 +56,45 @@ function CarouselBlock({
                   textAlign: "right",
                 }}
               >
-                <div className="flex flex-col justify-center items-end h-full px-[20px] sm:px-[30px] md:px-[60px] lg:px-[120px]">
-                  <h1 className="font-bold text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] ">
-                    {item.label}
-                  </h1>
-                  <p className="py-3">{item.description}</p>
-                  <a href={item.learnMore.url}>
-                    <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-white text-customViolet font-medium md:font-semibold">
-                      Learn more
-                    </button>
-                  </a>
-                </div>
+                <motion.div
+                  style={{ height: "100%", color: "white", textAlign: "right" }}
+                  key={activeIndex}
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  <div className="flex flex-col justify-center items-end h-full px-[20px] sm:px-[30px] md:px-[60px] lg:px-[120px]">
+                    <motion.h1
+                      key={index}
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 1 }}
+                      className="font-bold text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] "
+                    >
+                      {item.label}
+                    </motion.h1>
+                    <motion.p
+                      key={index}
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 1.2 }}
+                      className="py-3"
+                    >
+                      {item.description}
+                    </motion.p>
+                    <motion.a
+                      key={index}
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 1.4 }}
+                      href={item.learnMore.url}
+                    >
+                      <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-white text-customViolet font-medium md:font-semibold">
+                        Learn more
+                      </button>
+                    </motion.a>
+                  </div>
+                </motion.div>
               </div>
             </div>
           </Carousel.Item>

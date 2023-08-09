@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import { BsHexagon, BsFillHexagonFill } from "react-icons/bs";
 
@@ -83,9 +84,15 @@ function ProductsBlock({
                 </button>
               ))}
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <motion.div
+              key={activeProduct.productItem}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
               {activeProduct.productList.map((product, index) => (
-                <div key={index} className="">
+                <div key={index} className="fade-in">
                   <Image
                     alt="Logo"
                     src={product.iconImage.sourceUrl}
@@ -98,7 +105,7 @@ function ProductsBlock({
                   <p>{product.description}</p>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

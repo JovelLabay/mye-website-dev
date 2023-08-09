@@ -52,7 +52,7 @@ async function Page() {
               MYE Cloud
             </Link>
             <p>{">"}</p>
-            <p>Join Our Team</p>
+            <p className="opacity-50">Join Our Team</p>
           </div>
         </div>
       </div>

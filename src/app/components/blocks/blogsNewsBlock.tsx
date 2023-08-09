@@ -63,7 +63,7 @@ function BlogsNewsBlock({
                     <div
                       className="blogs-news-image"
                       style={{
-                        backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
+                        backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage?.sourceUrl})`,
                       }}
                     />
                     <div className="mb-4">
@@ -95,7 +95,7 @@ function BlogsNewsBlock({
                   <div
                     className="blogs-news-image-2 col-span-3 lg:col-span-1 h-[200px] sm:h-[250px] md:h-[300px] w-full lg:h-[150px]"
                     style={{
-                      backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
+                      backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage?.sourceUrl})`,
                     }}
                   />
                   <div className="col-span-3 lg:col-span-2">
