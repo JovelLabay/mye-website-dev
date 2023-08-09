@@ -11,20 +11,6 @@ const GET_BLOGS_AND_NEWS = gql`
           sourceUrl
         }
       }
-      blogsNews {
-        blogsNewsItem {
-          mainBlogNewsContent
-          isFeature
-          datePublished
-          blogTags
-          itemDescription
-          itemHeader
-          subItemHeader
-          itemImage {
-            sourceUrl
-          }
-        }
-      }
     }
   }
 `;
