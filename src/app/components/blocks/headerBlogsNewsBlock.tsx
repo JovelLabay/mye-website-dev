@@ -36,7 +36,7 @@ function HeaderBlogsNewsBlock({
               MYE Cloud
             </Link>
             <p>{">"}</p>
-            <p>Blogs and News</p>
+            <p className="opacity-50">Blogs and News</p>
           </div>
 
           <h1 className="animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold">
