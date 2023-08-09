@@ -58,9 +58,7 @@ function JoinOurTeamForm({
     <>
       <Dialog
         open={currentStatus.modal}
-        onClose={() =>
-          setCurrentStatus((prev) => ({ ...prev, feedback: true }))
-        }
+        onClose={() => setCurrentStatus((prev) => ({ ...prev, modal: false }))}
       >
         <div className="fixed inset-0 bg-black/30 rounded" aria-hidden="true" />
 
@@ -174,6 +172,8 @@ function JoinOurTeamForm({
           </Dialog.Panel>
         </div>
       </Dialog>
+
+      {/* MESSAGE AFTER SUBMIT */}
       <Dialog
         open={currentStatus.feedback}
         onClose={() =>
