@@ -17,8 +17,7 @@ async function Page() {
   const block = await getBlocksBlogNews();
   const blogsNewsData = await getBlogsNews();
 
-  const { headerBlogsAndNews, blogsNews, services } =
-    await block?.blogAndNewsPage;
+  const { headerBlogsAndNews } = await block?.blogAndNewsPage;
 
   const blogsNewsData2 = blogsNewsData?.posts?.edges;
 
