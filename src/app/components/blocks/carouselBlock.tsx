@@ -51,7 +51,7 @@ function CarouselBlock({
       >
         {carouselItem.map((item, index) => (
           <Carousel.Item key={index}>
-            <div
+            <motion.div
               className="h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[90vh]"
               style={{
                 backgroundImage: `url(${item.image.sourceUrl})`,
@@ -60,6 +60,10 @@ function CarouselBlock({
                 backgroundRepeat: "no-repeat",
                 position: "relative",
               }}
+              key={index}
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 1 }}
             >
               <div
                 style={{
@@ -101,7 +105,7 @@ function CarouselBlock({
                   </motion.a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </Carousel.Item>
         ))}
       </Carousel>
