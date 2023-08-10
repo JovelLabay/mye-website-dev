@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { motion } from "framer-motion";
 import classNames from "classnames";
@@ -13,6 +13,7 @@ import { AiOutlineMenu, AiFillCloseCircle } from "react-icons/ai";
 import MyeLogo from "@/logoMYE-Logo.png";
 import NavBg from "@/imgdesign-nav2.jpeg";
 import Link from "next/link";
+import { GlobalContext } from "@/lib/contexts/context";
 
 function Page({
   data,
@@ -28,6 +29,8 @@ function Page({
     | null;
 }) {
   const router = usePathname();
+  const route = useRouter();
+  const globalContext = useContext(GlobalContext);
 
   const [states, setStates] = useState({
     isMenu: false,
@@ -199,6 +202,12 @@ function Page({
                   ) : (
                     <a
                       href={link.uri}
+                      onClick={() => {
+                        link.title === "Products & Services" &&
+                          globalContext?.productsServicesPage.setActiveTab(
+                            "products",
+                          );
+                      }}
                       className={classNames(
                         router === "/" ? "text-[#2D2D2D]" : "text-white",
                       )}

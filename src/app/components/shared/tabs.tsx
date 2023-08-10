@@ -1,8 +1,9 @@
 "use client";
 
+import { GlobalContext } from "@/lib/contexts/context";
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
-import React from "react";
+import React, { useContext } from "react";
 
 function Tabs({
   component,
@@ -12,9 +13,15 @@ function Tabs({
     node: React.ReactNode;
   }[];
 }) {
+  const globalContext = useContext(GlobalContext);
+
   return (
     <div>
-      <Tab.Group>
+      <Tab.Group
+        defaultIndex={
+          globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0
+        }
+      >
         <Tab.List className="grid grid-cols-3 mt-8 sm:mt-10 md:mt-15 lg:mt-20">
           {component.map((item, index) => (
             <Tab
@@ -23,7 +30,7 @@ function Tabs({
                 classNames(
                   "w-full outline-none py-3 md:py-3 lg:py-3 text-[18px] sm:text-[22px] md:text-[24px] lg:text-[26px] font-bold",
                   selected
-                    ? "bg-white text-customViolet"
+                    ? "bg-white text-customViolet border-2 border-customViolet"
                     : "bg-customViolet text-white",
                 )
               }
