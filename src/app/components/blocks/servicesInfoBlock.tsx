@@ -15,8 +15,9 @@ function ServicesInfoBlock({
       description: string;
       learnMore: string;
       title: string;
-      detailedDescription: {
-        description: string;
+      serviceList: {
+        service: string;
+        serviceMainContent: string;
       }[];
     }[];
   };
@@ -39,8 +40,8 @@ function ServicesInfoBlock({
                 <div className="flex justify-center items-center">
                   <div className=" flex justify-center items-center w-[90%]">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10 lg:w-full">
-                      {service.detailedDescription &&
-                        service.detailedDescription.map((desc, index) => {
+                      {service.serviceList &&
+                        service.serviceList.map((desc, index) => {
                           return (
                             <div
                               id="services-box"
@@ -49,7 +50,7 @@ function ServicesInfoBlock({
                             >
                               <div className="flex justify-center items-center min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full ">
                                 <h5 className="font-semibold leading-7">
-                                  {desc.description}
+                                  {desc.service}
                                 </h5>
                               </div>
                             </div>

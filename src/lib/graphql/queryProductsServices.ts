@@ -62,8 +62,9 @@ const GET_PRODUCT_SERVICE = gql`
             title
             url
           }
-          detailedDescription {
-            description
+          serviceList {
+            service
+            serviceMainContent
           }
         }
       }
