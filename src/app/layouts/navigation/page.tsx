@@ -91,6 +91,19 @@ function Page({
     }
   }
 
+  const handleAboutUsButtonClick = () => {
+    if (states.isOpenAboutUsSubMenu) {
+      // Redirect to "/about-us"
+      window.location.href = "/#about";
+    } else {
+      // Toggle isOpenAboutUsSubMenu state
+      setStates((prev) => ({
+        ...prev,
+        isOpenAboutUsSubMenu: !states.isOpenAboutUsSubMenu,
+      }));
+    }
+  };
+
   return (
     <nav
       id="navigation"
@@ -260,10 +273,17 @@ function Page({
               <button
                 title="Close Menu"
                 onClick={() => {
-                  setStates({
+                  const updatedStates = {
                     ...states,
                     isMenu: !states.isMenu,
-                  });
+                  };
+
+                  if (states.isOpenAboutUsSubMenu === true) {
+                    updatedStates.isOpenAboutUsSubMenu =
+                      !states.isOpenAboutUsSubMenu;
+                  }
+
+                  setStates(updatedStates);
                 }}
               >
                 <AiFillCloseCircle size={30} />
@@ -285,13 +305,7 @@ function Page({
                           <>
                             <button
                               className="no-underline text-customDark"
-                              onClick={() => {
-                                setStates((prev) => ({
-                                  ...prev,
-                                  isOpenAboutUsSubMenu:
-                                    !states.isOpenAboutUsSubMenu,
-                                }));
-                              }}
+                              onClick={handleAboutUsButtonClick}
                             >
                               {link.title}
                             </button>
@@ -303,39 +317,42 @@ function Page({
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ duration: 0.5 }}
                               >
-                                <Link
-                                  href="/about-us/#mission"
+                                <a
+                                  href="/about-us/#vision"
                                   onClick={(e) => {
-                                    e.preventDefault();
-
+                                    if (router === "/about-us/") {
+                                      e.preventDefault();
+                                    }
                                     scrollToElement("ourteam");
                                   }}
                                   className="text-customViolet no-underline"
                                 >
                                   Mission
-                                </Link>
-                                <Link
-                                  href="/about-us/#vision"
+                                </a>
+                                <a
+                                  href="/about-us/#mission"
                                   onClick={(e) => {
-                                    e.preventDefault();
-
+                                    if (router === "/about-us/") {
+                                      e.preventDefault();
+                                    }
                                     scrollToElement("ourteam");
                                   }}
                                   className="text-customViolet no-underline"
                                 >
                                   Vision
-                                </Link>
-                                <Link
+                                </a>
+                                <a
                                   href="/about-us/#ourteam"
                                   onClick={(e) => {
-                                    e.preventDefault();
-
+                                    if (router === "/about-us/") {
+                                      e.preventDefault();
+                                    }
                                     scrollToElement("ourteam");
                                   }}
                                   className="text-customViolet no-underline"
                                 >
                                   Our Team
-                                </Link>
+                                </a>
                               </motion.div>
                             )}
                           </>
