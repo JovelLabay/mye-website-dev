@@ -2,7 +2,8 @@
 
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
-import React from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 function Tabs({
   component,
@@ -12,9 +13,10 @@ function Tabs({
     node: React.ReactNode;
   }[];
 }) {
+  const [tabIndex, setTabIndex] = useState(0);
   return (
     <div>
-      <Tab.Group>
+      <Tab.Group selectedIndex={tabIndex} onChange={setTabIndex}>
         <Tab.List className="grid grid-cols-3 mt-8 sm:mt-10 md:mt-15 lg:mt-20">
           {component.map((item, index) => (
             <Tab
@@ -23,8 +25,8 @@ function Tabs({
                 classNames(
                   "w-full outline-none py-3 md:py-3 lg:py-3 text-[18px] sm:text-[22px] md:text-[24px] lg:text-[26px] font-bold",
                   selected
-                    ? "bg-white text-customViolet border-2 border-customViolet"
-                    : "bg-customViolet text-white",
+                    ? "bg-white text-customViolet border-2 border-customViolet duration-[1000ms]"
+                    : "bg-customViolet text-white transition duration-[1000ms]",
                 )
               }
             >
@@ -33,9 +35,16 @@ function Tabs({
           ))}
         </Tab.List>
         <Tab.Panels>
-          {component.map((item, index) => (
-            <Tab.Panel key={index}>{item.node}</Tab.Panel>
-          ))}
+          <motion.div
+            key={tabIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+          >
+            {component.map((item, index) => (
+              <Tab.Panel key={index}>{item.node}</Tab.Panel>
+            ))}
+          </motion.div>
         </Tab.Panels>
       </Tab.Group>
     </div>
