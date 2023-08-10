@@ -91,7 +91,7 @@ function Page({
   const handleAboutUsButtonClick = () => {
     if (states.isOpenAboutUsSubMenu) {
       // Redirect to "/about-us"
-      window.location.href = "/about-us";
+      window.location.href = "/#about";
     } else {
       // Toggle isOpenAboutUsSubMenu state
       setStates((prev) => ({
