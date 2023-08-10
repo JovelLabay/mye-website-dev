@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 
 import { useRouter } from "next/navigation";
 import classNames from "classnames";
+import { GlobalContext } from "@/lib/contexts/context";
 
 function ServicesBlock({
   services,
@@ -25,6 +26,7 @@ function ServicesBlock({
   };
 }) {
   const router = useRouter();
+  const globalContext = useContext(GlobalContext);
 
   return (
     <div
@@ -74,6 +76,7 @@ function ServicesBlock({
               <button
                 onClick={() => {
                   router.push("/products-services");
+                  globalContext?.productsServicesPage.setActiveTab("services");
                 }}
                 className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"

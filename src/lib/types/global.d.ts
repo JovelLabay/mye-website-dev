@@ -4,16 +4,16 @@ interface GetInTouchForm {
   message: string;
 }
 
-interface WysiwygProps {
-  content: string;
-  className?: string;
-}
-
 interface JoinOurTeamForm {
   firstName: string;
   lastName: string;
   email: string;
   message: string;
+}
+
+interface WysiwygProps {
+  content: string;
+  className?: string;
 }
 
 interface ProductsList {
@@ -28,4 +28,16 @@ interface ProductsList {
       productsMainContent: string;
     }[];
   }[];
+}
+
+// GLOBAL CONTEXT
+interface GlobalContextProps {
+  productsServicesPage: {
+    activeTab: string;
+    setActiveTab: Dispatch<
+      SetStateAction<{
+        activeTab: string;
+      }>
+    >;
+  };
 }

@@ -1,8 +1,9 @@
 "use client";
 
+import { GlobalContext } from "@/lib/contexts/context";
 import { Tab } from "@headlessui/react";
 import classNames from "classnames";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { motion } from "framer-motion";
 
 function Tabs({
@@ -16,7 +17,13 @@ function Tabs({
   const [tabIndex, setTabIndex] = useState(0);
   return (
     <div>
-      <Tab.Group selectedIndex={tabIndex} onChange={setTabIndex}>
+      <Tab.Group
+        selectedIndex={tabIndex}
+        onChange={setTabIndex}
+        defaultIndex={
+          globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0
+        }
+      >
         <Tab.List className="grid grid-cols-3 mt-8 sm:mt-10 md:mt-15 lg:mt-20">
           {component.map((item, index) => (
             <Tab
