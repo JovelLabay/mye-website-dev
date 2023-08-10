@@ -89,7 +89,7 @@ function ProductsBlock({
               className="grid grid-cols-1 md:grid-cols-2 gap-4"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 2 }}
             >
               {activeProduct.productList.map((product, index) => (
                 <div key={index} className="fade-in">
