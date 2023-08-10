@@ -30,7 +30,7 @@ function CarouselBlock({
   return (
     <div>
       <Carousel
-        interval={5000}
+        interval={10000}
         controls={false}
         fade={true}
         activeIndex={activeIndex}
