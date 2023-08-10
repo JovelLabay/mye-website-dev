@@ -98,12 +98,10 @@
   padding: 10px 20px;
   border-radius: 9999px;
   border: none;
-  background: linear-gradient(
-    90.37deg,
-    #22d2ff -1.83%,
-    #5f84fe 48.99%,
-    #9f39ff 99.8%
-  );
+  background: linear-gradient(90.37deg,
+      #22d2ff -1.83%,
+      #5f84fe 48.99%,
+      #9f39ff 99.8%);
   color: #fff;
 }
 
@@ -211,12 +209,10 @@
 /* INDUSTRY SOLUTIONS */
 #industry-boxes {
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(73, 159, 254, 0) 0%,
-    #003065 57.29%,
-    #000000 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(73, 159, 254, 0) 0%,
+      #003065 57.29%,
+      #000000 100%);
   transition: 100ms ease-in-out;
   padding: 20px;
   display: flex;
@@ -243,6 +239,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  z-index: -1;
 }
 
 .image-container .about-img {
@@ -254,6 +251,7 @@
   position: absolute;
   z-index: -1;
   transition: 500ms ease-in-out;
+  /* clip-path: polygon(50% 50%, 100% 0, 100% 100%, 0 100%, 0 0); */
 }
 
 .image-container:hover .about-img {
@@ -262,9 +260,9 @@
 
 #about-container {
   background-color: #fff;
-  min-height: 350px;
-  clip-path: polygon(100% 0, 100% 69%, 50% 100%, 0 71%, 0 0);
-  z-index: -1;
+  height: 400px;
+  /* clip-path: polygon(100% 0, 100% 69%, 50% 100%, 0 71%, 0 0); */
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
 }
 
 /* BLOGS AND NEWS IMAGE */
@@ -314,6 +312,7 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 /* DOT POP UPS - HOW MYE WORKS */
 
 .dot-1-container li,
@@ -709,6 +708,7 @@
 
 /* ====== LAPTOP VIEW ====== */
 @media only screen and (max-width: 1200px) {
+
   /* NAV */
   .link-nav {
     display: none;
@@ -744,6 +744,7 @@
 
 /* ====== Tablet ====== */
 @media only screen and (max-width: 768px) {
+
   /* FOOTER */
   .footer {
     gap: 15px;
@@ -768,6 +769,13 @@
 
 /* ====== Mobile ====== */
 @media only screen and (max-width: 640px) {
+
+  /* ABOUT US - HOME */
+  #about-container {
+    height: 500px;
+    clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 90%, 0 78%);
+  }
+
   /* NAV */
   .login-bg-white,
   .login-bg-white-none-home {

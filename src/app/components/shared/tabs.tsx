@@ -21,7 +21,7 @@ function Tabs({
               key={index}
               className={({ selected }) =>
                 classNames(
-                  "w-full outline-none py-4 md:py-3 lg:py-4 text-[18px] sm:text-[22px] md:text-[24px] lg:text-[26px] font-bold",
+                  "w-full outline-none py-3 md:py-3 lg:py-3 text-[18px] sm:text-[22px] md:text-[24px] lg:text-[26px] font-bold",
                   selected
                     ? "bg-white text-customViolet"
                     : "bg-customViolet text-white",

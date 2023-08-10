@@ -17,7 +17,8 @@ function AboutBlock({
 }) {
   const router = useRouter();
   return (
-    <div className="mt-8 sm:mt-10 md:mt-15 lg:mt-20">
+    // <div className="mt-8 sm:mt-10 md:mt-15 lg:mt-20">
+    <div className="">
       <div id="about-container">
         <div className="the-container z-20">
           <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15 text-center mb-3">
@@ -35,6 +36,17 @@ function AboutBlock({
               {about.descriptionTwo}
             </p>
           </div>
+          <div className="w-full flex justify-center mt-10">
+            <button
+              onClick={() => {
+                router.push("/about-us");
+              }}
+              className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
+                hover:bg-gradient-to-r hover:from-customPink hover:to-customPink z-20"
+            >
+              Learn more
+            </button>
+          </div>
         </div>
       </div>
 
@@ -44,18 +56,7 @@ function AboutBlock({
           style={{
             backgroundImage: `url(${about.bigImage.sourceUrl})`,
           }}
-        ></div>
-      </div>
-      <div className="w-full absolute flex justify-center -mt-[800px]">
-        <button
-          onClick={() => {
-            router.push("/about-us");
-          }}
-          className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
-                hover:bg-gradient-to-r hover:from-customPink hover:to-customPink z-20"
-        >
-          Learn more
-        </button>
+        />
       </div>
     </div>
   );

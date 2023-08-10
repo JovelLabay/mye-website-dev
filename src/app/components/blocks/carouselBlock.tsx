@@ -35,6 +35,9 @@ function CarouselBlock({
         fade={true}
         activeIndex={activeIndex}
         onSelect={handleSelect}
+        style={{
+          transition: "opacity 1s ease-in-out",
+        }}
       >
         {carouselItem.map((item, index) => (
           <Carousel.Item key={index}>

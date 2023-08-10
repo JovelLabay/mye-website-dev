@@ -39,7 +39,7 @@ function DetailedBlogsNewsBlock({
         className="flex flex-col gap-3"
       />
       <div className="flex flex-wrap my-4">
-        {blogsNews.data.post.blogsAndNewsPost.postTags.map((tag, index) => {
+        {blogsNews.data.post.blogsAndNewsPost.postTags?.map((tag, index) => {
           return (
             <span
               key={index}

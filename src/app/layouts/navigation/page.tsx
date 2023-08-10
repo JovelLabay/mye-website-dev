@@ -12,6 +12,7 @@ import { AiOutlineMenu, AiFillCloseCircle } from "react-icons/ai";
 
 import MyeLogo from "@/logoMYE-Logo.png";
 import NavBg from "@/imgdesign-nav2.jpeg";
+import Link from "next/link";
 
 function Page({
   data,
@@ -31,6 +32,7 @@ function Page({
   const [states, setStates] = useState({
     isMenu: false,
     scrollY: 0,
+    isOpenAboutUsSubMenu: false,
   });
 
   useEffect(() => {
@@ -271,17 +273,63 @@ function Page({
                     .map((link) => (
                       <li key={link.id} className="text-lg font-bold ml-10">
                         {link.title === "About Us" ? (
-                          <a
-                            href="/#about"
-                            onClick={
-                              router !== "/"
-                                ? undefined
-                                : (e) => handleClick(e, "about")
-                            }
-                            className="no-underline text-customDark"
-                          >
-                            {link.title}
-                          </a>
+                          <>
+                            <button
+                              className="no-underline text-customDark"
+                              onClick={() => {
+                                setStates((prev) => ({
+                                  ...prev,
+                                  isOpenAboutUsSubMenu:
+                                    !states.isOpenAboutUsSubMenu,
+                                }));
+                              }}
+                            >
+                              {link.title}
+                            </button>
+
+                            {states.isOpenAboutUsSubMenu && (
+                              <motion.div
+                                className="flex flex-col ml-5 gap-4 mt-4"
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.5 }}
+                              >
+                                <Link
+                                  href="/about-us/#mission"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+
+                                    scrollToElement("ourteam");
+                                  }}
+                                  className="text-customViolet no-underline"
+                                >
+                                  Mission
+                                </Link>
+                                <Link
+                                  href="/about-us/#vision"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+
+                                    scrollToElement("ourteam");
+                                  }}
+                                  className="text-customViolet no-underline"
+                                >
+                                  Vision
+                                </Link>
+                                <Link
+                                  href="/about-us/#ourteam"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+
+                                    scrollToElement("ourteam");
+                                  }}
+                                  className="text-customViolet no-underline"
+                                >
+                                  Our Team
+                                </Link>
+                              </motion.div>
+                            )}
+                          </>
                         ) : link.title === "Contact Us" ? (
                           <a
                             href="/#getintouch"
