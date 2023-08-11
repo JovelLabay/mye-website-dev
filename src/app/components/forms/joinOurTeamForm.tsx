@@ -47,7 +47,6 @@ function JoinOurTeamForm({
     console.log("Form data:", data);
     console.log("TEST", selectedFile);
     if (selectedFile === null) {
-      console.log("Hello");
       setfileError(true);
       setIsRed(true);
       setErrorMessage("Please select a valid PDF file.");

@@ -159,7 +159,7 @@ function GetInTouchForm({
         .request({
           method: "POST",
           maxBodyLength: Infinity,
-          url: "/api/email",
+          url: "/api/getInTouch",
           headers: {
             "Content-Type": "application/json",
           },
