@@ -372,6 +372,12 @@ function Page({
                           <a
                             href={link.uri}
                             className="no-underline text-customDark"
+                            onClick={() => {
+                              link.title === "Products & Services" &&
+                                globalContext?.productsServicesPage.setActiveTab(
+                                  "products",
+                                );
+                            }}
                           >
                             {link.title}
                           </a>

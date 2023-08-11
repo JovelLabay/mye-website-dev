@@ -31,22 +31,15 @@ interface ProductsList {
 }
 
 interface ServicesList {
-  services: {
-    servicesBackgroundColor: string;
-    hasMarginTop: boolean;
-    hasMarginBottom: boolean;
-    header: string;
+  item: {
     description: string;
-    item: {
-      description: string;
-      learnMore: string;
-      title: string;
-      serviceList: {
-        service: string;
-        serviceMainContent: string;
-      }[];
+    learnMore: string;
+    title: string;
+    serviceList: {
+      service: string;
+      serviceMainContent: string;
     }[];
-  };
+  }[];
 }
 
 // GLOBAL CONTEXT

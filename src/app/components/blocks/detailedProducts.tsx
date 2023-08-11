@@ -14,9 +14,11 @@ import classNames from "classnames";
 function DetailedProducts({
   productData,
   params,
+  connector,
 }: {
   productData: string;
   params: string;
+  connector: string;
 }) {
   const websiteDomain = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN;
 
@@ -27,7 +29,7 @@ function DetailedProducts({
         <RWebShare
           data={{
             text: "Share this link",
-            url: `${websiteDomain}/products-services/${params}`,
+            url: `${websiteDomain}/products-services/${connector}/${params}`,
             title: "Share this link",
           }}
         >

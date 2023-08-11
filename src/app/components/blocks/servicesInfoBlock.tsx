@@ -24,6 +24,7 @@ function ServicesInfoBlock({
   };
 }) {
   const router = useRouter();
+
   return (
     <>
       <div className="bg-[#F1F6FA]">
@@ -51,7 +52,7 @@ function ServicesInfoBlock({
                               className="rounded-lg h-auto p-4 flex justify-center items-center bg-white text-center gap-4 w-[300px]"
                               onClick={() => {
                                 router.push(
-                                  `/products-services/${service.title}|${desc.service}`,
+                                  `/products-services/services/${service.title}|${desc.service}`,
                                 );
                               }}
                             >

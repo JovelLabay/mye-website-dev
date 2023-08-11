@@ -63,6 +63,7 @@ export default async function page({
             <DetailedProducts
               productData={actualBlogData.productsMainContent}
               params={params.productId}
+              connector="products"
             />
           </div>
 

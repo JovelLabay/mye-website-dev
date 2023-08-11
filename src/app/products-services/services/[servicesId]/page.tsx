@@ -1,10 +1,12 @@
+"use client";
+
 import DetailedProducts from "@/app/components/blocks/detailedProducts";
 import MoreProductsBlock from "@/app/components/blocks/moreProductsBlock";
 import MoreServicesBlock from "@/app/components/blocks/moreServicesBlock";
+import { GlobalContext } from "@/lib/contexts/context";
 import { getBlocksProductsServices } from "@/lib/query/query";
 import { Metadata } from "next";
 import Link from "next/link";
-import React from "react";
 
 export const metadata: Metadata = {
   title: "MYE Cloud",
@@ -14,17 +16,18 @@ export const metadata: Metadata = {
 export default async function page({
   params,
 }: {
-  params: { serviceId: string };
+  params: { servicesId: string };
 }) {
   const block = await getBlocksProductsServices();
 
-  const { service }: { service: ServicesList } =
+  const { services }: { services: ServicesList } =
     await block?.productServicesPage;
-  const service_serviceName = params.serviceId
+  const service_serviceName = params.servicesId
     .replace(/%20/g, " ")
+    .replace(/%26/g, "&")
     .split("%7C");
 
-  const showServiceCategoryOnly = service.services.item.filter(
+  const showServiceCategoryOnly = services.item.filter(
     (item) => item.title === service_serviceName[0],
   );
 
@@ -63,7 +66,8 @@ export default async function page({
             </div>
             <DetailedProducts
               productData={actualBlogData.serviceMainContent}
-              params={params.serviceId}
+              params={params.servicesId}
+              connector="services"
             />
           </div>
 
@@ -73,7 +77,7 @@ export default async function page({
               showServicesCategoryOnly={showServiceCategoryOnly}
               categoryTitle={showServiceCategoryOnly[0].title}
               serviceTitle={actualBlogData.service}
-              params={params.serviceId}
+              params={params.servicesId}
             />
           </div>
         </div>

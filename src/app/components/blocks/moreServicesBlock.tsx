@@ -35,7 +35,7 @@ function MoreServicesBlock({
                 "text-black no-underline text-sm",
                 service.service === serviceTitle ? "font-bold" : "font-thin",
               )}
-              href={`/products-services/${categoryTitle}|${service.service}`}
+              href={`/products-services/services/${categoryTitle}|${service.service}`}
               key={index}
             >
               {service.service}
