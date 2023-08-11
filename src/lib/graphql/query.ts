@@ -9,6 +9,18 @@ const GetAllPages = gql`
         title
         uri
         menuOrder
+        footer {
+          footerDescription
+          footerSubDescription
+          anchorLinks {
+            achorLink
+            anchorName
+          }
+          socialMedina {
+            socialMedinaLink
+            socialMedinaItemName
+          }
+        }
       }
     }
   }

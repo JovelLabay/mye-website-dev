@@ -26,6 +26,18 @@ function Page({
         title: string;
         uri: string;
         menuOrder: number;
+        footer?: {
+          footerDescription: string;
+          footerSubDescription: string;
+          anchorLinks: {
+            achorLink: string;
+            anchorName: string;
+          }[];
+          socialMedina: {
+            socialMedinaLink: string;
+            socialMedinaItemName: string;
+          }[];
+        };
       }[]
     | null;
 }) {
@@ -47,6 +59,8 @@ function Page({
     }
   };
 
+  const footerData = data && data[5].footer;
+
   return (
     <footer>
       <div className="footer">
@@ -57,10 +71,10 @@ function Page({
             </div>
             <div className="flex flex-col justify-center items-center mt-2 w-[85%] gap-2">
               <p className="w-full text-center">
-                A Cloud built by Filipinos, for Filipinos.
+                {footerData?.footerDescription}
               </p>
               <p className="w-full text-center hidden lg:block">
-                Copyright 2023 - All Rights Reserved
+                {footerData?.footerSubDescription}
               </p>
             </div>
           </div>
@@ -102,58 +116,46 @@ function Page({
                     </li>
                   ))}
             </ul>
-
-            {/* <ul>
-              <li>FAQ</li>
-              <li>Terms of Service</li>
-              <li>Privacy Policy</li>
-            </ul> */}
           </div>
         </div>
 
         <div className="three">
           <h6>Contact information</h6>
           <ul>
-            <li>
-              <AiFillPhone size={25} />
-              +1 (234) 567 8910
-            </li>
-            <li>
-              <MdEmail size={25} />
-              askmye@myecloud.net
-            </li>
-            <li>
-              <BiSolidLocationPlus size={25} />
-              Marajo Tower, 4th Avenue Taguig, Metro Manila, Philippines
-            </li>
+            {footerData?.anchorLinks.map((link, i) => (
+              <li key={i}>
+                {link.anchorName === "phone" ? (
+                  <AiFillPhone size={25} />
+                ) : link.anchorName === "email" ? (
+                  <MdEmail size={25} />
+                ) : (
+                  <BiSolidLocationPlus size={33} />
+                )}
+                {link.achorLink}
+              </li>
+            ))}
           </ul>
 
           <div>
             <ul className="flex gap-3">
-              <li
-                onClick={() => {
-                  redirect.push(
-                    "https://www.linkedin.com/company/mye-cloud-technologies-inc",
-                  );
-                }}
-              >
-                <AiFillLinkedin size={25} />
-              </li>
-              <li
-                onClick={() => {
-                  redirect.push(
-                    "https://www.facebook.com/people/MYE-Cloud-Technologies-Inc/100095387351924/",
-                  );
-                }}
-              >
-                <AiFillFacebook size={25} />
-              </li>
-              <li>
-                <AiFillYoutube size={25} />
-              </li>
-              <li>
-                <AiFillInstagram size={25} />
-              </li>
+              {footerData?.socialMedina.map((sc, index) => (
+                <li
+                  key={index}
+                  onClick={() => {
+                    redirect.push(sc.socialMedinaLink);
+                  }}
+                >
+                  {sc.socialMedinaItemName === "linkedin" ? (
+                    <AiFillLinkedin size={25} />
+                  ) : sc.socialMedinaItemName === "facebook" ? (
+                    <AiFillFacebook size={25} />
+                  ) : sc.socialMedinaItemName === "youtube" ? (
+                    <AiFillYoutube size={25} />
+                  ) : (
+                    <AiFillInstagram size={25} />
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -161,7 +163,7 @@ function Page({
 
       <div>
         <p className="ml-5 lg:ml-0 text-center font-light text-gray-500 block lg:hidden">
-          Copyright 2023 - All Rights Reserved
+          {footerData?.footerSubDescription}
         </p>
       </div>
     </footer>
