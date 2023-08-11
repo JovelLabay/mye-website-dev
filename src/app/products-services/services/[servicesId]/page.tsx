@@ -1,5 +1,3 @@
-"use client";
-
 import DetailedProducts from "@/app/components/blocks/detailedProducts";
 import MoreProductsBlock from "@/app/components/blocks/moreProductsBlock";
 import MoreServicesBlock from "@/app/components/blocks/moreServicesBlock";
