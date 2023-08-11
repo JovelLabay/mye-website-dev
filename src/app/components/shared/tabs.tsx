@@ -14,15 +14,18 @@ function Tabs({
     node: React.ReactNode;
   }[];
 }) {
-  const [tabIndex, setTabIndex] = useState(0);
+  const globalContext = useContext(GlobalContext);
+  // const [tabIndex, setTabIndex] = useState(0);
+
   return (
     <div>
+      {globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0}
       <Tab.Group
-        selectedIndex={tabIndex}
-        onChange={setTabIndex}
-        // defaultIndex={
-        //   globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0
-        // }
+        // selectedIndex={tabIndex}
+        // onChange={setTabIndex}
+        defaultIndex={
+          globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0
+        }
       >
         <Tab.List className="grid grid-cols-3 mt-8 sm:mt-10 md:mt-15 lg:mt-20">
           {component.map((item, index) => (
@@ -43,7 +46,7 @@ function Tabs({
         </Tab.List>
         <Tab.Panels>
           <motion.div
-            key={tabIndex}
+            // key={tabIndex}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}

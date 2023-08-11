@@ -68,7 +68,7 @@ function ProductsBlock2({ products }: { products: ProductsList }) {
                           className="hover:cursor-pointer"
                           onClick={() => {
                             router.push(
-                              `/products-services/${item.title}|${productItem.label}`,
+                              `/products-services/products/${item.title}|${productItem.label}`,
                             );
                           }}
                         >

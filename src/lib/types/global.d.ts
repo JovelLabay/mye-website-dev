@@ -30,6 +30,18 @@ interface ProductsList {
   }[];
 }
 
+interface ServicesList {
+  item: {
+    description: string;
+    learnMore: string;
+    title: string;
+    serviceList: {
+      service: string;
+      serviceMainContent: string;
+    }[];
+  }[];
+}
+
 // GLOBAL CONTEXT
 interface GlobalContextProps {
   productsServicesPage: {

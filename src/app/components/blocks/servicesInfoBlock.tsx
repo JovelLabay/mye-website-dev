@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 function ServicesInfoBlock({
   services,
@@ -22,6 +23,8 @@ function ServicesInfoBlock({
     }[];
   };
 }) {
+  const router = useRouter();
+
   return (
     <>
       <div className="bg-[#F1F6FA]">
@@ -47,6 +50,11 @@ function ServicesInfoBlock({
                               id="services-box"
                               key={index}
                               className="rounded-lg h-auto p-4 flex justify-center items-center bg-white text-center gap-4 w-[300px]"
+                              onClick={() => {
+                                router.push(
+                                  `/products-services/services/${service.title}|${desc.service}`,
+                                );
+                              }}
                             >
                               <div className="flex justify-center items-center min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full ">
                                 <h5 className="font-semibold leading-7">

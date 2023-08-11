@@ -38,7 +38,7 @@ function MoreProductsBlock({
                   "text-black no-underline text-sm",
                   product.label === productTitle ? "font-bold" : "font-thin",
                 )}
-                href={`/products-services/${categoryTitle}|${product.label}`}
+                href={`/products-services/products/${categoryTitle}|${product.label}`}
                 key={index}
               >
                 {product.label}

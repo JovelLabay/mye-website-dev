@@ -1,9 +1,12 @@
+"use client";
+
 import DetailedProducts from "@/app/components/blocks/detailedProducts";
 import MoreProductsBlock from "@/app/components/blocks/moreProductsBlock";
+import MoreServicesBlock from "@/app/components/blocks/moreServicesBlock";
+import { GlobalContext } from "@/lib/contexts/context";
 import { getBlocksProductsServices } from "@/lib/query/query";
 import { Metadata } from "next";
 import Link from "next/link";
-import React from "react";
 
 export const metadata: Metadata = {
   title: "MYE Cloud",
@@ -13,25 +16,26 @@ export const metadata: Metadata = {
 export default async function page({
   params,
 }: {
-  params: { productId: string };
+  params: { servicesId: string };
 }) {
   const block = await getBlocksProductsServices();
 
-  const { products }: { products: ProductsList } =
+  const { services }: { services: ServicesList } =
     await block?.productServicesPage;
-  const category_ProductName = params.productId
+  const service_serviceName = params.servicesId
     .replace(/%20/g, " ")
+    .replace(/%26/g, "&")
     .split("%7C");
 
-  const showProductCategoryOnly = products.productsAndServices.filter(
-    (item) => item.title === category_ProductName[0],
+  const showServiceCategoryOnly = services.item.filter(
+    (item) => item.title === service_serviceName[0],
   );
 
-  const showProductOnly = showProductCategoryOnly[0]?.productServiceItem.filter(
-    (label) => label.label === category_ProductName[1],
+  const showServicesOnly = showServiceCategoryOnly[0]?.serviceList.filter(
+    (label) => label.service === service_serviceName[1],
   );
 
-  const actualBlogData = showProductOnly[0];
+  const actualBlogData = showServicesOnly[0];
 
   return (
     <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
@@ -48,31 +52,32 @@ export default async function page({
                 href="/products-services"
                 className="no-underline text-black"
               >
-                {showProductCategoryOnly[0].title}
+                {showServiceCategoryOnly[0].title}
               </Link>
               <p className="text-customViolet">{">"}</p>
-              <p className="opacity-50">{actualBlogData.label}</p>
+              <p className="opacity-50">{actualBlogData.service}</p>
             </div>
 
             <div className="mb-5">
               <h1 className="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
-                {showProductCategoryOnly[0].title}
+                {showServicesOnly[0].service}
               </h1>
-              <p>{actualBlogData.label}</p>
+              <p>{actualBlogData.service}</p>
             </div>
             <DetailedProducts
-              productData={actualBlogData.productsMainContent}
-              params={params.productId}
+              productData={actualBlogData.serviceMainContent}
+              params={params.servicesId}
+              connector="services"
             />
           </div>
 
           {/* MORE PRODUCTS */}
           <div className="custom-sticky col-span-1 min-h-[30vh] md:min-h-[82vh] md:sticky mb-4 rounded-md bg-[#F1F6FA] p-3">
-            <MoreProductsBlock
-              showProductCategoryOnly={showProductCategoryOnly}
-              categoryTitle={showProductCategoryOnly[0].title}
-              productTitle={actualBlogData.label}
-              params={params.productId}
+            <MoreServicesBlock
+              showServicesCategoryOnly={showServiceCategoryOnly}
+              categoryTitle={showServiceCategoryOnly[0].title}
+              serviceTitle={actualBlogData.service}
+              params={params.servicesId}
             />
           </div>
         </div>
