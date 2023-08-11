@@ -18,10 +18,10 @@ function ProductsBlock2({ products }: { products: ProductsList }) {
 
       const targetOffset = contentRefs.current[index].offsetTop + offset;
 
-      // window.scrollTo({
-      //   top: targetOffset,
-      //   behavior: "smooth",
-      // });
+      window.scrollTo({
+        top: targetOffset,
+        behavior: "smooth",
+      });
     }
   };
 
