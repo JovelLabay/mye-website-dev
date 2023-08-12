@@ -50,7 +50,7 @@ function DetailedBlogsNewsBlock({
         content={blogsNews.data.post.blogsAndNewsPost.postBodyContent}
         className="flex flex-col gap-3"
       />
-      <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
+      <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark pt-3">
         <MdOutlineAccountCircle size={25} />
         {blogsNews.data.post.author.node.firstName}
         {blogsNews.data.post.author.node.lastName}
