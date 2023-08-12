@@ -223,7 +223,7 @@ function BlogsNewsBlock2({
               >
                 Prev
               </button>
-              <p className="text-violet-500 pt-3 font-thin text-sm">
+              <p className="text-violet-500 font-thin text-sm">
                 Page No {currentPage}
               </p>
               <button
