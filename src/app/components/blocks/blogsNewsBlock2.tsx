@@ -229,10 +229,10 @@ function BlogsNewsBlock2({
               <button
                 className={classNames(
                   "text-violet-500 py-2 px-3 border-l border-violet-400",
-                  currentPage === Math.ceil(blogsNewsData2.length / 6) &&
-                    "opacity-50",
+                  // currentPage === Math.ceil(blogsNewsData2.length / 6) &&
+                  paginatedBlogsData.length <= 6 && "opacity-50",
                 )}
-                disabled={currentPage === Math.ceil(blogsNewsData2.length / 6)}
+                disabled={paginatedBlogsData.length <= 6}
                 onClick={() => {
                   setCurrentPage(currentPage + 1);
                 }}
