@@ -91,9 +91,6 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
               blogsNewsData2={blogsNewsData.posts.edges}
               actualBlogData={actualBlogData.data.post}
             />
-            {/* <MoreBlogNewsTopicsBlock
-              blogsNewsData2={blogsNewsData.posts.edges}
-            /> */}
           </div>
         </div>
       </div>

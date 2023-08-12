@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 import { BiShare } from "react-icons/bi";
 import classNames from "classnames";
+import { useRouter } from "next/navigation";
 
 function DetailedBlogsNewsBlock({
   params,
@@ -29,6 +30,8 @@ function DetailedBlogsNewsBlock({
     };
   };
 }) {
+  const router = useRouter();
+
   const [commentPlaceholder, setCommentPlaceholder] = useState("");
   const websiteDomain = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN;
 
@@ -43,6 +46,9 @@ function DetailedBlogsNewsBlock({
           return (
             <span
               key={index}
+              onClick={() => {
+                router.push(`/blogs-news/tags/${tag}`);
+              }}
               className="mb-3 mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg"
             >
               {tag}

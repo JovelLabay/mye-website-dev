@@ -177,6 +177,7 @@ const GetAllBlogsAndNews = gql`
             postPublished
             postShortDescription
             postTitle
+            postTags
             postShortImage {
               sourceUrl
             }

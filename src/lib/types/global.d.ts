@@ -30,6 +30,25 @@ interface ProductsList {
   }[];
 }
 
+interface BlogsNewsData {
+  node: {
+    blogsAndNewsPost: {
+      isPostFeatured: boolean | null;
+      postBodyContent: string | null;
+      postCategory: string[];
+      postPublished: string | null;
+      postShortDescription: string | null;
+      postShortImage: {
+        sourceUrl: string | null;
+      };
+      postTitle: string | null;
+    };
+    id: string;
+    title: string;
+    uri: string;
+  };
+}
+
 interface ServicesList {
   item: {
     description: string;

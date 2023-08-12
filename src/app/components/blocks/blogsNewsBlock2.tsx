@@ -10,28 +10,14 @@ import classNames from "classnames";
 function BlogsNewsBlock2({
   blogsNewsData2,
 }: {
-  blogsNewsData2: {
-    node: {
-      blogsAndNewsPost: {
-        isPostFeatured: boolean | null;
-        postBodyContent: string | null;
-        postCategory: string[];
-        postPublished: string | null;
-        postShortDescription: string | null;
-        postShortImage: {
-          sourceUrl: string | null;
-        };
-        postTitle: string | null;
-      };
-      id: string;
-      title: string;
-      uri: string;
-    };
-  }[];
+  blogsNewsData2: BlogsNewsData[];
 }) {
   const route = useRouter();
 
   const [selected, setSelected] = useState("All Category");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const paginatedBlogsData = paginateArray(blogsNewsData2, 6, currentPage);
 
   return (
     <div className="the-container pt-8 sm:pt-10 md:pt-15 lg:pt-20">
@@ -164,78 +150,111 @@ function BlogsNewsBlock2({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {blogsNewsData2 &&
-              blogsNewsData2
-                // .filter((item) => !item.node.blogsAndNewsPost.isPostFeatured)
-                .filter((item: any) => {
-                  if (selected === "All Category") {
-                    return item;
-                  } else if (
-                    item.node.blogsAndNewsPost.postCategory === selected
-                  ) {
-                    return item;
+            {paginatedBlogsData
+              .filter((item: any) => {
+                if (selected === "All Category") {
+                  return item;
+                } else if (
+                  item.node.blogsAndNewsPost.postCategory === selected
+                ) {
+                  return item;
+                }
+              })
+              .map((blogItem, index) => (
+                <div
+                  className="flex flex-col hover:cursor-pointer"
+                  key={index}
+                  onClick={() =>
+                    route.push(
+                      `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
+                    )
                   }
-                })
-                .map((blogItem, index) => (
+                >
                   <div
-                    className="flex flex-col hover:cursor-pointer"
-                    key={index}
-                    onClick={() =>
-                      route.push(
-                        `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
-                      )
-                    }
-                  >
-                    <div
-                      className="col-span-1 mb-3 md:mb-0"
-                      style={{
-                        minHeight: "300px",
-                        backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
-                        backgroundRepeat: "no-repeat",
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        borderRadius: "15px",
-                      }}
-                    />
-                    <div className="col-span-2 flex flex-col gap-3 items-start">
-                      {blogItem.node.blogsAndNewsPost.postCategory && (
-                        <p className="font-bold">
-                          {blogItem.node.blogsAndNewsPost.postCategory}
-                        </p>
-                      )}
-                      {blogItem.node.blogsAndNewsPost.postTitle && (
-                        <h5 className="font-semibold leading-7 text-customViolet">
-                          {blogItem.node.blogsAndNewsPost.postTitle}
-                        </h5>
-                      )}
-                      {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                        <p className="text-ellipsis overflow-hidden h-[100px]">
-                          {blogItem.node.blogsAndNewsPost.postShortDescription}
-                        </p>
-                      )}
+                    className="col-span-1 mb-3 md:mb-0"
+                    style={{
+                      minHeight: "300px",
+                      backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      borderRadius: "15px",
+                    }}
+                  />
+                  <div className="col-span-2 flex flex-col gap-3 items-start">
+                    {blogItem.node.blogsAndNewsPost.postCategory && (
+                      <p className="font-bold">
+                        {blogItem.node.blogsAndNewsPost.postCategory}
+                      </p>
+                    )}
+                    {blogItem.node.blogsAndNewsPost.postTitle && (
+                      <h5 className="font-semibold leading-7 text-customViolet">
+                        {blogItem.node.blogsAndNewsPost.postTitle}
+                      </h5>
+                    )}
+                    {blogItem.node.blogsAndNewsPost.postShortDescription && (
+                      <p className="text-ellipsis overflow-hidden h-[100px]">
+                        {blogItem.node.blogsAndNewsPost.postShortDescription}
+                      </p>
+                    )}
 
-                      <div className="w-full flex justify-center md:justify-start">
-                        <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
-                          Read more
-                        </button>
-                      </div>
+                    <div className="w-full flex justify-center md:justify-start">
+                      <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
+                        Read more
+                      </button>
                     </div>
                   </div>
-                ))}
+                </div>
+              ))}
           </div>
 
           {/* PAGINATION */}
-          {/* <div className="mt-4 flex justify-center items-center">
-            <div className="flex justify-center items-center gap-3 ">
-              <button>Next</button>
-              <p>dfs</p>
-              <button>Prev</button>
+          <div className="mt-4 flex justify-center items-center ">
+            <div className="flex justify-center items-center gap-3 bg-violet-100 rounded-md">
+              <button
+                className={classNames(
+                  "text-violet-500 py-2 px-3 border-r border-violet-400",
+                  currentPage === 1 && "opacity-50",
+                )}
+                disabled={currentPage === 1}
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                }}
+              >
+                Prev
+              </button>
+              <p className="text-violet-500 pt-3 font-thin text-sm">
+                Page No {currentPage}
+              </p>
+              <button
+                className={classNames(
+                  "text-violet-500 py-2 px-3 border-l border-violet-400",
+                  currentPage === Math.ceil(blogsNewsData2.length / 6) &&
+                    "opacity-50",
+                )}
+                disabled={currentPage === Math.ceil(blogsNewsData2.length / 6)}
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                Next
+              </button>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
   );
+
+  function paginateArray(
+    blogsNewsData2: BlogsNewsData[],
+    itemsPerPage: number,
+    pageNumber: number,
+  ) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return blogsNewsData2.slice(startIndex, endIndex);
+  }
 }
 
 export default BlogsNewsBlock2;

@@ -6,6 +6,7 @@ import React from "react";
 
 function HeaderBlogsNewsBlock({
   headerBlogsAndNews,
+  params,
 }: {
   headerBlogsAndNews: {
     has_magrin_top: boolean;
@@ -15,6 +16,7 @@ function HeaderBlogsNewsBlock({
       sourceUrl: string;
     };
   };
+  params?: string;
 }) {
   return (
     <div
@@ -36,7 +38,9 @@ function HeaderBlogsNewsBlock({
               MYE Cloud
             </Link>
             <p>{">"}</p>
-            <p className="opacity-50">Blogs and News</p>
+            <p className="opacity-50">
+              {params == undefined ? "Blogs & News" : params}
+            </p>
           </div>
 
           <h1 className="animate text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold">
