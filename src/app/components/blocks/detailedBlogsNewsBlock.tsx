@@ -11,6 +11,7 @@ import {
 import { BiShare } from "react-icons/bi";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 function DetailedBlogsNewsBlock({
   params,
@@ -25,6 +26,14 @@ function DetailedBlogsNewsBlock({
         blogsAndNewsPost: {
           postBodyContent: string;
           postTags: string[];
+          postPublished: string;
+        };
+        author: {
+          node: {
+            firstName: string;
+            lastName: string;
+            userId: number;
+          };
         };
       };
     };
@@ -41,6 +50,13 @@ function DetailedBlogsNewsBlock({
         content={blogsNews.data.post.blogsAndNewsPost.postBodyContent}
         className="flex flex-col gap-3"
       />
+      <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
+        <MdOutlineAccountCircle size={25} />
+        {blogsNews.data.post.author.node.firstName}
+        {blogsNews.data.post.author.node.lastName}
+        {" | "}
+        {blogsNews.data.post.blogsAndNewsPost.postPublished}
+      </p>
       <div className="flex flex-wrap my-4">
         {blogsNews.data.post.blogsAndNewsPost.postTags?.map((tag, index) => {
           return (

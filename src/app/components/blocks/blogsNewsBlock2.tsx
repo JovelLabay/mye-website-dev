@@ -6,6 +6,7 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { Listbox, Transition } from "@headlessui/react";
 import { BsChevronDown } from "react-icons/bs";
 import classNames from "classnames";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 function BlogsNewsBlock2({
   blogsNewsData2,
@@ -77,6 +78,13 @@ function BlogsNewsBlock2({
                       {blogItem.node.blogsAndNewsPost.postShortDescription}
                     </p>
                   )}
+                  <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
+                    <MdOutlineAccountCircle size={25} />
+                    {blogItem.node.author.node.firstName}
+                    {blogItem.node.author.node.lastName}
+                    {" | "}
+                    {blogItem.node.blogsAndNewsPost.postPublished}
+                  </p>
 
                   <div className="w-full flex justify-center md:justify-start">
                     <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
@@ -197,6 +205,13 @@ function BlogsNewsBlock2({
                       {blogItem.node.blogsAndNewsPost.postShortDescription}
                     </p>
                   )}
+                  <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
+                    <MdOutlineAccountCircle size={25} />
+                    {blogItem.node.author.node.firstName}
+                    {blogItem.node.author.node.lastName}
+                    {" | "}
+                    {blogItem.node.blogsAndNewsPost.postPublished}
+                  </p>
 
                   <div className="w-full flex justify-center md:justify-start">
                     <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">

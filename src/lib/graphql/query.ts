@@ -170,6 +170,14 @@ const GetAllBlogsAndNews = gql`
           id
           title
           uri
+          author {
+            node {
+              userId
+              email
+              lastName
+              firstName
+            }
+          }
           blogsAndNewsPost {
             isPostFeatured
             postBodyContent

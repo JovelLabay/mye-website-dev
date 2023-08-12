@@ -46,6 +46,14 @@ interface BlogsNewsData {
     id: string;
     title: string;
     uri: string;
+    author: {
+      node: {
+        userId: string;
+        email: string;
+        lastName: string;
+        firstName: string;
+      };
+    };
   };
 }
 
