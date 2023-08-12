@@ -73,7 +73,7 @@ function BlogsNewsBlock({
                       <h5 className="font-semibold leading-7 text-customViolet">
                         {blogItem.node.blogsAndNewsPost.postTitle}
                       </h5>
-                      <p className="hidden lg:block">
+                      <p className="hidden lg:block truncate w-full">
                         {blogItem.node.blogsAndNewsPost.postShortDescription}
                       </p>
                     </div>
@@ -102,10 +102,10 @@ function BlogsNewsBlock({
                     <p className="font-bold hidden lg:block">
                       {blogItem.node.blogsAndNewsPost.postCategory}
                     </p>
-                    <h5 className="font-semibold leading-7 text-customViolet">
+                    <h5 className="font-semibold leading-7 text-customViolet truncate w-full">
                       {blogItem.node.blogsAndNewsPost.postTitle}
                     </h5>
-                    <p className="hidden lg:block text-ellipsis overflow-hidden h-[100px]">
+                    <p className="hidden lg:block truncate w-full">
                       {blogItem.node.blogsAndNewsPost.postShortDescription}
                     </p>
                   </div>

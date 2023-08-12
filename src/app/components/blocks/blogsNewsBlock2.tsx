@@ -69,12 +69,12 @@ function BlogsNewsBlock2({
                     </p>
                   )}
                   {blogItem.node.blogsAndNewsPost.postTitle && (
-                    <h5 className="font-semibold leading-7 text-customViolet truncate">
+                    <h5 className="font-semibold leading-7 text-customViolet truncate w-full">
                       {blogItem.node.blogsAndNewsPost.postTitle}
                     </h5>
                   )}
                   {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                    <p className="text-ellipsis overflow-hidden truncate">
+                    <p className="truncate w-full">
                       {blogItem.node.blogsAndNewsPost.postShortDescription}
                     </p>
                   )}
@@ -196,12 +196,12 @@ function BlogsNewsBlock2({
                     </p>
                   )}
                   {blogItem.node.blogsAndNewsPost.postTitle && (
-                    <h5 className="font-semibold leading-7 text-customViolet">
+                    <h5 className="font-semibold leading-7 text-customViolet truncate w-full">
                       {blogItem.node.blogsAndNewsPost.postTitle}
                     </h5>
                   )}
                   {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                    <p className="text-ellipsis overflow-hidden h-[100px]">
+                    <p className="truncate w-full">
                       {blogItem.node.blogsAndNewsPost.postShortDescription}
                     </p>
                   )}
