@@ -17,7 +17,17 @@ function BlogsNewsBlock2({
   const [selected, setSelected] = useState("All Category");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const paginatedBlogsData = paginateArray(blogsNewsData2, 6, currentPage);
+  const paginatedBlogsData = paginateArray(
+    blogsNewsData2.filter((item: any) => {
+      if (selected === "All Category") {
+        return item;
+      } else if (item.node.blogsAndNewsPost.postCategory === selected) {
+        return item;
+      }
+    }),
+    6,
+    currentPage,
+  );
 
   return (
     <div className="the-container pt-8 sm:pt-10 md:pt-15 lg:pt-20">
@@ -150,62 +160,52 @@ function BlogsNewsBlock2({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {paginatedBlogsData
-              .filter((item: any) => {
-                if (selected === "All Category") {
-                  return item;
-                } else if (
-                  item.node.blogsAndNewsPost.postCategory === selected
-                ) {
-                  return item;
+            {paginatedBlogsData.map((blogItem, index) => (
+              <div
+                className="flex flex-col hover:cursor-pointer"
+                key={index}
+                onClick={() =>
+                  route.push(
+                    `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
+                  )
                 }
-              })
-              .map((blogItem, index) => (
+              >
                 <div
-                  className="flex flex-col hover:cursor-pointer"
-                  key={index}
-                  onClick={() =>
-                    route.push(
-                      `/blogs-news/${blogItem.node.id.replace(/=/g, "")}`,
-                    )
-                  }
-                >
-                  <div
-                    className="col-span-1 mb-3 md:mb-0"
-                    style={{
-                      minHeight: "300px",
-                      backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      borderRadius: "15px",
-                    }}
-                  />
-                  <div className="col-span-2 flex flex-col gap-3 items-start">
-                    {blogItem.node.blogsAndNewsPost.postCategory && (
-                      <p className="font-bold">
-                        {blogItem.node.blogsAndNewsPost.postCategory}
-                      </p>
-                    )}
-                    {blogItem.node.blogsAndNewsPost.postTitle && (
-                      <h5 className="font-semibold leading-7 text-customViolet">
-                        {blogItem.node.blogsAndNewsPost.postTitle}
-                      </h5>
-                    )}
-                    {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                      <p className="text-ellipsis overflow-hidden h-[100px]">
-                        {blogItem.node.blogsAndNewsPost.postShortDescription}
-                      </p>
-                    )}
+                  className="col-span-1 mb-3 md:mb-0"
+                  style={{
+                    minHeight: "300px",
+                    backgroundImage: `url(${blogItem.node.blogsAndNewsPost.postShortImage.sourceUrl})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    borderRadius: "15px",
+                  }}
+                />
+                <div className="col-span-2 flex flex-col gap-3 items-start">
+                  {blogItem.node.blogsAndNewsPost.postCategory && (
+                    <p className="font-bold">
+                      {blogItem.node.blogsAndNewsPost.postCategory}
+                    </p>
+                  )}
+                  {blogItem.node.blogsAndNewsPost.postTitle && (
+                    <h5 className="font-semibold leading-7 text-customViolet">
+                      {blogItem.node.blogsAndNewsPost.postTitle}
+                    </h5>
+                  )}
+                  {blogItem.node.blogsAndNewsPost.postShortDescription && (
+                    <p className="text-ellipsis overflow-hidden h-[100px]">
+                      {blogItem.node.blogsAndNewsPost.postShortDescription}
+                    </p>
+                  )}
 
-                    <div className="w-full flex justify-center md:justify-start">
-                      <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
-                        Read more
-                      </button>
-                    </div>
+                  <div className="w-full flex justify-center md:justify-start">
+                    <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
+                      Read more
+                    </button>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
 
           {/* PAGINATION */}
