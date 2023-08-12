@@ -224,7 +224,7 @@ function BlogsNewsBlock2({
           </div>
 
           {/* PAGINATION */}
-          <div className="mt-4 flex justify-center items-center ">
+          <div className="mt-8 flex justify-center items-center ">
             <div className="flex justify-center items-center gap-3 bg-violet-100 rounded-md">
               <button
                 className={classNames(
