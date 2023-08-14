@@ -1,6 +1,6 @@
 import client from "@/lib/apollo/client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import GET_BLOGS_AND_NEWS from "@/lib/graphql/queryBlogsNews";
 import HeaderBlogsNewsBlock from "@/blocksheaderBlogsNewsBlock";
 import BlogsNewsBlock2 from "@/blocksblogsNewsBlock2";
