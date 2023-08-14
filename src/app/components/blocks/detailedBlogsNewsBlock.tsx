@@ -79,10 +79,10 @@ function DetailedBlogsNewsBlock({
           width={1000}
           className="rounded-full w-[50px] h-[50px]"
         />
-        <b className="text-[17px]">
+        <h1 className="text-[16px] sm:text-[19px] md:text-[24px] lg:text-[26px] text-customViolet font-bold">
           {blogsNews.data.post.author.node.firstName}{" "}
           {blogsNews.data.post.author.node.lastName}
-        </b>
+        </h1>
 
         {blogsNews.data.post.author.node.description}
       </p>
