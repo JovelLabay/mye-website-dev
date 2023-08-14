@@ -64,7 +64,7 @@ function DetailedBlogsNewsBlock({
               onClick={() => {
                 router.push(`/blogs-news/tags/${tag}`);
               }}
-              className="mb-3 mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg cursor-pointer"
+              className="mb-3 mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg cursor-pointer hover:drop-shadow-xl"
             >
               {tag}
             </span>
