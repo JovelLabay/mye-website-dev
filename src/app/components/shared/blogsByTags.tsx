@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import classNames from "classnames";
 
 function BlogsByTags({
   blogsNewsData2,
@@ -42,6 +43,19 @@ function BlogsByTags({
   params: string;
 }) {
   const route = useRouter();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  function paginateArray(
+    blogsNewsData2: BlogsNewsData[],
+    itemsPerPage: number,
+    pageNumber: number,
+  ) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return blogsNewsData2.slice(startIndex, endIndex);
+  }
+
+  const paginatedBlogsData = paginateArray(blogsNewsData2, 6, currentPage);
 
   return (
     <div className="the-container">
@@ -119,6 +133,39 @@ function BlogsByTags({
                     </div>
                   </div>
                 ))}
+          </div>
+          {/* PAGINATION */}
+          <div className="mt-8 flex justify-center items-center ">
+            <div className="flex justify-center items-center gap-3 bg-violet-100 rounded-md">
+              <button
+                className={classNames(
+                  "text-violet-500 py-2 px-3 border-r border-violet-400",
+                  currentPage === 1 && "opacity-50",
+                )}
+                disabled={currentPage === 1}
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                }}
+              >
+                Prev
+              </button>
+              <p className="text-violet-500 font-thin text-sm">
+                Page No {currentPage}
+              </p>
+              <button
+                className={classNames(
+                  "text-violet-500 py-2 px-3 border-l border-violet-400",
+                  // currentPage === Math.ceil(blogsNewsData2.length / 6) &&
+                  paginatedBlogsData.length < 6 && "opacity-50",
+                )}
+                disabled={paginatedBlogsData.length < 6}
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
