@@ -176,6 +176,10 @@ const GetAllBlogsAndNews = gql`
               email
               lastName
               firstName
+              description
+              avatar {
+                url
+              }
             }
           }
           blogsAndNewsPost {

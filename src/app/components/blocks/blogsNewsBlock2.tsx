@@ -7,6 +7,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { BsChevronDown } from "react-icons/bs";
 import classNames from "classnames";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import Image from "next/image";
 
 function BlogsNewsBlock2({
   blogsNewsData2,
@@ -79,7 +80,13 @@ function BlogsNewsBlock2({
                     </p>
                   )}
                   <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
-                    <MdOutlineAccountCircle size={25} />
+                    <Image
+                      src={blogItem.node.author.node.avatar.url}
+                      alt={blogItem.node.author.node.firstName}
+                      height={1000}
+                      width={1000}
+                      className="rounded-full w-[25px] h-[25px]"
+                    />
                     {blogItem.node.author.node.firstName}
                     {blogItem.node.author.node.lastName}
                     {" | "}
@@ -206,7 +213,13 @@ function BlogsNewsBlock2({
                     </p>
                   )}
                   <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
-                    <MdOutlineAccountCircle size={25} />
+                    <Image
+                      src={blogItem.node.author.node.avatar.url}
+                      alt={blogItem.node.author.node.firstName}
+                      height={1000}
+                      width={1000}
+                      className="rounded-full w-[25px] h-[25px]"
+                    />
                     {blogItem.node.author.node.firstName}
                     {blogItem.node.author.node.lastName}
                     {" | "}

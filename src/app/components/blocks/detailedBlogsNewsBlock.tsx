@@ -12,6 +12,7 @@ import { BiShare } from "react-icons/bi";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import Image from "next/image";
 
 function DetailedBlogsNewsBlock({
   params,
@@ -33,6 +34,10 @@ function DetailedBlogsNewsBlock({
             firstName: string;
             lastName: string;
             userId: number;
+            description: string;
+            avatar: {
+              url: string;
+            };
           };
         };
       };
@@ -50,13 +55,7 @@ function DetailedBlogsNewsBlock({
         content={blogsNews.data.post.blogsAndNewsPost.postBodyContent}
         className="flex flex-col gap-3"
       />
-      <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark pt-3">
-        <MdOutlineAccountCircle size={25} />
-        {blogsNews.data.post.author.node.firstName}
-        {blogsNews.data.post.author.node.lastName}
-        {" | "}
-        {blogsNews.data.post.blogsAndNewsPost.postPublished}
-      </p>
+
       <div className="flex flex-wrap my-4">
         {blogsNews.data.post.blogsAndNewsPost.postTags?.map((tag, index) => {
           return (
@@ -65,13 +64,28 @@ function DetailedBlogsNewsBlock({
               onClick={() => {
                 router.push(`/blogs-news/tags/${tag}`);
               }}
-              className="mb-3 mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg"
+              className="mb-3 mr-2 py-2 px-3 rounded-full bg-customPinkOpacity text-white drop-shadow-lg cursor-pointer"
             >
               {tag}
             </span>
           );
         })}
       </div>
+      <p className="text-sm font-light flex justify-start gap-2 text-customDark bg-gray-100 pt-3 flex-col p-3">
+        <Image
+          src={blogsNews.data.post.author.node.avatar?.url}
+          alt={blogsNews.data.post.author.node.firstName}
+          height={1000}
+          width={1000}
+          className="rounded-full w-[50px] h-[50px]"
+        />
+        <b className="text-[17px]">
+          {blogsNews.data.post.author.node.firstName}{" "}
+          {blogsNews.data.post.author.node.lastName}
+        </b>
+
+        {blogsNews.data.post.author.node.description}
+      </p>
       <div className="flex justify-end items-center mb-4">
         <RWebShare
           data={{
