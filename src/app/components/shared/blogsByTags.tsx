@@ -46,7 +46,36 @@ function BlogsByTags({
   const [currentPage, setCurrentPage] = useState(1);
 
   function paginateArray(
-    blogsNewsData2: BlogsNewsData[],
+    blogsNewsData2: {
+      node: {
+        blogsAndNewsPost: {
+          isPostFeatured: boolean | null;
+          postBodyContent: string | null;
+          postCategory: string[];
+          postPublished: string | null;
+          postShortDescription: string | null;
+          postShortImage: {
+            sourceUrl: string | null;
+          };
+          postTags: string[];
+          postTitle: string | null;
+        };
+        id: string;
+        title: string;
+        uri: string;
+        author: {
+          node: {
+            userId: string;
+            email: string;
+            lastName: string;
+            firstName: string;
+            avatar: {
+              url: string;
+            };
+          };
+        };
+      };
+    }[],
     itemsPerPage: number,
     pageNumber: number,
   ) {
@@ -55,7 +84,7 @@ function BlogsByTags({
     return blogsNewsData2.slice(startIndex, endIndex);
   }
 
-  const paginatedBlogsData = paginateArray(blogsNewsData2, 6, currentPage);
+  const paginatedBlogsData = paginateArray(blogsNewsData2, 9, currentPage);
 
   return (
     <div className="the-container">
@@ -69,8 +98,8 @@ function BlogsByTags({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {blogsNewsData2 &&
-              blogsNewsData2
+            {paginatedBlogsData &&
+              paginatedBlogsData
                 .filter((tag) => {
                   return tag.node.blogsAndNewsPost.postTags.includes(params);
                 })
@@ -119,7 +148,7 @@ function BlogsByTags({
                           width={1000}
                           className="rounded-full w-[25px] h-[25px]"
                         />
-                        {blogItem.node.author.node.firstName}
+                        {blogItem.node.author.node.firstName}{" "}
                         {blogItem.node.author.node.lastName}
                         {" | "}
                         {blogItem.node.blogsAndNewsPost.postPublished}
