@@ -220,7 +220,7 @@ function BlogsNewsBlock2({
                       width={1000}
                       className="rounded-full w-[25px] h-[25px]"
                     />
-                    {blogItem.node.author.node.firstName}
+                    {blogItem.node.author.node.firstName}{" "}
                     {blogItem.node.author.node.lastName}
                     {" | "}
                     {blogItem.node.blogsAndNewsPost.postPublished}
