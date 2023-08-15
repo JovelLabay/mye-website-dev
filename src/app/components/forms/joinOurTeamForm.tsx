@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  getInTouchFormSchema,
-  joinourTeamFormSchema,
-} from "@/lib/types/validators";
+import { joinourTeamFormSchema } from "@/lib/types/validators";
 import { Dialog } from "@headlessui/react";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import uniqid from "uniqid";
 import axios from "axios";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
@@ -17,7 +13,6 @@ function JoinOurTeamForm({
   currentStatus,
   setCurrentStatus,
 }: JoinOurTeamFormProps) {
-  // Initialize the state with useState
   const {
     register,
     handleSubmit,
@@ -296,12 +291,28 @@ const pathData = {
 };
 
 const fileUploader = async (DocuFile: File) => {
+  // Create a function  that generate 5 random characters and must be unique
+
+  function makeid(length: number) {
+    var result = [];
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+
+    for (var i = 0; i < length; i++) {
+      result.push(
+        characters.charAt(Math.floor(Math.random() * charactersLength)),
+      );
+    }
+    return result.join("");
+  }
+
   const { data, error } = await supabase.storage
     .from("MYE Applications")
     .upload(
       `${pathData.MYE_Applications.Documents.Application_Files}${
         DocuFile.name
-      }-${uniqid()}`,
+      }-${makeid(10)}`,
       DocuFile,
       {
         cacheControl: "3600",
