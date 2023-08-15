@@ -84,7 +84,13 @@ function BlogsByTags({
     return blogsNewsData2.slice(startIndex, endIndex);
   }
 
-  const paginatedBlogsData = paginateArray(blogsNewsData2, 9, currentPage);
+  const paginatedBlogsData = paginateArray(
+    blogsNewsData2.filter((tag) => {
+      return tag.node.blogsAndNewsPost.postTags.includes(params);
+    }),
+    9,
+    currentPage,
+  );
 
   return (
     <div className="the-container">
@@ -168,7 +174,7 @@ function BlogsByTags({
             <div className="flex justify-center items-center gap-3 bg-violet-100 rounded-md">
               <button
                 className={classNames(
-                  "text-violet-500 py-2 px-3 border-r border-violet-400",
+                  "text-violet-500 py-2 px-3 bg-violet-100 rounded",
                   currentPage === 1 && "opacity-50",
                 )}
                 disabled={currentPage === 1}
@@ -178,13 +184,24 @@ function BlogsByTags({
               >
                 Prev
               </button>
-              <p className="text-violet-500 font-thin text-sm">
-                Page No {currentPage}
-              </p>
+              <div className="w-[30%] truncate flex justify-center items-center gap-2 px-2">
+                {allData().map((item, index) => (
+                  <div
+                    key={index}
+                    className={classNames(
+                      "flex justify-center items-center text-xs p-2",
+                      currentPage === item
+                        ? "text-violet-500 font-bold bg-violet-100 w-5 h-5 rounded-full"
+                        : "text-violet-500 font-bold bg-violet-100 w-5 h-5 rounded-full opacity-50",
+                    )}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
               <button
                 className={classNames(
-                  "text-violet-500 py-2 px-3 border-l border-violet-400",
-                  // currentPage === Math.ceil(blogsNewsData2.length / 6) &&
+                  "text-violet-500 py-2 px-3 bg-violet-100 rounded",
                   paginatedBlogsData.length < 6 && "opacity-50",
                 )}
                 disabled={paginatedBlogsData.length < 6}
@@ -200,6 +217,18 @@ function BlogsByTags({
       </div>
     </div>
   );
+
+  function allData() {
+    const pages = blogsNewsData2.length / 6;
+
+    const allData = [];
+
+    for (let i = 1; i <= Math.round(pages); i++) {
+      allData.push(i);
+    }
+
+    return allData;
+  }
 }
 
 export default BlogsByTags;

@@ -31,18 +31,6 @@ function BlogsNewsBlock2({
     currentPage,
   );
 
-  function allData() {
-    const pages = blogsNewsData2.length / 6;
-
-    const allData = [];
-
-    for (let i = 1; i <= Math.round(pages); i++) {
-      allData.push(i);
-    }
-
-    return allData;
-  }
-
   return (
     <div className="the-container pt-8 sm:pt-10 md:pt-15 lg:pt-20">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
@@ -297,6 +285,18 @@ function BlogsNewsBlock2({
       </div>
     </div>
   );
+
+  function allData() {
+    const pages = blogsNewsData2.length / 6;
+
+    const allData = [];
+
+    for (let i = 1; i <= Math.round(pages); i++) {
+      allData.push(i);
+    }
+
+    return allData;
+  }
 
   function paginateArray(
     blogsNewsData2: BlogsNewsData[],
