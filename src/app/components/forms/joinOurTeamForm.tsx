@@ -58,7 +58,7 @@ function JoinOurTeamForm({
     setCurrentStatus((prev) => ({ ...prev, buttonStatus: true }));
     try {
       const chosenFile = selectedFile as File;
-      const fileUrl = await imageUploader(chosenFile);
+      const fileUrl = await fileUploader(chosenFile);
 
       const formDataWithFile = { ...data, fileUrl };
 
@@ -306,7 +306,7 @@ const pathData = {
   },
 };
 
-const imageUploader = async (DocuFile: File) => {
+const fileUploader = async (DocuFile: File) => {
   const { data, error } = await supabase.storage
     .from("MYE Applications")
     .upload(
