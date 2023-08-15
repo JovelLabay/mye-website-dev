@@ -153,82 +153,86 @@ function DetailedBlogsNewsBlock({
       <div>
         <h5 className="font-bold text-customViolet">Comments:</h5>
 
-        {comments.map((comment, index) => {
-          const date = new Date(comment.date);
+        {comments.length !== 0 ? (
+          comments.map((comment, index) => {
+            const date = new Date(comment.date);
 
-          const options: any = {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-            second: "numeric",
-            hour12: true,
-          };
+            const options: any = {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+              second: "numeric",
+              hour12: true,
+            };
 
-          const formattedDate = date.toLocaleString("en-US", options);
-          return (
-            <div key={index} className="mt-3">
-              <div className="flex justify-between items-center">
-                <div className="flex justify-start items-center gap-3">
-                  <div className="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center ">
-                    <IoMdPerson className="text-customViolet" />
-                  </div>
-                  <p className="text-customDark font-bold text-lg">
-                    Guest User
-                  </p>
-                </div>
-
-                <p className="font-light italic">{formattedDate}</p>
-              </div>
-              <Wysiwyg
-                content={comment.content}
-                className="flex flex-col gap-3 mt-3 p-3 bg-[#F1F6FA] rounded"
-              />
-
-              <div className="ml-10">
-                {comment.replies.nodes.map((reply, index2) => {
-                  const date2 = new Date(reply.date);
-
-                  const options2: any = {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "numeric",
-                    second: "numeric",
-                    hour12: true,
-                  };
-
-                  const formattedDate2 = date2.toLocaleString(
-                    "en-US",
-                    options2,
-                  );
-                  return (
-                    <div key={index2} className="mt-3">
-                      <div className="flex justify-between items-center">
-                        <div className="flex justify-start items-center gap-3">
-                          <div className="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center ">
-                            <IoMdPerson className="text-customViolet" />
-                          </div>
-                          <p className="text-customDark font-bold text-lg">
-                            {reply.author.node.name}
-                          </p>
-                        </div>
-
-                        <p className="font-light italic">{formattedDate2}</p>
-                      </div>
-                      <Wysiwyg
-                        content={reply.content}
-                        className="flex flex-col gap-3 mt-2 p-3 bg-[#F1F6FA] rounded"
-                      />
+            const formattedDate = date.toLocaleString("en-US", options);
+            return (
+              <div key={index} className="mt-3">
+                <div className="flex justify-between items-center">
+                  <div className="flex justify-start items-center gap-3">
+                    <div className="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center ">
+                      <IoMdPerson className="text-customViolet" />
                     </div>
-                  );
-                })}
+                    <p className="text-customDark font-bold text-lg">
+                      Guest User
+                    </p>
+                  </div>
+
+                  <p className="font-light italic">{formattedDate}</p>
+                </div>
+                <Wysiwyg
+                  content={comment.content}
+                  className="flex flex-col gap-3 mt-3 p-3 bg-[#F1F6FA] rounded"
+                />
+
+                <div className="ml-10">
+                  {comment.replies.nodes.map((reply, index2) => {
+                    const date2 = new Date(reply.date);
+
+                    const options2: any = {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "numeric",
+                      second: "numeric",
+                      hour12: true,
+                    };
+
+                    const formattedDate2 = date2.toLocaleString(
+                      "en-US",
+                      options2,
+                    );
+                    return (
+                      <div key={index2} className="mt-3">
+                        <div className="flex justify-between items-center">
+                          <div className="flex justify-start items-center gap-3">
+                            <div className="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center ">
+                              <IoMdPerson className="text-customViolet" />
+                            </div>
+                            <p className="text-customDark font-bold text-lg">
+                              {reply.author.node.name}
+                            </p>
+                          </div>
+
+                          <p className="font-light italic">{formattedDate2}</p>
+                        </div>
+                        <Wysiwyg
+                          content={reply.content}
+                          className="flex flex-col gap-3 mt-2 p-3 bg-[#F1F6FA] rounded"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <p className="text-customDark font-bold text-lg">No comments yet.</p>
+        )}
       </div>
 
       <div className="mb-4 lg:mb-0">
