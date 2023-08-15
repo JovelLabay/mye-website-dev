@@ -150,7 +150,7 @@ function DetailedBlogsNewsBlock({
       >
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-        <div className="fixed inset-0 flex items-center justify-center p-4">
+        <div className="z-[101] fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="mx-auto max-w-lg rounded bg-white p-4">
             <div className="flex flex-col justify-center items-center gap-3">
               <h3 className="text-center flex justify-center items-center gap-3 my-3 text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px] font-bold text-customViolet">
