@@ -171,7 +171,7 @@ function BlogsByTags({
           </div>
           {/* PAGINATION */}
           <div className="mt-8 flex justify-center items-center ">
-            <div className="flex justify-center items-center gap-3 bg-violet-100 rounded-md">
+            <div className="flex justify-center items-center gap-3">
               <button
                 className={classNames(
                   "text-violet-500 py-2 px-3 bg-violet-100 rounded",
