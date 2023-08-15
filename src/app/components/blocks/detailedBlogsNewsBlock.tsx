@@ -93,7 +93,7 @@ function DetailedBlogsNewsBlock({
 
         {blogsNews.data.post.author.node.description}
       </p>
-      <div className="flex justify-end items-center mb-4">
+      <div className="flex justify-end items-center my-4">
         <RWebShare
           data={{
             text: "Share this link",
