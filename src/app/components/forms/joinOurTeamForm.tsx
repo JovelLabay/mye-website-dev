@@ -8,6 +8,8 @@ import {
 import { Dialog } from "@headlessui/react";
 import { supabase } from "@/lib/supabase/supabaseClient";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
 interface StatusState {
   modal: boolean;
@@ -56,16 +58,50 @@ function JoinOurTeamForm({
     setCurrentStatus((prev) => ({ ...prev, buttonStatus: true }));
     try {
       const chosenFile = selectedFile as File;
-      const imageUrl = await imageUploader(chosenFile);
+      const fileUrl = await imageUploader(chosenFile);
 
-      console.log("URL", imageUrl);
-
-      const formDataWithImage = { ...data, imageUrl };
+      const formDataWithFile = { ...data, fileUrl };
 
       setTimeout(() => {
-        setCurrentStatus((prev) => ({ ...prev, buttonStatus: false }));
-        setCurrentStatus((prev) => ({ ...prev, feedback: true, modal: false }));
-        reset();
+        axios
+          .request({
+            method: "POST",
+            maxBodyLength: Infinity,
+            url: "/api/apply",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            data: {
+              firstName: formDataWithFile.firstName,
+              lastName: formDataWithFile.lastName,
+              emailAddress: formDataWithFile.email,
+              message: formDataWithFile.message,
+              fileUrl: formDataWithFile.fileUrl,
+            },
+          })
+          .then((res) => {
+            setCurrentStatus((prev) => ({
+              ...prev,
+              buttonStatus: false,
+              feedback: true,
+              modal: false,
+              status: true,
+            }));
+
+            console.log(res);
+            reset();
+          })
+          .catch((err) => {
+            setCurrentStatus((prev) => ({
+              ...prev,
+              buttonStatus: false,
+              feedback: true,
+              modal: false,
+              status: false,
+            }));
+
+            console.log(err);
+          });
       }, 2000);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -228,10 +264,18 @@ function JoinOurTeamForm({
           <Dialog.Panel className="mx-auto max-w-lg rounded bg-white p-4">
             <div className="flex flex-col justify-center items-center gap-3">
               <h3 className="text-center flex justify-center items-center gap-3 my-3 text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px] font-bold text-customViolet">
-                Message Sent
+                {currentStatus.status ? "Mesage Sent!" : "Message Failed!"}
+                {currentStatus.status ? (
+                  <AiFillCheckCircle />
+                ) : (
+                  <AiFillCloseCircle />
+                )}
               </h3>
-
-              <p>Thank you for your application. We&apos;ll get back to you!</p>
+              <p>
+                {currentStatus.status
+                  ? "Thank you for your application. We&apos;ll get back to you!"
+                  : "Your application has encountered an error. Try again."}
+              </p>
 
               <button
                 onClick={() =>
@@ -262,14 +306,14 @@ const pathData = {
   },
 };
 
-const imageUploader = async (imageFile: File) => {
+const imageUploader = async (DocuFile: File) => {
   const { data, error } = await supabase.storage
     .from("MYE Applications")
     .upload(
       `${pathData.MYE_Applications.Documents.Application_Files}${
-        imageFile.name
+        DocuFile.name
       }-${uuidv4()}`,
-      imageFile,
+      DocuFile,
       {
         cacheControl: "3600",
         upsert: false,
@@ -281,7 +325,9 @@ const imageUploader = async (imageFile: File) => {
   if (error) {
     return error.message;
   } else {
-    const { data } = await supabase.storage.from("interns").getPublicUrl(lala);
+    const { data } = await supabase.storage
+      .from("MYE Applications")
+      .getPublicUrl(lala);
     return data.publicUrl;
   }
 };
