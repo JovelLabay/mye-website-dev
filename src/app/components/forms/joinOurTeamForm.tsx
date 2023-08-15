@@ -11,18 +11,6 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
-interface StatusState {
-  modal: boolean;
-  status: boolean;
-  buttonStatus: boolean;
-  feedback: boolean;
-}
-
-interface JoinOurTeamFormProps {
-  currentStatus: StatusState;
-  setCurrentStatus: React.Dispatch<React.SetStateAction<StatusState>>;
-}
-
 type JoinOurTeamFormData = Omit<JoinOurTeamForm, "file">;
 
 function JoinOurTeamForm({
@@ -45,7 +33,6 @@ function JoinOurTeamForm({
   const [fileError, setfileError] = useState(true);
 
   const onSubmit = async (data: JoinOurTeamForm) => {
-    console.log("Form data:", data);
     if (selectedFile === null) {
       setfileError(true);
       setIsRed(true);
@@ -53,7 +40,6 @@ function JoinOurTeamForm({
       return null;
     }
 
-    console.log("TEST", selectedFile);
     setIsRed(false);
     setCurrentStatus((prev) => ({ ...prev, buttonStatus: true }));
     try {
@@ -77,6 +63,7 @@ function JoinOurTeamForm({
               emailAddress: formDataWithFile.email,
               message: formDataWithFile.message,
               fileUrl: formDataWithFile.fileUrl,
+              position: currentStatus.position,
             },
           })
           .then((res) => {
@@ -86,6 +73,7 @@ function JoinOurTeamForm({
               feedback: true,
               modal: false,
               status: true,
+              position: "",
             }));
 
             console.log(res);
@@ -98,6 +86,7 @@ function JoinOurTeamForm({
               feedback: true,
               modal: false,
               status: false,
+              position: "",
             }));
 
             console.log(err);
@@ -273,7 +262,7 @@ function JoinOurTeamForm({
               </h3>
               <p>
                 {currentStatus.status
-                  ? "Thank you for your application. We&apos;ll get back to you!"
+                  ? "Thank you for your application. We will get back to you!"
                   : "Your application has encountered an error. Try again."}
               </p>
 

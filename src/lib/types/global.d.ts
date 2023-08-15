@@ -83,3 +83,17 @@ interface GlobalContextProps {
     >;
   };
 }
+
+// APPLY FORM
+interface StatusState {
+  modal: boolean;
+  status: boolean;
+  buttonStatus: boolean;
+  feedback: boolean;
+  position: string;
+}
+
+interface JoinOurTeamFormProps {
+  currentStatus: StatusState;
+  setCurrentStatus: React.Dispatch<React.SetStateAction<StatusState>>;
+}
