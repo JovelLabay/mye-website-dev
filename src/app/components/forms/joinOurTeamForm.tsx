@@ -6,21 +6,10 @@ import {
   joinourTeamFormSchema,
 } from "@/lib/types/validators";
 import { Dialog } from "@headlessui/react";
-
+import { supabase } from "@/lib/supabase/supabaseClient";
+import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
-
-interface StatusState {
-  modal: boolean;
-  status: boolean;
-  buttonStatus: boolean;
-  feedback: boolean;
-}
-
-interface JoinOurTeamFormProps {
-  currentStatus: StatusState;
-  setCurrentStatus: React.Dispatch<React.SetStateAction<StatusState>>;
-}
 
 type JoinOurTeamFormData = Omit<JoinOurTeamForm, "file">;
 
@@ -43,24 +32,69 @@ function JoinOurTeamForm({
   const [isRed, setIsRed] = useState(false);
   const [fileError, setfileError] = useState(true);
 
-  const onSubmit = (data: JoinOurTeamForm) => {
-    console.log("Form data:", data);
+  const onSubmit = async (data: JoinOurTeamForm) => {
     if (selectedFile === null) {
       setfileError(true);
       setIsRed(true);
       setErrorMessage("Please select a valid PDF file.");
       return null;
     }
+
     setIsRed(false);
     setCurrentStatus((prev) => ({ ...prev, buttonStatus: true }));
-    setTimeout(() => {
-      console.log("Form data:", data);
-      setCurrentStatus((prev) => ({ ...prev, buttonStatus: false }));
-      setCurrentStatus((prev) => ({ ...prev, feedback: true, modal: false }));
-      reset();
-    }, 2000);
+    try {
+      const chosenFile = selectedFile as File;
+      const fileUrl = await fileUploader(chosenFile);
 
-    // You can do further processing or API calls here
+      const formDataWithFile = { ...data, fileUrl };
+
+      setTimeout(() => {
+        axios
+          .request({
+            method: "POST",
+            maxBodyLength: Infinity,
+            url: "/api/apply",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            data: {
+              firstName: formDataWithFile.firstName,
+              lastName: formDataWithFile.lastName,
+              emailAddress: formDataWithFile.email,
+              message: formDataWithFile.message,
+              fileUrl: formDataWithFile.fileUrl,
+              position: currentStatus.position,
+            },
+          })
+          .then((res) => {
+            setCurrentStatus((prev) => ({
+              ...prev,
+              buttonStatus: false,
+              feedback: true,
+              modal: false,
+              status: true,
+              position: "",
+            }));
+
+            console.log(res);
+            reset();
+          })
+          .catch((err) => {
+            setCurrentStatus((prev) => ({
+              ...prev,
+              buttonStatus: false,
+              feedback: true,
+              modal: false,
+              status: false,
+              position: "",
+            }));
+
+            console.log(err);
+          });
+      }, 2000);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   const handleFileChange = (event: any) => {
@@ -219,10 +253,18 @@ function JoinOurTeamForm({
           <Dialog.Panel className="mx-auto max-w-lg rounded bg-white p-4">
             <div className="flex flex-col justify-center items-center gap-3">
               <h3 className="text-center flex justify-center items-center gap-3 my-3 text-[24px] sm:text-[26px] md:text-[28px] lg:text-[30px] font-bold text-customViolet">
-                Message Sent
+                {currentStatus.status ? "Mesage Sent!" : "Message Failed!"}
+                {currentStatus.status ? (
+                  <AiFillCheckCircle />
+                ) : (
+                  <AiFillCloseCircle />
+                )}
               </h3>
-
-              <p>Thank you for your application. We&apos;ll get back to you!</p>
+              <p>
+                {currentStatus.status
+                  ? "Thank you for your application. We will get back to you!"
+                  : "Your application has encountered an error. Try again."}
+              </p>
 
               <button
                 onClick={() =>
@@ -244,5 +286,39 @@ function JoinOurTeamForm({
     </>
   );
 }
+
+const pathData = {
+  MYE_Applications: {
+    Documents: {
+      Application_Files: "Documents/Application Files/",
+    },
+  },
+};
+
+const fileUploader = async (DocuFile: File) => {
+  const { data, error } = await supabase.storage
+    .from("MYE Applications")
+    .upload(
+      `${pathData.MYE_Applications.Documents.Application_Files}${
+        DocuFile.name
+      }-${uuidv4()}`,
+      DocuFile,
+      {
+        cacheControl: "3600",
+        upsert: false,
+      },
+    );
+
+  const lala = data?.path as string;
+
+  if (error) {
+    return error.message;
+  } else {
+    const { data } = await supabase.storage
+      .from("MYE Applications")
+      .getPublicUrl(lala);
+    return data.publicUrl;
+  }
+};
 
 export default JoinOurTeamForm;

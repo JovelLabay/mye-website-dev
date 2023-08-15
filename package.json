@@ -13,6 +13,7 @@
     "@apollo/client": "^3.7.17",
     "@headlessui/react": "^1.7.16",
     "@hookform/resolvers": "^3.1.1",
+    "@supabase/supabase-js": "^2.32.0",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
@@ -36,9 +37,11 @@
     "sharp": "^0.32.3",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.6",
+    "uuid": "^9.0.0",
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@types/uuid": "^9.0.2",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.0",
     "prisma": "^5.1.1"

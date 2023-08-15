@@ -29,6 +29,7 @@ function RolesBlock({
     status: true,
     buttonStatus: false,
     feedback: false,
+    position: "",
   });
 
   const scrollToDetailedDescription = (index: number) => {
@@ -115,7 +116,11 @@ function RolesBlock({
                       className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[33px] md:px-[40px] lg:px-[60px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
                       onClick={() =>
-                        setStatus((prev) => ({ ...prev, modal: true }))
+                        setStatus((prev) => ({
+                          ...prev,
+                          modal: true,
+                          position: item.title,
+                        }))
                       }
                     >
                       Apply
@@ -127,6 +132,8 @@ function RolesBlock({
           </div>
         </div>
       </div>
+
+      {/* MODAL */}
       <JoinOurTeamForm currentStatus={status} setCurrentStatus={setStatus} />
     </div>
   );
