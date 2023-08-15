@@ -148,7 +148,7 @@ function DetailedBlogsNewsBlock({
         open={state.modal}
         onClose={() => setState((prev) => ({ ...prev, modal: false }))}
       >
-        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        <div className="fixed z-[100] inset-0 bg-black/30" aria-hidden="true" />
 
         <div className="z-[101] fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="mx-auto max-w-lg rounded bg-white p-4">
