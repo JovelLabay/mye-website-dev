@@ -45,7 +45,6 @@ function JoinOurTeamForm({
 
   const onSubmit = (data: JoinOurTeamForm) => {
     console.log("Form data:", data);
-    console.log("TEST", selectedFile);
     if (selectedFile === null) {
       setfileError(true);
       setIsRed(true);

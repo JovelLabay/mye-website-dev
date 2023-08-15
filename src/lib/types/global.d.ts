@@ -52,6 +52,9 @@ interface BlogsNewsData {
         email: string;
         lastName: string;
         firstName: string;
+        avatar: {
+          url: string;
+        };
       };
     };
   };

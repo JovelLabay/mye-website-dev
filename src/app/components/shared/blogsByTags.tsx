@@ -1,8 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import classNames from "classnames";
 
 function BlogsByTags({
   blogsNewsData2,
@@ -25,11 +27,64 @@ function BlogsByTags({
       id: string;
       title: string;
       uri: string;
+      author: {
+        node: {
+          userId: string;
+          email: string;
+          lastName: string;
+          firstName: string;
+          avatar: {
+            url: string;
+          };
+        };
+      };
     };
   }[];
   params: string;
 }) {
   const route = useRouter();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  function paginateArray(
+    blogsNewsData2: {
+      node: {
+        blogsAndNewsPost: {
+          isPostFeatured: boolean | null;
+          postBodyContent: string | null;
+          postCategory: string[];
+          postPublished: string | null;
+          postShortDescription: string | null;
+          postShortImage: {
+            sourceUrl: string | null;
+          };
+          postTags: string[];
+          postTitle: string | null;
+        };
+        id: string;
+        title: string;
+        uri: string;
+        author: {
+          node: {
+            userId: string;
+            email: string;
+            lastName: string;
+            firstName: string;
+            avatar: {
+              url: string;
+            };
+          };
+        };
+      };
+    }[],
+    itemsPerPage: number,
+    pageNumber: number,
+  ) {
+    const startIndex = (pageNumber - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return blogsNewsData2.slice(startIndex, endIndex);
+  }
+
+  const paginatedBlogsData = paginateArray(blogsNewsData2, 9, currentPage);
 
   return (
     <div className="the-container">
@@ -43,8 +98,8 @@ function BlogsByTags({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {blogsNewsData2 &&
-              blogsNewsData2
+            {paginatedBlogsData &&
+              paginatedBlogsData
                 .filter((tag) => {
                   return tag.node.blogsAndNewsPost.postTags.includes(params);
                 })
@@ -76,15 +131,28 @@ function BlogsByTags({
                         </p>
                       )}
                       {blogItem.node.blogsAndNewsPost.postTitle && (
-                        <h5 className="font-semibold leading-7 text-customViolet">
+                        <h5 className="font-semibold leading-7 text-customViolet truncate w-full">
                           {blogItem.node.blogsAndNewsPost.postTitle}
                         </h5>
                       )}
                       {blogItem.node.blogsAndNewsPost.postShortDescription && (
-                        <p className="text-ellipsis overflow-hidden h-[100px]">
+                        <p className="truncate w-full">
                           {blogItem.node.blogsAndNewsPost.postShortDescription}
                         </p>
                       )}
+                      <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
+                        <Image
+                          src={blogItem.node.author.node.avatar.url}
+                          alt={blogItem.node.author.node.firstName}
+                          height={1000}
+                          width={1000}
+                          className="rounded-full w-[25px] h-[25px]"
+                        />
+                        {blogItem.node.author.node.firstName}{" "}
+                        {blogItem.node.author.node.lastName}
+                        {" | "}
+                        {blogItem.node.blogsAndNewsPost.postPublished}
+                      </p>
 
                       <div className="w-full flex justify-center md:justify-start">
                         <button className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold hover:bg-gradient-to-r hover:from-customPink hover:to-customPink">
@@ -94,6 +162,39 @@ function BlogsByTags({
                     </div>
                   </div>
                 ))}
+          </div>
+          {/* PAGINATION */}
+          <div className="mt-8 flex justify-center items-center ">
+            <div className="flex justify-center items-center gap-3 bg-violet-100 rounded-md">
+              <button
+                className={classNames(
+                  "text-violet-500 py-2 px-3 border-r border-violet-400",
+                  currentPage === 1 && "opacity-50",
+                )}
+                disabled={currentPage === 1}
+                onClick={() => {
+                  setCurrentPage(currentPage - 1);
+                }}
+              >
+                Prev
+              </button>
+              <p className="text-violet-500 font-thin text-sm">
+                Page No {currentPage}
+              </p>
+              <button
+                className={classNames(
+                  "text-violet-500 py-2 px-3 border-l border-violet-400",
+                  // currentPage === Math.ceil(blogsNewsData2.length / 6) &&
+                  paginatedBlogsData.length < 6 && "opacity-50",
+                )}
+                disabled={paginatedBlogsData.length < 6}
+                onClick={() => {
+                  setCurrentPage(currentPage + 1);
+                }}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>

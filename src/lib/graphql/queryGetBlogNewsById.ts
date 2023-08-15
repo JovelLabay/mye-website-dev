@@ -9,6 +9,10 @@ const GET_BLOG_NEWS_BY_ID = gql`
           lastName
           firstName
           userId
+          description
+          avatar {
+            url
+          }
         }
       }
       blogsAndNewsPost {
