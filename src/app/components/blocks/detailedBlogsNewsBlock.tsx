@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Wysiwyg from "../shared/wysiwyg";
 import { RWebShare } from "react-web-share";
 
@@ -12,6 +12,9 @@ import createComment from "@/lib/graphql/createComment";
 import { Dialog } from "@headlessui/react";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Image from "next/image";
+import client from "@/lib/apollo/client";
+import GetComment from "@/lib/graphql/queryComment";
+import { IoMdPerson } from "react-icons/io";
 
 const axios = require("axios");
 
@@ -55,6 +58,44 @@ function DetailedBlogsNewsBlock({
 
   const [commentPlaceholder, setCommentPlaceholder] = useState("");
   const websiteDomain = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN;
+
+  const [comments, setComments] = useState<
+    {
+      commentId: number;
+      content: string;
+      date: string;
+      id: string;
+      replies: {
+        nodes: {
+          author: {
+            node: {
+              name: string;
+            };
+          };
+          date: string;
+          content: string;
+        }[];
+      };
+    }[]
+  >([]);
+
+  useEffect(() => {
+    (async function () {
+      const comments = await client.query({
+        query: GetComment,
+      });
+
+      await client.cache.reset();
+
+      const filteredComments =
+        comments &&
+        comments.data.comments.nodes.filter((comment: { type: string }) => {
+          return comment.type === `${params.blogNewsId}=`;
+        });
+
+      setComments(filteredComments);
+    })();
+  }, [params.blogNewsId, state.isUploading]);
 
   return (
     <>
@@ -106,6 +147,88 @@ function DetailedBlogsNewsBlock({
             Share
           </button>
         </RWebShare>
+      </div>
+
+      {/* COMMENTS */}
+      <div>
+        <h5 className="font-bold text-customViolet">More Posts</h5>
+
+        {comments.map((comment, index) => {
+          const date = new Date(comment.date);
+
+          const options: any = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            hour12: true,
+          };
+
+          const formattedDate = date.toLocaleString("en-US", options);
+          return (
+            <div key={index} className="mt-3">
+              <div className="flex justify-between items-center">
+                <div className="flex justify-start items-center gap-3">
+                  <div className="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center ">
+                    <IoMdPerson className="text-customViolet" />
+                  </div>
+                  <p className="text-customDark font-bold text-lg">
+                    Guest User
+                  </p>
+                </div>
+
+                <p className="font-light italic">{formattedDate}</p>
+              </div>
+              <Wysiwyg
+                content={comment.content}
+                className="flex flex-col gap-3 mt-3 p-3 bg-[#F1F6FA] rounded"
+              />
+
+              <div className="ml-10">
+                {comment.replies.nodes.map((reply, index2) => {
+                  const date2 = new Date(reply.date);
+
+                  const options2: any = {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "numeric",
+                    second: "numeric",
+                    hour12: true,
+                  };
+
+                  const formattedDate2 = date2.toLocaleString(
+                    "en-US",
+                    options2,
+                  );
+                  return (
+                    <div key={index2} className="mt-3">
+                      <div className="flex justify-between items-center">
+                        <div className="flex justify-start items-center gap-3">
+                          <div className="h-10 w-10 bg-violet-100 rounded-full flex justify-center items-center ">
+                            <IoMdPerson className="text-customViolet" />
+                          </div>
+                          <p className="text-customDark font-bold text-lg">
+                            {reply.author.node.name}
+                          </p>
+                        </div>
+
+                        <p className="font-light italic">{formattedDate2}</p>
+                      </div>
+                      <Wysiwyg
+                        content={reply.content}
+                        className="flex flex-col gap-3 mt-2 p-3 bg-[#F1F6FA] rounded"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="mb-4 lg:mb-0">
@@ -183,6 +306,7 @@ function DetailedBlogsNewsBlock({
         commentOn: 573,
         content: content,
         author: "Guest User",
+        type: `${params.blogNewsId}=`,
       },
     });
 

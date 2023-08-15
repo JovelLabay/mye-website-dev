@@ -3,9 +3,10 @@ const createComment = `
     $commentOn: Int!
     $content: String!
     $author: String!
+    $type: String!
   ) {
     createComment(
-      input: { commentOn: $commentOn, content: $content, author: $author }
+      input: { commentOn: $commentOn, content: $content, author: $author, type: $type }
     ) {
       success
       comment {
