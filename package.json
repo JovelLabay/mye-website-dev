@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "npm install && next build"
+    "vercel-build": "npm install && npm i --save-dev @types/uuid && next build"
   },
   "dependencies": {
     "@apollo/client": "^3.7.17",
