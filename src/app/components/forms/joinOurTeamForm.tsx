@@ -7,7 +7,7 @@ import {
 } from "@/lib/types/validators";
 import { Dialog } from "@headlessui/react";
 import { supabase } from "@/lib/supabase/supabaseClient";
-import { v4 as uuidv4 } from "uuid";
+import uniqid from "uniqid";
 import axios from "axios";
 import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 
@@ -301,7 +301,7 @@ const fileUploader = async (DocuFile: File) => {
     .upload(
       `${pathData.MYE_Applications.Documents.Application_Files}${
         DocuFile.name
-      }-${uuidv4()}`,
+      }-${uniqid()}`,
       DocuFile,
       {
         cacheControl: "3600",
