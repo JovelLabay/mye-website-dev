@@ -38,7 +38,6 @@ export async function POST(req: Request, res: Response, next: NextRequest) {
           ${fileUrl}
           <h5>Best,</h5>
           <h4>${firstName} ${lastName}</h4>
-          <h3>Developed by Eluvent Platforms</h3>
         `,
         },
       ],
