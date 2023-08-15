@@ -6,9 +6,8 @@ import {
   joinourTeamFormSchema,
 } from "@/lib/types/validators";
 import { Dialog } from "@headlessui/react";
-
-import axios from "axios";
-import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
+import { supabase } from "@/lib/supabase/supabaseClient";
+import { v4 as uuidv4 } from "uuid";
 
 interface StatusState {
   modal: boolean;
@@ -43,7 +42,7 @@ function JoinOurTeamForm({
   const [isRed, setIsRed] = useState(false);
   const [fileError, setfileError] = useState(true);
 
-  const onSubmit = (data: JoinOurTeamForm) => {
+  const onSubmit = async (data: JoinOurTeamForm) => {
     console.log("Form data:", data);
     if (selectedFile === null) {
       setfileError(true);
@@ -51,16 +50,26 @@ function JoinOurTeamForm({
       setErrorMessage("Please select a valid PDF file.");
       return null;
     }
+
+    console.log("TEST", selectedFile);
     setIsRed(false);
     setCurrentStatus((prev) => ({ ...prev, buttonStatus: true }));
-    setTimeout(() => {
-      console.log("Form data:", data);
-      setCurrentStatus((prev) => ({ ...prev, buttonStatus: false }));
-      setCurrentStatus((prev) => ({ ...prev, feedback: true, modal: false }));
-      reset();
-    }, 2000);
+    try {
+      const chosenFile = selectedFile as File;
+      const imageUrl = await imageUploader(chosenFile);
 
-    // You can do further processing or API calls here
+      console.log("URL", imageUrl);
+
+      const formDataWithImage = { ...data, imageUrl };
+
+      setTimeout(() => {
+        setCurrentStatus((prev) => ({ ...prev, buttonStatus: false }));
+        setCurrentStatus((prev) => ({ ...prev, feedback: true, modal: false }));
+        reset();
+      }, 2000);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   const handleFileChange = (event: any) => {
@@ -244,5 +253,37 @@ function JoinOurTeamForm({
     </>
   );
 }
+
+const pathData = {
+  MYE_Applications: {
+    Documents: {
+      Application_Files: "Documents/Application Files/",
+    },
+  },
+};
+
+const imageUploader = async (imageFile: File) => {
+  const { data, error } = await supabase.storage
+    .from("MYE Applications")
+    .upload(
+      `${pathData.MYE_Applications.Documents.Application_Files}${
+        imageFile.name
+      }-${uuidv4()}`,
+      imageFile,
+      {
+        cacheControl: "3600",
+        upsert: false,
+      },
+    );
+
+  const lala = data?.path as string;
+
+  if (error) {
+    return error.message;
+  } else {
+    const { data } = await supabase.storage.from("interns").getPublicUrl(lala);
+    return data.publicUrl;
+  }
+};
 
 export default JoinOurTeamForm;
