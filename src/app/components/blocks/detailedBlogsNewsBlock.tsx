@@ -151,7 +151,7 @@ function DetailedBlogsNewsBlock({
 
       {/* COMMENTS */}
       <div>
-        <h5 className="font-bold text-customViolet">More Posts</h5>
+        <h5 className="font-bold text-customViolet">Comments:</h5>
 
         {comments.map((comment, index) => {
           const date = new Date(comment.date);
