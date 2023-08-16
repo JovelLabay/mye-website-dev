@@ -49,6 +49,9 @@ function CarouselBlock({
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 position: "relative",
+                ...(window.innerWidth <= 820 && {
+                  backgroundSize: "100% 100%",
+                }),
               }}
             >
               <div

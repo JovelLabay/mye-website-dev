@@ -787,8 +787,8 @@
 @media only screen and (max-width: 640px) {
   /* ABOUT US - HOME */
   #about-container {
-    height: 500px;
-    clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 90%, 0 78%);
+    height: 480px;
+    clip-path: polygon(0 0, 100% 0, 100% 74%, 50% 83%, 0 74%);
   }
 
   /* NAV */
@@ -828,7 +828,7 @@
   }
 
   .image-container .about-img {
-    height: 400px;
+    height: 250px;
   }
 
   #about-container {
