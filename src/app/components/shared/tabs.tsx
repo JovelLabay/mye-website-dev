@@ -15,13 +15,13 @@ function Tabs({
   }[];
 }) {
   const globalContext = useContext(GlobalContext);
-  // const [tabIndex, setTabIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <div>
       <Tab.Group
-        // selectedIndex={tabIndex}
-        // onChange={setTabIndex}
+        selectedIndex={tabIndex}
+        onChange={setTabIndex}
         defaultIndex={
           globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0
         }
@@ -52,7 +52,7 @@ function Tabs({
         </Tab.List>
         <Tab.Panels>
           <motion.div
-            // key={tabIndex}
+            key={tabIndex}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
