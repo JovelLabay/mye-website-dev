@@ -111,7 +111,7 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
                 <h1 className="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
                   {actualBlogData.data.post.blogsAndNewsPost.postTitle}
                 </h1>
-                <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
+                <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark py-1">
                   <Image
                     src={actualBlogData.data.post.author.node.avatar.url}
                     alt={actualBlogData.data.post.author.node.firstName}
