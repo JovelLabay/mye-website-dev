@@ -111,15 +111,8 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
                 <h1 className="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
                   {actualBlogData.data.post.blogsAndNewsPost.postTitle}
                 </h1>
-                <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark">
-                  <Image
-                    src={actualBlogData.data.post.author.node.avatar.url}
-                    alt={actualBlogData.data.post.author.node.firstName}
-                    height={1000}
-                    width={1000}
-                    className="rounded-full w-[25px] h-[25px]"
-                  />
-                  {actualBlogData.data.post.author.node.firstName}{" "}
+                <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark py-1">
+                  {"by "} {actualBlogData.data.post.author.node.firstName}{" "}
                   {actualBlogData.data.post.author.node.lastName}
                 </p>
                 <p>{actualBlogData.data.post.blogsAndNewsPost.postPublished}</p>

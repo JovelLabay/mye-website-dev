@@ -236,14 +236,13 @@
 
 /* ABOUT */
 .image-container {
-  margin-top: -200px;
-  height: 900px;
+  margin-top: -130px;
+  height: 1000px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  z-index: -1;
 }
 
 .image-container .about-img {
@@ -266,7 +265,7 @@
   background-color: #fff;
   height: 400px;
   /* clip-path: polygon(100% 0, 100% 69%, 50% 100%, 0 71%, 0 0); */
-  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
 }
 
 /* BLOGS AND NEWS IMAGE */
@@ -676,16 +675,11 @@
   --field-color: white;
   position: relative;
   width: 150px;
-  /* Adjust the width to make it smaller */
   height: 90px;
-  /* Adjust the height to maintain the proportions */
   background-color: transparent;
   margin: 40px 0;
-  /* Adjust the margins to center the hexagon */
   border-left: solid 8px var(--border-color);
-  /* Adjust the border thickness accordingly */
   border-right: solid 8px var(--border-color);
-  /* Adjust the border thickness accordingly */
 }
 
 .hexagon:before,
@@ -694,34 +688,25 @@
   position: absolute;
   z-index: 1;
   width: 105.67px;
-  /* Adjust the width to maintain proportions */
   height: 105.67px;
-  /* Adjust the height to maintain proportions */
   -webkit-transform: scaleY(0.5774) rotate(-45deg);
   -ms-transform: scaleY(0.5774) rotate(-45deg);
   transform: scaleY(0.5774) rotate(-45deg);
   background-color: inherit;
   left: 13.91245px;
-  /* Adjust the position accordingly */
 }
 
 .hexagon:before {
   top: -52.91245px;
-  /* Adjust the position accordingly */
   border-top: solid 11.3137px var(--border-color);
-  /* Adjust the border thickness accordingly */
   border-right: solid 11.3137px var(--border-color);
-  /* Adjust the border thickness accordingly */
 }
 
 .hexagon:after {
   background-color: var(--field-color);
   bottom: -52.91245px;
-  /* Adjust the position accordingly */
   border-bottom: solid 11.3137px var(--border-color);
-  /* Adjust the border thickness accordingly */
   border-left: solid 11.3137px var(--border-color);
-  /* Adjust the border thickness accordingly */
 }
 
 /* ====== LAPTOP VIEW ====== */
@@ -787,8 +772,8 @@
 @media only screen and (max-width: 640px) {
   /* ABOUT US - HOME */
   #about-container {
-    height: 500px;
-    clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 90%, 0 78%);
+    height: 480px;
+    clip-path: polygon(0 0, 100% 0, 100% 74%, 50% 83%, 0 74%);
   }
 
   /* NAV */
@@ -825,10 +810,11 @@
   /* ABOUT */
   .image-container {
     height: 400px;
+    margin-top: -200px;
   }
 
   .image-container .about-img {
-    height: 400px;
+    height: 250px;
   }
 
   #about-container {
