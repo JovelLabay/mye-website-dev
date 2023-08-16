@@ -161,10 +161,6 @@ function DetailedBlogsNewsBlock({
               year: "numeric",
               month: "long",
               day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              second: "numeric",
-              hour12: true,
             };
 
             const formattedDate = date.toLocaleString("en-US", options);
@@ -195,10 +191,10 @@ function DetailedBlogsNewsBlock({
                       year: "numeric",
                       month: "long",
                       day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                      second: "numeric",
-                      hour12: true,
+                      // hour: "numeric",
+                      // minute: "numeric",
+                      // second: "numeric",
+                      // hour12: true,
                     };
 
                     const formattedDate2 = date2.toLocaleString(
