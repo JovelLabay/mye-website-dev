@@ -18,7 +18,7 @@ function AboutBlock({
   const router = useRouter();
   return (
     // <div className="mt-8 sm:mt-10 md:mt-15 lg:mt-20">
-    <div className="">
+    <div>
       <div id="about-container">
         <div className="the-container z-20">
           <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15 text-center mb-3">

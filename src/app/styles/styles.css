@@ -758,7 +758,7 @@
 
   /* ABOUT */
   .image-container {
-    height: 600px;
+    height: 700px;
   }
 
   .image-container .about-img {
@@ -771,8 +771,8 @@
 
   /* ABOUT US - HOME */
   #about-container {
-    height: 480px;
-    clip-path: polygon(0 0, 100% 0, 100% 74%, 50% 83%, 0 74%);
+    height: 500px;
+    clip-path: polygon(0 0, 100% 0, 100% 74%, 50% 80%, 0 74%);
   }
 
   /* NAV */
@@ -807,16 +807,18 @@
   }
 
   /* ABOUT */
+  /* .image-container {
+    height: 400px;
+    margin-top: -200px;
+  } */
+
   .image-container {
     height: 300px;
-    margin-top: -200px;
+    margin-top: -160px;
+    margin-bottom: -60px;
   }
 
   .image-container .about-img {
-    height: 250px;
-  }
-
-  #about-container {
-    min-height: 400px;
+    height: 400px;
   }
 }
