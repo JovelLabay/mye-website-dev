@@ -29,33 +29,6 @@ export async function generateStaticParams() {
   );
 }
 
-async function getNews() {
-  const getAllBlogsNews = await client.query({
-    query: GetAllBlogsAndNews,
-  });
-
-  await client.cache.reset();
-
-  return getAllBlogsNews.data.posts.edges.map(
-    (blogNews: {
-      node: {
-        id: string;
-      };
-    }) => ({
-      blogNewsId: blogNews.node.id.replace(/=/g, ""),
-    }),
-  );
-}
-
-async function ErrorChecker(id: string) {
-  const news = await getNews();
-  const found = news.map((item: any) => item.blogNewsId === id);
-
-  if (!found) {
-    console.log("FOUND Not");
-  }
-}
-
 async function getBlocks(id: string) {
   try {
     const actualData = await client.query({
@@ -72,8 +45,10 @@ async function getBlocks(id: string) {
 
     return actualData;
   } catch (error) {
-    console.log("TEST");
+    console.log("GraphQL error:", error);
   }
+
+  return null;
 }
 
 export const metadata: Metadata = {
@@ -82,58 +57,68 @@ export const metadata: Metadata = {
 };
 
 async function Page({ params }: { params: { blogNewsId: string } }) {
-  ErrorChecker(params.blogNewsId);
+  let actualBlogData = null;
   const blogsNewsData = await getBlogsNews();
-  const actualBlogData = await getBlocks(`${params.blogNewsId}=`);
 
-  return (
-    actualBlogData && (
-      <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
-        <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
-          <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 relative">
-            {/* BLOGS DETAILS */}
-            <div className="col-span-2">
-              <div className="flex gap-2 mb-4 font-thin text-xs  md:text-sm">
-                <Link href="/" className="no-underline text-black">
-                  MYE Cloud
-                </Link>
-                <p className="text-customViolet">{">"}</p>
-                <Link href="/blogs-news" className="no-underline text-black">
-                  Blogs and News
-                </Link>
-                <p className="text-customViolet">{">"}</p>
-                <p className="opacity-50">
-                  {actualBlogData.data.post.blogsAndNewsPost.postTitle}
-                </p>
-              </div>
+  try {
+    actualBlogData = await getBlocks(`${params.blogNewsId}=`);
+  } catch (error: any) {
+    console.log("Error:", error.message);
+    return null;
+  }
 
-              <div className="mb-5">
-                <h1 className="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
-                  {actualBlogData.data.post.blogsAndNewsPost.postTitle}
-                </h1>
-                <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark py-1">
-                  {"by "} {actualBlogData.data.post.author.node.firstName}{" "}
-                  {actualBlogData.data.post.author.node.lastName}
-                </p>
-                <p>{actualBlogData.data.post.blogsAndNewsPost.postPublished}</p>
-              </div>
-              <DetailedBlogsNewsBlock
-                params={params}
-                blogsNews={actualBlogData}
-              />
+  console.log("DATA", actualBlogData);
+
+  return actualBlogData!.data.post !== null ? (
+    <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
+      <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 relative">
+          {/* BLOGS DETAILS */}
+          <div className="col-span-2">
+            <div className="flex gap-2 mb-4 font-thin text-xs  md:text-sm">
+              <Link href="/" className="no-underline text-black">
+                MYE Cloud
+              </Link>
+              <p className="text-customViolet">{">"}</p>
+              <Link href="/blogs-news" className="no-underline text-black">
+                Blogs and News
+              </Link>
+              <p className="text-customViolet">{">"}</p>
+              <p className="opacity-50">
+                {actualBlogData!.data.post.blogsAndNewsPost.postTitle}
+              </p>
             </div>
 
-            {/* MORE BLOGS */}
-            <div className="custom-sticky col-span-1 min-h-[82vh] md:sticky mb-4 rounded-md bg-[#F1F6FA] p-3">
-              <MoreBlogsNewsBlock
-                blogsNewsData2={blogsNewsData.posts.edges}
-                actualBlogData={actualBlogData.data.post}
-              />
+            <div className="mb-5">
+              <h1 className="text-[24px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-customViolet font-bold">
+                {actualBlogData!.data.post.blogsAndNewsPost.postTitle}
+              </h1>
+              <p className="italic text-sm font-light flex justify-start items-center gap-2 text-customDark py-1">
+                {"by "} {actualBlogData!.data.post.author.node.firstName}{" "}
+                {actualBlogData!.data.post.author.node.lastName}
+              </p>
+              <p>{actualBlogData!.data.post.blogsAndNewsPost.postPublished}</p>
             </div>
+            <DetailedBlogsNewsBlock
+              params={params}
+              blogsNews={actualBlogData!}
+            />
+          </div>
+
+          {/* MORE BLOGS */}
+          <div className="custom-sticky col-span-1 min-h-[82vh] md:sticky mb-4 rounded-md bg-[#F1F6FA] p-3">
+            <MoreBlogsNewsBlock
+              blogsNewsData2={blogsNewsData.posts.edges}
+              actualBlogData={actualBlogData!.data.post}
+            />
           </div>
         </div>
       </div>
-    )
+    </div>
+  ) : (
+    <div className="h-screen flex justify-center items-center">
+      <h1>Not Found</h1>
+    </div>
   );
 }
 
