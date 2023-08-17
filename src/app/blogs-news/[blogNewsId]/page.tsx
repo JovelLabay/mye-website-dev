@@ -50,10 +50,6 @@ async function getNews() {
 async function ErrorChecker(id: string) {
   const news = await getNews();
   const found = news.map((item: any) => item.blogNewsId === id);
-
-  if (!found) {
-    console.log("FOUND Not");
-  }
 }
 
 async function getBlocks(id: string) {
@@ -72,7 +68,7 @@ async function getBlocks(id: string) {
 
     return actualData;
   } catch (error) {
-    console.log("TEST");
+    console.log(error);
   }
 }
 
