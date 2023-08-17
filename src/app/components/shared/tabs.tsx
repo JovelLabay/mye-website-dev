@@ -20,7 +20,6 @@ function Tabs({
   return (
     <div>
       <Tab.Group
-        selectedIndex={tabIndex}
         onChange={setTabIndex}
         defaultIndex={
           globalContext?.productsServicesPage.activeTab === "services" ? 2 : 0
