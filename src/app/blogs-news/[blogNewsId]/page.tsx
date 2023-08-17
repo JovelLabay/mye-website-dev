@@ -29,6 +29,24 @@ export async function generateStaticParams() {
   );
 }
 
+async function getNews() {
+  const getAllBlogsNews = await client.query({
+    query: GetAllBlogsAndNews,
+  });
+
+  await client.cache.reset();
+
+  return getAllBlogsNews.data.posts.edges.map(
+    (blogNews: {
+      node: {
+        id: string;
+      };
+    }) => ({
+      blogNewsId: blogNews.node.id.replace(/=/g, ""),
+    }),
+  );
+}
+
 async function getBlocks(id: string) {
   try {
     const actualData = await client.query({
@@ -45,7 +63,7 @@ async function getBlocks(id: string) {
 
     return actualData;
   } catch (error) {
-    console.log("GraphQL error:", error);
+    console.log(error);
   }
 
   return null;
@@ -66,8 +84,6 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
     console.log("Error:", error.message);
     return null;
   }
-
-  console.log("DATA", actualBlogData);
 
   return actualBlogData!.data.post !== null ? (
     <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">

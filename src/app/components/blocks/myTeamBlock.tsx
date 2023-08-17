@@ -58,13 +58,13 @@ function MyTeamBlock({
                           return (
                             <div key={index}>
                               <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-2 pb-10">
-                                {/* <Image
+                                <Image
                                   src={team.image.sourceUrl}
                                   alt={team.name}
                                   width={1000}
                                   height={1000}
                                   className="w-full h-full"
-                                /> */}
+                                />
                                 <div className="font-semibold leading-7 flex justify-start pt-4">
                                   {team.name}
                                 </div>
@@ -72,7 +72,7 @@ function MyTeamBlock({
                                 <div className="flex justify-start">
                                   {team.position}
                                 </div>
-                                <div className="flex flex-col">
+                                {/* <div className="flex flex-col">
                                   {team.experience
                                     .split(":")
                                     .map((part, index, array) => (
@@ -85,7 +85,7 @@ function MyTeamBlock({
                                           : part.trim()}
                                       </div>
                                     ))}
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                           );
