@@ -18,7 +18,6 @@ export default async function page({
 }) {
   const block = await getBlocksProductsServices();
 
-  console.log(params.productId);
   const decodedProductId = decodeURIComponent(params.productId);
 
   const { products }: { products: ProductsList } =
