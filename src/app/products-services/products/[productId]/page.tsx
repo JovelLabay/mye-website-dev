@@ -3,6 +3,7 @@ import MoreProductsBlock from "@/app/components/blocks/moreProductsBlock";
 import { getBlocksProductsServices } from "@/lib/query/query";
 import { Metadata } from "next";
 import Link from "next/link";
+import test from "node:test";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -17,11 +18,13 @@ export default async function page({
 }) {
   const block = await getBlocksProductsServices();
 
+  console.log(params.productId);
+  const decodedProductId = decodeURIComponent(params.productId);
+
   const { products }: { products: ProductsList } =
     await block?.productServicesPage;
-  const category_ProductName = params.productId
-    .replace(/%20/g, " ")
-    .split("%7C");
+
+  const category_ProductName = decodedProductId.replace(/%20/g, " ").split("|");
 
   const showProductCategoryOnly = products.productsAndServices.filter(
     (item) => item.title === category_ProductName[0],
