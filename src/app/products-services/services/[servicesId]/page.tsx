@@ -18,12 +18,14 @@ export default async function page({
 }) {
   const block = await getBlocksProductsServices();
 
+  const decodedServicesId = decodeURIComponent(params.servicesId);
+
   const { services }: { services: ServicesList } =
     await block?.productServicesPage;
-  const service_serviceName = params.servicesId
+  const service_serviceName = decodedServicesId
     .replace(/%20/g, " ")
     .replace(/%26/g, "&")
-    .split("%7C");
+    .split("|");
 
   const showServiceCategoryOnly = services.item.filter(
     (item) => item.title === service_serviceName[0],
