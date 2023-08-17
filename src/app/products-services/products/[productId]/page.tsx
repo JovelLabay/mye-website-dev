@@ -33,9 +33,12 @@ export default async function page({
     (label) => label.label === category_ProductName[1],
   );
 
-  const actualBlogData = showProductOnly[0];
+  let actualBlogData = null;
+  if (showProductOnly !== undefined) {
+    actualBlogData = showProductOnly[0];
+  }
 
-  return actualBlogData === undefined ? (
+  return actualBlogData === null ? (
     <div className="h-screen flex justify-center items-center">
       <h1>Not Found</h1>
     </div>
