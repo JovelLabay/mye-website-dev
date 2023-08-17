@@ -35,9 +35,12 @@ export default async function page({
     (label) => label.service === service_serviceName[1],
   );
 
-  const actualBlogData = showServicesOnly[0];
+  let actualBlogData = null;
+  if (showServicesOnly !== undefined) {
+    actualBlogData = showServicesOnly[0];
+  }
 
-  return actualBlogData === undefined ? (
+  return actualBlogData === null ? (
     <div className="h-screen flex justify-center items-center">
       <h1>Not Found</h1>
     </div>
