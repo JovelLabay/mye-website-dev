@@ -72,7 +72,7 @@ function MyTeamBlock({
                                 <div className="flex justify-start">
                                   {team.position}
                                 </div>
-                                <div className="flex flex-col">
+                                {/* <div className="flex flex-col">
                                   {team.experience
                                     .split(":")
                                     .map((part, index, array) => (
@@ -85,7 +85,7 @@ function MyTeamBlock({
                                           : part.trim()}
                                       </div>
                                     ))}
-                                </div>
+                                </div> */}
                               </div>
                             </div>
                           );
