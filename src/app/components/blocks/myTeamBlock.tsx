@@ -61,7 +61,7 @@ function MyTeamBlock({
                           return (
                             <div key={index}>
                               <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-2 pb-10">
-                                {team.image.sourceUrl && (
+                                {team.image && (
                                   <Image
                                     src={team.image.sourceUrl}
                                     alt={team.name}
@@ -78,7 +78,7 @@ function MyTeamBlock({
                                   {team.position}
                                 </div>
                                 {team.linkedin && (
-                                  <Link href={team.linkedin}>
+                                  <Link href={`https://${team.linkedin}`}>
                                     <AiFillLinkedin size={25} />
                                   </Link>
                                 )}
