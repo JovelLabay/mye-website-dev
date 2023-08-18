@@ -55,11 +55,14 @@ function MyTeamBlock({
 
                 <div className="flex justify-center items-center">
                   <div className=" flex justify-center items-center w-[90%]">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-10 lg:w-full">
+                    <div
+                      className="flex flex-wrap gap-4 mt-10 align-items justify-center w-full"
+                      style={{ justifyItems: "center" }}
+                    >
                       {teamDetail.teamDetails &&
                         teamDetail.teamDetails.map((team, index) => {
                           return (
-                            <div key={index}>
+                            <div key={index} className="w-[220px]">
                               <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-2 pb-10">
                                 {team.image && (
                                   <Image
@@ -67,7 +70,7 @@ function MyTeamBlock({
                                     alt={team.name}
                                     width={1000}
                                     height={1000}
-                                    className="w-full h-full"
+                                    className="w-fit h-fit"
                                   />
                                 )}
                                 <div className="font-semibold leading-7 flex justify-start pt-4">
