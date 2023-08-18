@@ -2,6 +2,8 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
+import { AiFillLinkedin } from "react-icons/ai";
+import Link from "next/link";
 
 function MyTeamBlock({
   team,
@@ -14,6 +16,7 @@ function MyTeamBlock({
         experience: string;
         name: string;
         position: string;
+        linkedin: string;
         image: {
           sourceUrl: string;
         };
@@ -58,13 +61,15 @@ function MyTeamBlock({
                           return (
                             <div key={index}>
                               <div className="flex flex-col justify-start min-h-0 sm:min-h-[20px] md:min-h-[50px] lg:min-h-[100px] w-full  gap-2 pb-10">
-                                <Image
-                                  src={team.image.sourceUrl}
-                                  alt={team.name}
-                                  width={1000}
-                                  height={1000}
-                                  className="w-full h-full"
-                                />
+                                {team.image && (
+                                  <Image
+                                    src={team.image.sourceUrl}
+                                    alt={team.name}
+                                    width={1000}
+                                    height={1000}
+                                    className="w-full h-full"
+                                  />
+                                )}
                                 <div className="font-semibold leading-7 flex justify-start pt-4">
                                   {team.name}
                                 </div>
@@ -72,6 +77,11 @@ function MyTeamBlock({
                                 <div className="flex justify-start">
                                   {team.position}
                                 </div>
+                                {team.linkedin && (
+                                  <Link href={`https://${team.linkedin}`}>
+                                    <AiFillLinkedin size={25} />
+                                  </Link>
+                                )}
                                 {/* <div className="flex flex-col">
                                   {team.experience
                                     .split(":")

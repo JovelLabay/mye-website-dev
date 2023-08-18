@@ -48,6 +48,7 @@ const GET_ABOUT_US = gql`
             experience
             name
             position
+            linkedin
             image {
               sourceUrl
             }
