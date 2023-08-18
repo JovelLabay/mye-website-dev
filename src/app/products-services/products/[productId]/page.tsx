@@ -34,7 +34,11 @@ export default async function page({
   );
 
   let actualBlogData = null;
-  if (showProductOnly !== undefined) {
+  if (
+    showProductOnly !== undefined &&
+    showProductOnly !== null &&
+    showProductOnly.length > 0
+  ) {
     actualBlogData = showProductOnly[0];
   }
 

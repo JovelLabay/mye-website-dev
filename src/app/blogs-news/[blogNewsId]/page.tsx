@@ -76,6 +76,7 @@ export const metadata: Metadata = {
 
 async function Page({ params }: { params: { blogNewsId: string } }) {
   let actualBlogData = null;
+  let hasData = true;
   const blogsNewsData = await getBlogsNews();
 
   try {
@@ -85,9 +86,13 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
     return null;
   }
 
+  if (actualBlogData === null || actualBlogData.data.post === null) {
+    hasData = false;
+  }
+
   console.log("TEST", actualBlogData);
 
-  return actualBlogData !== null ? (
+  return hasData ? (
     <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
       <div className="mx-3 sm:mx-5 md:mx-10 lg:mx-15">
         <div className="grid grid-cols-1 md:grid-cols-3 md:gap-4 relative">
