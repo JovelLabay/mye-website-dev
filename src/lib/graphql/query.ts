@@ -21,6 +21,11 @@ const GetAllPages = gql`
             socialMedinaItemName
           }
         }
+        navigation {
+          cloudLoginPortal {
+            url
+          }
+        }
       }
     }
   }
@@ -30,14 +35,16 @@ const GetHomePage = gql`
   query GetHomePage {
     nodeByUri(uri: "/") {
       ... on Page {
+        navigation {
+          cloudLoginPortal {
+            url
+          }
+        }
         awards {
           subHeader
           headerAwards
           fieldGroupName
           descriptionAwards
-          awardItem {
-            sourceUrl
-          }
           items {
             description
             title

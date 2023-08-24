@@ -58,12 +58,10 @@ export default async function Home() {
       </div>
       <About about={about} />
       <BlogsNews blogsNewsData2={blogsNewsData2} />
-      {/* <JoinOurTeam joinOurTeam={joinOurTeam} /> */}
-      {/* <BlogsNews blogsNews={blogsNews} /> */}
-
       <JoinOurTeam joinOurTeam={joinOurTeam} />
-      {/* FORM */}
+
       <a id="getintouch" tabIndex={-1} />
+      {/* FORM */}
       <GetInTouchForm getInTouch={getInTouch} />
     </div>
   );

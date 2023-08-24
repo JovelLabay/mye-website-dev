@@ -4,6 +4,7 @@ const GET_BLOG_NEWS_BY_ID = gql`
   query GetBlogNewsById($id: ID!) {
     post(id: $id) {
       id
+      postId
       author {
         node {
           lastName

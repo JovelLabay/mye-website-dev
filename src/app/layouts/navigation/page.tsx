@@ -25,12 +25,18 @@ function Page({
         title: string;
         uri: string;
         menuOrder: number;
+        navigation: {
+          cloudPortalLogin: {
+            url: string;
+          };
+        };
       }[]
     | null;
 }) {
   const router = usePathname();
-  const route = useRouter();
   const globalContext = useContext(GlobalContext);
+
+  const cloudPortal = data && data[5].navigation;
 
   const [states, setStates] = useState({
     isMenu: false,
@@ -386,7 +392,14 @@ function Page({
                     ))}
 
                 <li className="login-bg-white2">
-                  <a href="/" className="no-underline text-white font-bold">
+                  <a
+                    href={
+                      cloudPortal?.cloudPortalLogin === null
+                        ? "/"
+                        : cloudPortal?.cloudPortalLogin.url
+                    }
+                    className="no-underline text-white font-bold"
+                  >
                     Cloud Portal Login
                   </a>
                 </li>

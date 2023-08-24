@@ -7,10 +7,8 @@ import { RWebShare } from "react-web-share";
 import { BiShare } from "react-icons/bi";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
-import { MdOutlineAccountCircle } from "react-icons/md";
 import createComment from "@/lib/graphql/createComment";
 import { Dialog } from "@headlessui/react";
-import { AiFillCheckCircle, AiFillCloseCircle } from "react-icons/ai";
 import Image from "next/image";
 import client from "@/lib/apollo/client";
 import GetComment from "@/lib/graphql/queryComment";
@@ -44,6 +42,7 @@ function DetailedBlogsNewsBlock({
             };
           };
         };
+        postId: number;
       };
     };
   };
@@ -151,7 +150,7 @@ function DetailedBlogsNewsBlock({
 
       {/* COMMENTS */}
       <div>
-        <h5 className="font-bold text-customViolet">Comments:</h5>
+        <h5 className="font-bold text-customViolet mb-2">Comments:</h5>
 
         {comments.length !== 0 ? (
           comments.map((comment, index) => {
@@ -303,7 +302,7 @@ function DetailedBlogsNewsBlock({
     let data = JSON.stringify({
       query: createComment,
       variables: {
-        commentOn: 573,
+        commentOn: blogsNews.data.post.postId,
         content: content,
         author: "Guest User",
         type: `${params.blogNewsId}=`,
@@ -330,7 +329,7 @@ function DetailedBlogsNewsBlock({
         status: true,
       }));
       setCommentPlaceholder("");
-      console.log(JSON.stringify(commentedData.data));
+      console.log(data);
     } catch (error) {
       setState((prev) => ({
         ...prev,

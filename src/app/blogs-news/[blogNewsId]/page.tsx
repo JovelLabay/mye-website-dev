@@ -1,35 +1,17 @@
-import DetailedBlogsNewsBlock from "@/app/components/blocks/detailedBlogsNewsBlock";
-import MoreBlogNewsTopicsBlock from "@/app/components/blocks/moreBlogNewsTopicsBlock";
-import MoreBlogsNewsBlock from "@/app/components/blocks/moreBlogsNewsBlock";
-import client from "@/lib/apollo/client";
-import { GetAllBlogsAndNews } from "@/lib/graphql/query";
-import GET_BLOGS_AND_NEWS from "@/lib/graphql/queryBlogsNews";
-import GET_BLOG_NEWS_BY_ID from "@/lib/graphql/queryGetBlogNewsById";
-import { getBlogsNews } from "@/lib/query/query";
-import { Metadata } from "next";
+import React from "react";
 import Link from "next/link";
-import React, { useState } from "react";
-import Image from "next/image";
+import client from "@/lib/apollo/client";
+import { Metadata } from "next";
+
+import DetailedBlogsNewsBlock from "@/app/components/blocks/detailedBlogsNewsBlock";
+import MoreBlogsNewsBlock from "@/app/components/blocks/moreBlogsNewsBlock";
+
+import GET_BLOG_NEWS_BY_ID from "@/lib/graphql/queryGetBlogNewsById";
+
+import { getBlogsNews } from "@/lib/query/query";
+import { GetAllBlogsAndNews } from "@/lib/graphql/query";
 
 export async function generateStaticParams() {
-  const getAllBlogsNews = await client.query({
-    query: GetAllBlogsAndNews,
-  });
-
-  await client.cache.reset();
-
-  return getAllBlogsNews.data.posts.edges.map(
-    (blogNews: {
-      node: {
-        id: string;
-      };
-    }) => ({
-      blogNewsId: blogNews.node.id.replace(/=/g, ""),
-    }),
-  );
-}
-
-async function getNews() {
   const getAllBlogsNews = await client.query({
     query: GetAllBlogsAndNews,
   });
@@ -82,15 +64,12 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
   try {
     actualBlogData = await getBlocks(`${params.blogNewsId}=`);
   } catch (error: any) {
-    console.log("Error:", error.message);
     return null;
   }
 
   if (actualBlogData === null || actualBlogData.data.post === null) {
     hasData = false;
   }
-
-  console.log("TEST", actualBlogData);
 
   return hasData ? (
     <div className=" the-container mt-8 sm:mt-10 md:mt-15 lg:mt-20">
@@ -146,3 +125,25 @@ async function Page({ params }: { params: { blogNewsId: string } }) {
 }
 
 export default Page;
+
+/**
+ * 
+ * async function getNews() {
+  const getAllBlogsNews = await client.query({
+    query: GetAllBlogsAndNews,
+  });
+
+  await client.cache.reset();
+
+  return getAllBlogsNews.data.posts.edges.map(
+    (blogNews: {
+      node: {
+        id: string;
+      };
+    }) => ({
+      blogNewsId: blogNews.node.id.replace(/=/g, ""),
+    }),
+  );
+}
+ * 
+ */

@@ -16,9 +16,6 @@ function Awards({
       description: string;
     }[];
     subHeader: string;
-    awardItem: {
-      sourceUrl: string;
-    };
     awardItems: {
       awardField: string;
       awardPosition: string;

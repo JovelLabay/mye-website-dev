@@ -17,7 +17,9 @@ function ServicesBlock({
     description: string;
     item: {
       description: string;
-      learnMore: string;
+      learnMore: {
+        url: string;
+      };
       title: string;
       detailedDescription: {
         description: string;
@@ -75,8 +77,14 @@ function ServicesBlock({
               </div>
               <button
                 onClick={() => {
-                  router.push("/products-services");
-                  globalContext?.productsServicesPage.setActiveTab("services");
+                  if (service.learnMore === null) {
+                    router.push("/products-services");
+                    globalContext?.productsServicesPage.setActiveTab(
+                      "services",
+                    );
+                  } else {
+                    router.replace(service.learnMore.url);
+                  }
                 }}
                 className="py-[5px] md:py-[8px] lg:py-[10px] px-[20px] sm:px-[24px] md:px-[30px] lg:px-[40px] rounded-full bg-gradient-to-r from-customBlue via-customDarkViolet to-customPink text-white font-medium md:font-semibold
                 hover:bg-gradient-to-r hover:from-customPink hover:to-customPink"
