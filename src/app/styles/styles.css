@@ -20,6 +20,47 @@
   --blue-color: #349de2;
 }
 
+/* WYSIWIG */
+.wysiwyg ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.wysiwyg ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.wysiwyg h1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.wysiwyg h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.wysiwyg h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.wysiwyg h4 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.wysiwyg h5 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.wysiwyg h6 {
+  font-size: 12px;
+  font-weight: 700;
+}
+
 /* NAVIGATION */
 #navigation {
   padding-top: 1px;
@@ -193,8 +234,6 @@
   padding-right: 10px;
 }
 
-/* DYNAMIC BLOGS */
-
 /* SERVICES */
 #services-box {
   box-shadow: 0px 0px 20px 0px rgba(172, 49, 154, 0.5);
@@ -304,7 +343,7 @@
   transform: translateY(0);
 }
 
-/* DROPDOWN About Us */
+/* DROPDOWN ABOUT US */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -805,12 +844,6 @@
   .footer div {
     margin-bottom: 30px;
   }
-
-  /* ABOUT */
-  /* .image-container {
-    height: 400px;
-    margin-top: -200px;
-  } */
 
   .image-container {
     height: 400px;
