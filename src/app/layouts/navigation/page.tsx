@@ -394,9 +394,9 @@ function Page({
                 <li className="login-bg-white2">
                   <a
                     href={
-                      cloudPortal?.cloudPortalLogin === null
+                      cloudPortal?.cloudPortalLogin?.url === undefined
                         ? "/"
-                        : cloudPortal?.cloudPortalLogin.url
+                        : cloudPortal?.cloudPortalLogin?.url
                     }
                     className="no-underline text-white font-bold"
                   >
