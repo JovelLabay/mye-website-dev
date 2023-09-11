@@ -310,9 +310,9 @@ const fileUploader = async (DocuFile: File) => {
   const { data, error } = await supabase.storage
     .from("MYE Applications")
     .upload(
-      `${pathData.MYE_Applications.Documents.Application_Files}${
+      `${pathData.MYE_Applications.Documents.Application_Files}${makeid(10)}-${
         DocuFile.name
-      }-${makeid(10)}`,
+      }`,
       DocuFile,
       {
         cacheControl: "3600",
